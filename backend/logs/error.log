@@ -1,0 +1,117 @@
+2024-03-03 22:37:05 error: Server error: invalid signature
+2024-03-03 22:41:48 error: Server error: invalid signature
+2024-03-03 22:42:34 error: Server error: invalid signature
+2024-03-03 22:44:11 error: Server error: invalid signature
+2024-03-03 22:45:57 error: Server error: invalid signature
+2024-03-03 22:47:28 error: Server error: invalid signature
+2024-03-03 22:56:45 error: Server error: invalid signature
+2024-03-03 23:44:59 error: data and hash arguments required
+2024-03-03 23:45:09 error: data and hash arguments required
+2024-03-03 23:45:32 error: data and hash arguments required
+2024-03-03 23:46:19 error: data and hash arguments required
+2024-03-03 23:50:34 error: data and hash arguments required
+2024-03-03 23:51:23 error: data and hash arguments required
+2024-03-03 23:51:33 error: data and hash arguments required
+2024-03-03 23:53:24 error: data and hash arguments required
+2024-03-03 23:54:44 error: data and hash arguments required
+2024-03-03 23:55:54 error: data and hash arguments required
+2024-03-04 23:15:29 error: No database selected
+2024-03-04 23:15:45 error: No database selected
+2024-03-04 23:16:39 error: No database selected
+2024-03-04 23:16:46 error: No database selected
+2024-03-04 23:21:40 error: No database selected
+2024-03-04 23:21:54 error: No database selected
+2024-03-04 23:22:07 error: No database selected
+2024-03-04 23:22:07 error: No database selected
+2024-03-04 23:22:18 error: No database selected
+2024-03-04 23:22:39 error: No database selected
+2024-03-04 23:23:05 error: No database selected
+2024-03-04 23:25:09 error: No database selected
+2024-03-04 23:25:53 error: No database selected
+2024-03-04 23:27:14 error: No database selected
+2024-03-04 23:27:53 error: No database selected
+2024-03-04 23:29:03 error: No database selected
+2024-03-04 23:30:07 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-03-04 23:31:23 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-03-04 23:32:36 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-03-04 23:33:32 error: No database selected
+2024-03-04 23:33:45 error: No database selected
+2024-03-04 23:34:03 error: No database selected
+2024-03-04 23:37:03 error: No database selected
+2024-03-04 23:37:42 error: No database selected
+2024-03-04 23:40:06 error: No database selected
+2024-03-04 23:40:10 error: No database selected
+2024-03-04 23:40:10 error: No database selected
+2024-03-04 23:43:50 error: No database selected
+2024-03-04 23:44:14 error: No database selected
+2024-03-05 18:40:14 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-03-05 23:37:29 error: Invalid username.
+2024-03-06 21:30:07 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-03-06 21:31:32 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-03-06 21:33:34 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-03-06 21:37:21 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-03-06 21:38:50 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-03-06 21:41:16 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-03-10 14:06:24 error: Malformed communication packet.
+2024-03-10 14:06:25 error: Malformed communication packet.
+2024-03-10 14:06:33 error: Malformed communication packet.
+2024-03-10 14:06:35 error: Malformed communication packet.
+2024-03-10 14:07:12 error: Malformed communication packet.
+2024-03-10 14:07:20 error: Malformed communication packet.
+2024-03-10 14:14:15 error: Malformed communication packet.
+2024-03-10 14:19:45 error: Malformed communication packet.
+2024-03-10 14:23:03 error: Malformed communication packet.
+2024-03-10 14:23:10 error: Malformed communication packet.
+2024-03-10 14:25:51 error: Malformed communication packet.
+2024-03-10 14:26:04 error: Malformed communication packet.
+2024-03-10 14:27:43 error: Malformed communication packet.
+2024-03-10 14:28:57 error: Malformed communication packet.
+2024-03-10 14:29:45 error: Malformed communication packet.
+2024-03-10 14:29:55 error: Malformed communication packet.
+2024-03-10 14:30:08 error: Malformed communication packet.
+2024-03-10 14:30:26 error: Malformed communication packet.
+2024-03-10 14:30:41 error: Malformed communication packet.
+2024-03-10 14:31:04 error: Malformed communication packet.
+2024-03-10 14:31:35 error: Malformed communication packet.
+2024-03-10 19:52:44 error: No database selected
+2024-03-10 19:52:59 error: No database selected
+2024-03-10 19:54:05 error: No database selected
+2024-03-10 19:54:10 error: No database selected
+2024-03-10 19:54:22 error: No database selected
+2024-03-10 19:54:24 error: No database selected
+2024-03-10 19:54:26 error: No database selected
+2024-03-10 19:54:29 error: No database selected
+2024-03-10 19:54:30 error: No database selected
+2024-03-10 19:54:32 error: No database selected
+2024-03-10 19:59:27 error: No database selected
+2024-03-10 20:17:34 error: Unknown database 'testowa_nazwa'
+2024-03-10 20:28:33 error: No database selected
+2024-03-10 20:30:07 error: No database selected
+2024-03-10 20:47:19 error: No database selected
+2024-03-12 22:41:14 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-03-12 22:41:57 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-03-12 22:42:19 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-03-12 22:43:30 error: Unknown column 'salesId' in 'field list'
+2024-03-12 22:47:34 error: Unknown column 'salesId' in 'field list'
+2024-03-12 22:57:50 error: Unknown column 'salesId' in 'field list'
+2024-03-12 23:00:40 error: Unknown column 'salesId' in 'field list'
+2024-03-12 23:07:48 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-03-12 23:22:38 error: Unknown column 'name' in 'field list'
+2024-03-13 21:17:47 error: Incorrect integer value: '' for column 'ilosc' at row 1
+2024-03-13 21:42:31 error: Incorrect integer value: '' for column 'ilosc' at row 1
+2024-03-13 21:42:38 error: Incorrect integer value: '' for column 'ilosc' at row 1
+2024-03-13 21:43:28 error: Incorrect integer value: '' for column 'ilosc' at row 1
+2024-03-13 21:44:09 error: Incorrect integer value: '' for column 'ilosc' at row 1
+2024-03-13 21:53:31 error: Incorrect integer value: '' for column 'ilosc' at row 1
+2024-03-13 22:02:39 error: Incorrect integer value: '' for column 'ilosc' at row 1
+2024-03-13 22:03:13 error: Incorrect integer value: '' for column 'ilosc' at row 1
+2024-03-13 22:08:22 error: Incorrect integer value: '' for column 'ilosc' at row 1
+2024-03-13 22:08:23 error: Incorrect integer value: '' for column 'ilosc' at row 1
+2024-03-13 22:08:24 error: Incorrect integer value: '' for column 'ilosc' at row 1
+2024-03-13 22:12:41 error: Incorrect integer value: '' for column 'ilosc' at row 1
+2024-03-13 22:13:42 error: Incorrect integer value: '' for column 'ilosc' at row 1
+2024-03-13 23:03:44 error: Incorrect integer value: '' for column 'ilosc' at row 1
+2024-03-13 23:12:55 error: Incorrect integer value: '' for column 'ilosc' at row 1
+2024-03-19 15:39:51 error: Invalid username.
+2024-03-19 15:39:58 error: Invalid username.
+2024-03-19 15:40:00 error: Invalid username.
