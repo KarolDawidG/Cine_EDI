@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Box, Paper, Grid, Typography, Button, TextField } from "@mui/material";
 import Footer from "../../layout/Footer";
@@ -9,6 +10,7 @@ interface FormState {
 }
 
 export const PasswordChangeRequest: React.FC = () => {
+  const redirect = useNavigate();
   const [formState, setFormState] = useState<FormState>({
     email: "",
   });
@@ -32,7 +34,7 @@ export const PasswordChangeRequest: React.FC = () => {
       if (response.status === 200) {
         setFormState({ email: "" });
         setLink("");
-        console.log(response.data);
+        setTimeout(() => redirect(`/`), 1000);
       } else {
         console.log(response.data.message);
       }
