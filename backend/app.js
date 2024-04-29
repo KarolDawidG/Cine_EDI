@@ -10,6 +10,7 @@ const resetRoute = require('./routes/userRoute/resetRoute');
 const forgotRoute = require('./routes/userRoute/forgotPassRoute');
 const orderRoute = require('./routes/orderRoute');
 const addressRoute = require('./routes/addressRoute');
+const vhsRoute = require('./routes/vhsRoute');
 
 const MESSAGES = require('./config/messages');
 const STATUS_CODES = require('./config/status-codes');
@@ -24,6 +25,7 @@ app.use("/reset", resetRoute);
 app.use("/forgot", forgotRoute);
 app.use("/orders", orderRoute);
 app.use("/address", addressRoute);
+app.use('/vhs', vhsRoute);
 
 app.use(middleware);
 app.use(limiter);

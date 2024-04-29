@@ -1,0 +1,61 @@
+[
+  {
+    "account": {
+      "accountId": "2a819f96-9cf7-4cfc-b206-8c3f13917a9d",
+      "firstName": "123456",
+      "secondName": "Kowalska",
+      "email": "karoldawidg@gmail.com",
+      "imageUrl": "https://utfs.io/f/bca7e335-8a46-4ffa-9186-81d51e65c875-kmjf4x.jpg",
+      "street": "Mickiewicza",
+      "houseNumber": "666",
+      "city": "Szczytno",
+      "state": "Warminsko",
+      "postalCode": "12-100",
+      "country": "Polska"
+    },
+    "rentals": [
+      {
+        "rentalId": "e57a0e76-ec9a-41fe-aef0-97b2a3cc61c9",
+        "rentalDate": "2024-04-29T15:33:56.000Z",
+        "dueDate": "2024-05-06T15:32:46.000Z",
+        "returnDate": null,
+        "status": "rented",
+        "vhs": {
+          "vhsId": "9faf1827-0577-11ef-bd4e-1002b54ccc69",
+          "title": "Ghostbusters",
+          "description": "Three former parapsychology professors set up shop as a unique ghost removal service.",
+          "imageUrl": "https://example.com/img/ghostbusters.jpg",
+          "pricePerDay": 5
+        }
+      },
+      {
+        "rentalId": "d0873a8d-f578-441a-9c1e-b6cc3fc09366",
+        "rentalDate": "2024-04-29T15:33:56.000Z",
+        "dueDate": "2024-05-06T15:32:46.000Z",
+        "returnDate": null,
+        "status": "rented",
+        "vhs": {
+          "vhsId": "9faf18ef-0577-11ef-bd4e-1002b54ccc69",
+          "title": "Jurassic Park",
+          "description": "During a preview tour, a theme park suffers a major power breakdown that allows its cloned dinosaur exhibits to run amok.",
+          "imageUrl": "https://example.com/img/jurassic-park.jpg",
+          "pricePerDay": 5
+        }
+      },
+      {
+        "rentalId": "c5423951-dbfe-46e0-87d9-dd3b07950077",
+        "rentalDate": "2024-04-29T15:33:56.000Z",
+        "dueDate": "2024-05-06T15:32:46.000Z",
+        "returnDate": null,
+        "status": "rented",
+        "vhs": {
+          "vhsId": "9faf19a6-0577-11ef-bd4e-1002b54ccc69",
+          "title": "Pulp Fiction",
+          "description": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+          "imageUrl": "https://example.com/img/pulp-fiction.jpg",
+          "pricePerDay": 5
+        }
+      }
+    ]
+  }
+]

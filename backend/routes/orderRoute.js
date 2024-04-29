@@ -11,15 +11,13 @@ router.use(errorHandler);
 
 router.post('/', async (req, res) => {
     const formData = req.body;
-    //console.log("Form Data: ", formData);
+    
     try {
         const orderId = await RentalsRecord.insert(formData);
 
         const orderDetails = await RentalsRecord.findById(orderId);
-        // console.log("Order Details: ", JSON.stringify(orderDetails, null, 2));
         
         const data = JSON.stringify(orderDetails, null, 2)
-        console.log(data);
 
         //const ediDocument = generateEDIDocument(data);
         //console.log(ediDocument);

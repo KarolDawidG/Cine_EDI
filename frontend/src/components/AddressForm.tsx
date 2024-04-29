@@ -47,8 +47,8 @@ const AddressForm = () => {
     };
 
     return (
-        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
-            <Paper elevation={3} sx={{ p: 2, maxWidth: 600, width: '100%' }}>
+        <Box>
+            <Paper elevation={3} sx={{ p: 2, width: '95%', height: '400px' }}>
                 <Typography variant="h6" sx={{ mb: 2, textAlign: 'center' }}>
                     Wprowadź swoje dane adresowe
                 </Typography>

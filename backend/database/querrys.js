@@ -79,13 +79,13 @@ const event_schedulerON = `SET GLOBAL event_scheduler = ON;
 `;
 
 //insert vhs_tapes 
-// INSERT INTO vhs_tapes (id, title, description, img_url, price_per_day, quantity_available)
+// INSERT INTO vhs_tapes (id, title, description, img_url, price_per_day, quantity_available, genre)
 // VALUES
-// (UUID(), 'Back to the Future', 'Marty McFly, a 17-year-old high school student, is accidentally sent thirty years into the past in a time-traveling DeLorean invented by his close friend, the maverick scientist Doc Brown.', 'https://example.com/img/back-to-the-future.jpg', 5.00, 5),
-// (UUID(), 'The Terminator', 'In 1984, a human soldier is tasked to stop an indestructible cyborg killing machine, both sent from 2029, from executing a young woman, whose unborn son is the key to humanity\'s future salvation.', 'https://example.com/img/the-terminator.jpg', 5.00, 3),
-// (UUID(), 'Ghostbusters', 'Three former parapsychology professors set up shop as a unique ghost removal service.', 'https://example.com/img/ghostbusters.jpg', 5.00, 4),
-// (UUID(), 'Jurassic Park', 'During a preview tour, a theme park suffers a major power breakdown that allows its cloned dinosaur exhibits to run amok.', 'https://example.com/img/jurassic-park.jpg', 5.00, 2),
-// (UUID(), 'Pulp Fiction', 'The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.', 'https://example.com/img/pulp-fiction.jpg', 5.00, 3);
+// (UUID(), 'Indiana Jones and the Raiders of the Lost Ark', 'In 1936, archaeologist and adventurer Indiana Jones is hired by the U.S. government to find the Ark of the Covenant before Adolf Hitler\'s Nazis can obtain its awesome powers.', 'https://example.com/img/raiders-of-the-lost-ark.jpg', 5.00, 5, 'Adventure'),
+// (UUID(), 'The Lord of the Rings: The Fellowship of the Ring', 'A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.', 'https://example.com/img/lotr-fellowship.jpg', 5.00, 3, 'Adventure'),
+// (UUID(), 'Pirates of the Caribbean: The Curse of the Black Pearl', 'Blacksmith Will Turner teams up with eccentric pirate Captain Jack Sparrow to save his love, the governor\'s daughter, from Jack\'s former pirate allies, who are now undead.', 'https://example.com/img/pirates-of-the-caribbean.jpg', 5.00, 4, 'Adventure'),
+// (UUID(), 'Avatar', 'A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.', 'https://example.com/img/avatar.jpg', 5.00, 3, 'Adventure'),
+// (UUID(), 'The Hobbit: An Unexpected Journey', 'A reluctant Hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home, and the gold within it, from the dragon Smaug.', 'https://example.com/img/the-hobbit.jpg', 5.00, 5, 'Adventure');
 
 
 module.exports = {

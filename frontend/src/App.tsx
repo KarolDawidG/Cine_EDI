@@ -11,6 +11,7 @@ import Profile from "./pages/auth_user/Profile";
 import Account from "./pages/auth_user/Account";
 import { ResetPassword } from "./auth/Reset/ResetPassword";
 import { PasswordChangeRequest } from "./auth/Reset/PasswordChangeRequest";
+import VHSCatalog from "./pages/auth_user/VHSCatalog";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path='logout' element={<Logout/>}/>
         <Route path='profile' element={<Profile/>}/>
         <Route path='account' element={<Account/>}/>
+        <Route path='vhs' element={<VHSCatalog/>}/>
     </Routes>
   )
 }
