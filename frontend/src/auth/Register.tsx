@@ -8,7 +8,8 @@ import Footer from "../layout/Footer";
 const Register = () => {
     const redirect = useNavigate();
     const [userData, setUserData] = useState({
-        username: "",
+        first_name: "",
+        second_name: "",
         email: "",
         password: "",
     });
@@ -51,12 +52,25 @@ const Register = () => {
                                     margin="normal"
                                     required
                                     fullWidth
-                                    id="username"
-                                    label="User name"
-                                    name="username"
-                                    autoComplete="username"
+                                    id="first_name"
+                                    label="First name"
+                                    name="first_name"
+                                    autoComplete="first_name"
                                     autoFocus
-                                    value={userData.username}
+                                    value={userData.first_name}
+                                    onChange={handleChange}
+                                    sx={{ marginBottom: 2 }}
+                                />
+                                <TextField
+                                    margin="normal"
+                                    required
+                                    fullWidth
+                                    id="second_name"
+                                    label="Second name"
+                                    name="second_name"
+                                    autoComplete="first_name"
+                                    autoFocus
+                                    value={userData.second_name}
                                     onChange={handleChange}
                                     sx={{ marginBottom: 2 }}
                                 />

@@ -115,3 +115,24 @@
 2024-03-19 15:39:51 error: Invalid username.
 2024-03-19 15:39:58 error: Invalid username.
 2024-03-19 15:40:00 error: Invalid username.
+2024-04-28 10:31:10 error: onsole is not defined
+2024-04-28 10:31:20 error: Cannot read properties of undefined (reading 'is_active')
+2024-04-28 10:33:09 error: Cannot read properties of undefined (reading 'is_active')
+2024-04-28 10:35:05 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-04-28 10:35:08 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-04-28 10:35:41 error: UsersRecord.updateRefreshTokenById is not a function
+2024-04-28 10:36:35 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-04-28 10:41:23 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-04-28 10:45:36 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-04-28 10:48:12 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-04-28 10:48:45 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-04-28 10:48:49 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-04-28 10:49:05 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-04-28 10:49:15 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-04-28 10:49:58 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-04-28 10:51:12 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-04-28 10:51:29 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-04-28 17:17:10 error: UsersRecord.selectByUsername is not a function
+2024-04-28 17:22:20 error: username is not defined
+2024-04-28 17:24:58 error: username is not defined
+2024-04-28 17:26:20 error: Register POST: username is not defined
