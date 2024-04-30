@@ -66,7 +66,7 @@ const FinalizingOrder = () => {
             <Paper elevation={3} sx={{ p: 2, width: '95%', height: '400px' }}>
                 <Typography variant="h6" gutterBottom>Twoje zamówienia</Typography>
                 
-                <List sx={{ maxWidth: '95%', bgcolor: 'background.paper', position: 'relative', overflow: 'auto', maxHeight: 300, '& ul': { padding: 0 },}} subheader={<li />} >
+                <List sx={{ height: '300px', maxWidth: '95%', bgcolor: 'background.paper', position: 'relative', overflow: 'auto', maxHeight: 300, '& ul': { padding: 0 },}} subheader={<li />} >
                     {cartItems.map((item: VHS, index: number) => (
                         <ListItem key={index}>
                             <ListItemText primary={`${item.title}`} secondary={`Termin zwrotu: ${item.due_date}`} />
