@@ -13,27 +13,29 @@ class RentalsRecord {
         try {
             for (const item of formData.items) {
                 const id = uuidv4();
+                
                 await connection.execute(
                     `INSERT INTO rentals (id, account_id, vhs_id, rental_date, due_date, return_date, status) VALUES (?, ?, ?, ?, ?, ?, ?)`,
                     [
                         id,
-                        formData.account_id,
-                        item.vhs_id,
+                        item.account_id,
+                        item.id,
                         new Date(),
                         item.due_date,
                         null,
                         item.status
                     ]
                 );
+                
                 // Sprawdzenie dostępności przed aktualizacją
                 const [rows] = await connection.execute(
                     `SELECT quantity_available FROM vhs_tapes WHERE id = ?`,
-                    [item.vhs_id]
+                    [item.id]
                 );
                 if (rows[0].quantity_available > 0) {
                     await connection.execute(
                         `UPDATE vhs_tapes SET quantity_available = quantity_available - 1 WHERE id = ?`,
-                        [item.vhs_id]
+                        [item.id]
                     );
                 }
                 ids.push(id);

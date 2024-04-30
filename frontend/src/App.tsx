@@ -11,7 +11,7 @@ import Profile from "./pages/auth_user/Profile";
 import Account from "./pages/auth_user/Account";
 import { ResetPassword } from "./auth/Reset/ResetPassword";
 import { PasswordChangeRequest } from "./auth/Reset/PasswordChangeRequest";
-import VHSCatalog from "./pages/auth_user/VHSCatalog";
+import VHSCatalog from "./components/VHSCatalog";
 
 function App() {
   return (

@@ -4,7 +4,7 @@ import { Box, Grid, Container } from "@mui/material";
 import Footer from "../../layout/Footer";
 import AuthMainBar from "../../layout/AuthMainBar";
 import AddressForm from "../../components/AddressForm";
-import FinalizingOrder from "./FinalizingOrder";
+import FinalizingOrder from "../../components/FinalizingOrder";
 
 const Dashboard = () => {
     const redirect = useNavigate();

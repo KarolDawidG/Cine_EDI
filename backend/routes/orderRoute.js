@@ -14,13 +14,13 @@ router.post('/', async (req, res) => {
     
     try {
         const orderId = await RentalsRecord.insert(formData);
-
         const orderDetails = await RentalsRecord.findById(orderId);
-        
         const data = JSON.stringify(orderDetails, null, 2)
+        console.log(data);
 
-        //const ediDocument = generateEDIDocument(data);
-        //console.log(ediDocument);
+        // TODO: nie dziala poprawnie zapis
+        // const ediDocument = generateEDIDocument(data);
+        // console.log(ediDocument);
 
         res.status(201).json({
             message: "Zamówienie zostało pomyślnie utworzone."

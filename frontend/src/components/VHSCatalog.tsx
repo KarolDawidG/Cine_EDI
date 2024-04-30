@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Grid, Card, CardMedia, CardContent, Typography, CircularProgress, Box, Container, List, ListItem, ListItemText} from "@mui/material";
-import AuthMainBar from "../../layout/AuthMainBar";
-import Footer from "../../layout/Footer";
+import { Grid, Card, CardMedia, CardContent, Typography, CircularProgress, Box, Container, List, ListItem, ListItemText, Button} from "@mui/material";
+import AuthMainBar from "../layout/AuthMainBar";
+import Footer from "../layout/Footer";
+import { notify } from "../notification/Notify";
+import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 interface VHS {
   id: string;
@@ -20,7 +23,22 @@ const VHSCatalog = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [genres, setGenres] = useState<string[]>(["All"]);
-
+  const [cartItems, setCartItems] = useState<any>();
+  
+  const addToCart = (product:any) => {
+    const existingProducts = JSON.parse(localStorage.getItem('cart') || '[]');
+    
+    const productIndex = existingProducts.findIndex((item: { id: string }) => item.id === product.id);
+      if (productIndex !== -1) {
+        notify('Produkt juz jest w koszyku!');
+      } else {
+        notify('Produkt dodano do koszyka!');
+        existingProducts.push(product);
+      }
+    localStorage.setItem('cart', JSON.stringify(existingProducts));
+    setCartItems(existingProducts);
+  };
+  
   useEffect(() => {
     const fetchVHSData = async () => {
       setIsLoading(true);
@@ -77,20 +95,33 @@ const VHSCatalog = () => {
                       image="/vhs.webp"
                       alt={vhs.title}
                     />
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
-                        {vhs.title}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {vhs.description}
-                      </Typography>
-                      <Typography variant="body1">
-                        Cena za dobę: ${vhs.price_per_day}
-                      </Typography>
-                      <Typography variant="body1">
-                        Dostępne ilości: {vhs.quantity_available}
-                      </Typography>
-                    </CardContent>
+                      <CardContent sx={{ 
+                        display: 'flex', 
+                        flexDirection: 'column', 
+                        width: 250, 
+                        height: 300 
+                      }}>
+                        <Box>
+                          <Typography gutterBottom variant="h5" component="div">
+                            {vhs.title}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            {vhs.description}
+                          </Typography>
+                          <Typography variant="body1">
+                            Cena za dobę: ${vhs.price_per_day}
+                          </Typography>
+                        </Box>
+                        <Box sx={{ display: 'flex', justifyContent: 'space-between', marginBottom: 1 }}>
+                          <Typography variant="body1">
+                            Dostępne ilości: {vhs.quantity_available}
+                          </Typography>
+                          <Button onClick={() => addToCart(vhs)}>
+                            Wypożycz
+                          </Button>
+                        </Box>
+                      </CardContent>
+
                   </Card>
                 </Grid>
               ))}
