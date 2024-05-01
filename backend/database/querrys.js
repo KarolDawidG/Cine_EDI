@@ -42,6 +42,7 @@ const createVhsTapes = `
         title varchar(255) NOT NULL,
         description text,
         img_url varchar(255),
+        genre varchar(255),
         price_per_day decimal(10, 2) NOT NULL DEFAULT 5.00,  -- Cena za dobę wypożyczenia
         quantity_available int NOT NULL DEFAULT 1,  -- Ilość dostępnych kaset
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

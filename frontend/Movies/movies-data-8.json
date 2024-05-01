@@ -1,0 +1,393 @@
+[
+  {
+    "adult": false,
+    "backdrop_path": "/lxD5ak7BOoinRNehOCA85CQ8ubr.jpg",
+    "genre_ids": [
+      16,
+      12,
+      10751,
+      35
+    ],
+    "id": 862,
+    "original_language": "en",
+    "original_title": "Toy Story",
+    "overview": "Led by Woody, Andy's toys live happily in his room until Andy's birthday brings Buzz Lightyear onto the scene. Afraid of losing his place in Andy's heart, Woody plots against Buzz. But when circumstances separate Buzz and Woody from their owner, the duo eventually learns to put aside their differences.",
+    "popularity": 276.464,
+    "poster_path": "/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg",
+    "release_date": "1995-10-30",
+    "title": "Toy Story",
+    "video": false,
+    "vote_average": 7.972,
+    "vote_count": 17810
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/iwgl8zlrrfvfWp9k9Paj8lvFEvS.jpg",
+    "genre_ids": [
+      80,
+      9648,
+      53
+    ],
+    "id": 807,
+    "original_language": "en",
+    "original_title": "Se7en",
+    "overview": "Two homicide detectives are on a desperate hunt for a serial killer whose crimes are based on the \"seven deadly sins\" in this dark and haunting film that takes viewers from the tortured remains of one victim to the next. The seasoned Det. Sommerset researches each sin in an effort to get inside the killer's mind, while his novice partner, Mills, scoffs at his efforts to unravel the case.",
+    "popularity": 289.313,
+    "poster_path": "/6yoghtyTpznpBik8EngEmJskVUO.jpg",
+    "release_date": "1995-09-22",
+    "title": "Se7en",
+    "video": false,
+    "vote_average": 8.4,
+    "vote_count": 20270
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/9n2tJBplPbgR2ca05hS5CKXwP2c.jpg",
+    "genre_ids": [
+      16,
+      10751,
+      12,
+      14,
+      35
+    ],
+    "id": 502356,
+    "original_language": "en",
+    "original_title": "The Super Mario Bros. Movie",
+    "overview": "While working underground to fix a water main, Brooklyn plumbers—and brothers—Mario and Luigi are transported down a mysterious pipe and wander into a magical new world. But when the brothers are separated, Mario embarks on an epic quest to find Luigi.",
+    "popularity": 242.261,
+    "poster_path": "/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg",
+    "release_date": "2023-04-05",
+    "title": "The Super Mario Bros. Movie",
+    "video": false,
+    "vote_average": 7.7,
+    "vote_count": 8363
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/udhU4oOPxAiNltoMVddSRq3lLAk.jpg",
+    "genre_ids": [
+      53,
+      28,
+      878
+    ],
+    "id": 766507,
+    "original_language": "en",
+    "original_title": "Prey",
+    "overview": "When danger threatens her camp, the fierce and highly skilled Comanche warrior Naru sets out to protect her people. But the prey she stalks turns out to be a highly evolved alien predator with a technically advanced arsenal.",
+    "popularity": 258.409,
+    "poster_path": "/ujr5pztc1oitbe7ViMUOilFaJ7s.jpg",
+    "release_date": "2022-08-02",
+    "title": "Prey",
+    "video": false,
+    "vote_average": 7.723,
+    "vote_count": 6277
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/pcWxKfFNCznTKYy0E8M9nG1cwL4.jpg",
+    "genre_ids": [
+      18,
+      35
+    ],
+    "id": 391713,
+    "original_language": "en",
+    "original_title": "Lady Bird",
+    "overview": "Lady Bird McPherson, a strong willed, deeply opinionated, artistic 17 year old comes of age in Sacramento. Her relationship with her mother and her upbringing are questioned and tested as she plans to head off to college.",
+    "popularity": 294.921,
+    "poster_path": "/gl66K7zRdtNYGrxyS2YDUP5ASZd.jpg",
+    "release_date": "2017-09-01",
+    "title": "Lady Bird",
+    "video": false,
+    "vote_average": 7.268,
+    "vote_count": 8156
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/pI5jxew0I9kub4IXrtsOB8F40dw.jpg",
+    "genre_ids": [
+      16,
+      10751,
+      18,
+      12,
+      14
+    ],
+    "id": 1022789,
+    "original_language": "en",
+    "original_title": "Inside Out 2",
+    "overview": "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust, who’ve long been running a successful operation by all accounts, aren’t sure how to feel when Anxiety shows up. And it looks like she’s not alone.",
+    "popularity": 260.84,
+    "poster_path": "/xeqXXTE1Cd3qNaAEOT6qbhhCsgJ.jpg",
+    "release_date": "2024-06-12",
+    "title": "Inside Out 2",
+    "video": false,
+    "vote_average": 0,
+    "vote_count": 0
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/pzvnnpJmCtSZMw44WYVEqldhn17.jpg",
+    "genre_ids": [
+      35,
+      10749
+    ],
+    "id": 1143319,
+    "original_language": "en",
+    "original_title": "Puppy Love",
+    "overview": "After a disastrous first date, wild-child Nicole and socially-anxious Max vow to lose each other’s numbers until they learn that their dogs found a love match, and now puppies are on the way! The hilariously mismatched Nicole and Max are forced to become responsible co-parents, but may end up finding love themselves.",
+    "popularity": 221.639,
+    "poster_path": "/oTc03izWZ9UdD3y0HegVV2M0s0J.jpg",
+    "release_date": "2023-08-22",
+    "title": "Puppy Love",
+    "video": false,
+    "vote_average": 7.021,
+    "vote_count": 117
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/tIdLd6O61oZ0JqQgHN873Ld5mAc.jpg",
+    "genre_ids": [
+      10749
+    ],
+    "id": 698438,
+    "original_language": "ko",
+    "original_title": "스와핑 : 완벽한 이웃",
+    "overview": "Couple Jin-goo and Joo-hee have been experiencing a lover's slump after their marriage. Meanwhile, a new couple in the neighborhood, Hyun-jin and Yoo-jeong came to the other couple's house to introduce themselves. They're attracted with each other's husbands and wives, and in the end, crosses the line that is not supposed to be crossed within neighbors. After that day, two couples' passion intensifies...",
+    "popularity": 239.619,
+    "poster_path": "/3ArCpGHdnVqBjhkdRcQHSBYH1yA.jpg",
+    "release_date": "2019-11-04",
+    "title": "Swapping: Perfect Neighbor",
+    "video": false,
+    "vote_average": 4.7,
+    "vote_count": 3
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/sw7mordbZxgITU877yTpZCud90M.jpg",
+    "genre_ids": [
+      18,
+      80
+    ],
+    "id": 769,
+    "original_language": "en",
+    "original_title": "GoodFellas",
+    "overview": "The true story of Henry Hill, a half-Irish, half-Sicilian Brooklyn kid who is adopted by neighbourhood gangsters at an early age and climbs the ranks of a Mafia family under the guidance of Jimmy Conway.",
+    "popularity": 213.006,
+    "poster_path": "/aKuFiU82s5ISJpGZp7YkIr3kCUd.jpg",
+    "release_date": "1990-09-12",
+    "title": "GoodFellas",
+    "video": false,
+    "vote_average": 8.466,
+    "vote_count": 12346
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/zCViszfnUOCJBTCTr9YN1VWvqnn.jpg",
+    "genre_ids": [
+      28,
+      35
+    ],
+    "id": 897087,
+    "original_language": "en",
+    "original_title": "Freelance",
+    "overview": "An ex-special forces operative takes a job to provide security for a journalist as she interviews a dictator, but a military coup breaks out in the middle of the interview, they are forced to escape into the jungle where they must survive.",
+    "popularity": 218.139,
+    "poster_path": "/7Bd4EUOqQDKZXA6Od5gkfzRNb0.jpg",
+    "release_date": "2023-10-05",
+    "title": "Freelance",
+    "video": false,
+    "vote_average": 6.559,
+    "vote_count": 749
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg",
+    "genre_ids": [
+      12,
+      878,
+      28
+    ],
+    "id": 299534,
+    "original_language": "en",
+    "original_title": "Avengers: Endgame",
+    "overview": "After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos' actions and restore order to the universe once and for all, no matter what consequences may be in store.",
+    "popularity": 248.697,
+    "poster_path": "/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
+    "release_date": "2019-04-24",
+    "title": "Avengers: Endgame",
+    "video": false,
+    "vote_average": 8.255,
+    "vote_count": 24806
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/14QbnygCuTO0vl7CAFmPf1fgZfV.jpg",
+    "genre_ids": [
+      28,
+      12,
+      878
+    ],
+    "id": 634649,
+    "original_language": "en",
+    "original_title": "Spider-Man: No Way Home",
+    "overview": "Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man.",
+    "popularity": 241.586,
+    "poster_path": "/5weKu49pzJCt06OPpjvT80efnQj.jpg",
+    "release_date": "2021-12-15",
+    "title": "Spider-Man: No Way Home",
+    "video": false,
+    "vote_average": 7.967,
+    "vote_count": 19328
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/k0ucFBBgSDTXYU8fVHXJyjAuIIe.jpg",
+    "genre_ids": [
+      27
+    ],
+    "id": 1063879,
+    "original_language": "fr",
+    "original_title": "Vermines",
+    "overview": "Residents of a rundown French apartment building battle against an army of deadly, rapidly reproducing spiders.",
+    "popularity": 353.36,
+    "poster_path": "/dY98PkUAbIGUUg0FhXEcOkbzHIZ.jpg",
+    "release_date": "2023-12-27",
+    "title": "Infested",
+    "video": false,
+    "vote_average": 7.224,
+    "vote_count": 134
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/hZnnUq0mrUQ3e54SJVca4mf2oAQ.jpg",
+    "genre_ids": [
+      27,
+      28
+    ],
+    "id": 36647,
+    "original_language": "en",
+    "original_title": "Blade",
+    "overview": "The Daywalker known as \"Blade\" - a half-vampire, half-mortal man - becomes the protector of humanity against an underground army of vampires.",
+    "popularity": 271.722,
+    "poster_path": "/oWT70TvbsmQaqyphCZpsnQR7R32.jpg",
+    "release_date": "1998-08-21",
+    "title": "Blade",
+    "video": false,
+    "vote_average": 6.781,
+    "vote_count": 5721
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/hIUs8RzKlrzgbWxn2EpWmiTFqCc.jpg",
+    "genre_ids": [
+      878,
+      53
+    ],
+    "id": 870404,
+    "original_language": "en",
+    "original_title": "Meteor",
+    "overview": "After a meteor collides into Earth, a lonely rancher and a lost young girl are on the run from vicious mercenaries.",
+    "popularity": 181.248,
+    "poster_path": "/tVMddOS5bi3YPVPgTPlEw0TOWoF.jpg",
+    "release_date": "2021-09-01",
+    "title": "Meteor",
+    "video": false,
+    "vote_average": 5.462,
+    "vote_count": 92
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/lntyt4OVDbcxA1l7LtwITbrD3FI.jpg",
+    "genre_ids": [
+      18,
+      10749
+    ],
+    "id": 1010581,
+    "original_language": "es",
+    "original_title": "Culpa mía",
+    "overview": "Noah must leave her city, boyfriend, and friends to move into William Leister's mansion, the flashy and wealthy husband of her mother Rafaela. As a proud and independent 17 year old, Noah resists living in a mansion surrounded by luxury. However, it is there where she meets Nick, her new stepbrother, and the clash of their strong personalities becomes evident from the very beginning.",
+    "popularity": 235.267,
+    "poster_path": "/w46Vw536HwNnEzOa7J24YH9DPRS.jpg",
+    "release_date": "2023-06-08",
+    "title": "My Fault",
+    "video": false,
+    "vote_average": 7.982,
+    "vote_count": 2476
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/8rpDcsfLJypbO6vREc0547VKqEv.jpg",
+    "genre_ids": [
+      878,
+      12,
+      28
+    ],
+    "id": 76600,
+    "original_language": "en",
+    "original_title": "Avatar: The Way of Water",
+    "overview": "Set more than a decade after the events of the first film, learn the story of the Sully family (Jake, Neytiri, and their kids), the trouble that follows them, the lengths they go to keep each other safe, the battles they fight to stay alive, and the tragedies they endure.",
+    "popularity": 229.227,
+    "poster_path": "/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg",
+    "release_date": "2022-12-14",
+    "title": "Avatar: The Way of Water",
+    "video": false,
+    "vote_average": 7.624,
+    "vote_count": 11222
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/9bn8ApCTuqTb7rLoxzyGcyzjuFx.jpg",
+    "genre_ids": [
+      28,
+      53,
+      12
+    ],
+    "id": 447200,
+    "original_language": "en",
+    "original_title": "Skyscraper",
+    "overview": "Framed and on the run, a former FBI agent must save his family from a blazing fire in the world's tallest building.",
+    "popularity": 256.638,
+    "poster_path": "/52ml62vClzrlqvXZq2FEW6UF6c1.jpg",
+    "release_date": "2018-07-11",
+    "title": "Skyscraper",
+    "video": false,
+    "vote_average": 6.316,
+    "vote_count": 4788
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/pdhDFmVQSA0f5i5IL0gpWROjgZ5.jpg",
+    "genre_ids": [
+      10749,
+      35
+    ],
+    "id": 621,
+    "original_language": "en",
+    "original_title": "Grease",
+    "overview": "Australian good girl Sandy and greaser Danny fell in love over the summer. But when they unexpectedly discover they're now in the same high school, will they be able to rekindle their romance despite their eccentric friends?",
+    "popularity": 248.129,
+    "poster_path": "/czVhhAaSBFpakur7U8pOIDV9NUG.jpg",
+    "release_date": "1978-07-07",
+    "title": "Grease",
+    "video": false,
+    "vote_average": 7.396,
+    "vote_count": 6975
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/wyvUmyzqGOBDyqLHRSukGDjI7bH.jpg",
+    "genre_ids": [
+      18
+    ],
+    "id": 50014,
+    "original_language": "en",
+    "original_title": "The Help",
+    "overview": "Aibileen Clark is a middle-aged African-American maid who has spent her life raising white children and has recently lost her only son; Minny Jackson is an African-American maid who has often offended her employers despite her family's struggles with money and her desperate need for jobs; and Eugenia \"Skeeter\" Phelan is a young white woman who has recently moved back home after graduating college to find out her childhood maid has mysteriously disappeared. These three stories intertwine to explain how life in Jackson, Mississippi revolves around \"the help\"; yet they are always kept at a certain distance because of racial lines.",
+    "popularity": 197.309,
+    "poster_path": "/7XLSwxpfpPoJyTdJVot6a42TS2V.jpg",
+    "release_date": "2011-08-09",
+    "title": "The Help",
+    "video": false,
+    "vote_average": 8.204,
+    "vote_count": 7885
+  }
+]

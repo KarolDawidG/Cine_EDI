@@ -4,8 +4,6 @@ import { Grid, Card, CardMedia, CardContent, Typography, CircularProgress, Box, 
 import AuthMainBar from "../layout/AuthMainBar";
 import Footer from "../layout/Footer";
 import { notify } from "../notification/Notify";
-import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 interface VHS {
   id: string;
@@ -91,15 +89,16 @@ const VHSCatalog = () => {
                   <Card>
                     <CardMedia
                       component="img"
-                      height="140"
-                      image="/vhs.webp"
+                      height="450"
+                      width="300"
+                      image={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${vhs.img_url}`}
                       alt={vhs.title}
                     />
                       <CardContent sx={{ 
                         display: 'flex', 
                         flexDirection: 'column', 
-                        width: 250, 
-                        height: 300 
+                        width: 300, 
+                        height: 350 
                       }}>
                         <Box>
                           <Typography gutterBottom variant="h5" component="div">

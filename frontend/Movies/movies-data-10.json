@@ -1,0 +1,397 @@
+[
+  {
+    "adult": false,
+    "backdrop_path": "/ulMscezy9YX0bhknvJbZoUgQxO5.jpg",
+    "genre_ids": [
+      18,
+      878,
+      10752
+    ],
+    "id": 281338,
+    "original_language": "en",
+    "original_title": "War for the Planet of the Apes",
+    "overview": "Caesar and his apes are forced into a deadly conflict with an army of humans led by a ruthless Colonel. After the apes suffer unimaginable losses, Caesar wrestles with his darker instincts and begins his own mythic quest to avenge his kind. As the journey finally brings them face to face, Caesar and the Colonel are pitted against each other in an epic battle that will determine the fate of both their species and the future of the planet.",
+    "popularity": 225.15,
+    "poster_path": "/mMA1qhBFgZX8O36qPPTC016kQl1.jpg",
+    "release_date": "2017-07-11",
+    "title": "War for the Planet of the Apes",
+    "video": false,
+    "vote_average": 7.2,
+    "vote_count": 8414
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/1TUg5pO1VZ4B0Q1amk3OlXvlpXV.jpg",
+    "genre_ids": [
+      12,
+      18,
+      10751,
+      16
+    ],
+    "id": 420818,
+    "original_language": "en",
+    "original_title": "The Lion King",
+    "overview": "Simba idolizes his father, King Mufasa, and takes to heart his own royal destiny. But not everyone in the kingdom celebrates the new cub's arrival. Scar, Mufasa's brother—and former heir to the throne—has plans of his own. The battle for Pride Rock is ravaged with betrayal, tragedy and drama, ultimately resulting in Simba's exile. With help from a curious pair of newfound friends, Simba will have to figure out how to grow up and take back what is rightfully his.",
+    "popularity": 252.003,
+    "poster_path": "/dzBtMocZuJbjLOXvrl4zGYigDzh.jpg",
+    "release_date": "2019-07-12",
+    "title": "The Lion King",
+    "video": false,
+    "vote_average": 7.116,
+    "vote_count": 9659
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/6YInbRTk39ckuLYFmUgBCKcKNjb.jpg",
+    "genre_ids": [
+      16,
+      35,
+      10751,
+      14,
+      10749,
+      12
+    ],
+    "id": 976573,
+    "original_language": "en",
+    "original_title": "Elemental",
+    "overview": "In a city where fire, water, land and air residents live together, a fiery young woman and a go-with-the-flow guy will discover something elemental: how much they have in common.",
+    "popularity": 219.29,
+    "poster_path": "/4Y1WNkd88JXmGfhtWR7dmDAo1T2.jpg",
+    "release_date": "2023-06-14",
+    "title": "Elemental",
+    "video": false,
+    "vote_average": 7.658,
+    "vote_count": 3983
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/sCzcYW9h55WcesOqA12cgEr9Exw.jpg",
+    "genre_ids": [
+      18,
+      10749
+    ],
+    "id": 597,
+    "original_language": "en",
+    "original_title": "Titanic",
+    "overview": "101-year-old Rose DeWitt Bukater tells the story of her life aboard the Titanic, 84 years later. A young Rose boards the ship with her mother and fiancé. Meanwhile, Jack Dawson and Fabrizio De Rossi win third-class tickets aboard the ship. Rose tells the whole story from Titanic's departure through to its death—on its first and last voyage—on April 15, 1912.",
+    "popularity": 227.934,
+    "poster_path": "/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg",
+    "release_date": "1997-11-18",
+    "title": "Titanic",
+    "video": false,
+    "vote_average": 7.9,
+    "vote_count": 24587
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/3nYlM34QhzdtAvWRV5bN4nLtnTc.jpg",
+    "genre_ids": [
+      27,
+      53,
+      12
+    ],
+    "id": 578,
+    "original_language": "en",
+    "original_title": "Jaws",
+    "overview": "When the seaside community of Amity finds itself under attack by a dangerous great white shark, the town's chief of police, a young marine biologist, and a grizzled hunter embark on a desperate quest to destroy the beast before it strikes again.",
+    "popularity": 230.345,
+    "poster_path": "/lxM6kqilAdpdhqUl2biYp5frUxE.jpg",
+    "release_date": "1975-06-20",
+    "title": "Jaws",
+    "video": false,
+    "vote_average": 7.66,
+    "vote_count": 9972
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/fgsHxz21B27hOOqQBiw9L6yWcM7.jpg",
+    "genre_ids": [
+      27
+    ],
+    "id": 439079,
+    "original_language": "en",
+    "original_title": "The Nun",
+    "overview": "A priest with a haunted past and a novice on the threshold of her final vows are sent by the Vatican to investigate the death of a young nun in Romania and confront a malevolent force in the form of a demonic nun.",
+    "popularity": 246.589,
+    "poster_path": "/sFC1ElvoKGdHJIWRpNB3xWJ9lJA.jpg",
+    "release_date": "2018-09-05",
+    "title": "The Nun",
+    "video": false,
+    "vote_average": 5.89,
+    "vote_count": 6421
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/sRLC052ieEzkQs9dEtPMfFxYkej.jpg",
+    "genre_ids": [
+      878,
+      18,
+      28
+    ],
+    "id": 848326,
+    "original_language": "en",
+    "original_title": "Rebel Moon - Part One: A Child of Fire",
+    "overview": "When the ruthless forces of the Motherworld threaten a quiet farming village on a distant moon, a mysterious outsider becomes its best hope for survival.",
+    "popularity": 226.894,
+    "poster_path": "/ui4DrH1cKk2vkHshcUcGt2lKxCm.jpg",
+    "release_date": "2023-12-15",
+    "title": "Rebel Moon - Part One: A Child of Fire",
+    "video": false,
+    "vote_average": 6.371,
+    "vote_count": 1766
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/uUJp5I4IbzuhdUiEx4R9OAoFpbz.jpg",
+    "genre_ids": [
+      27,
+      53
+    ],
+    "id": 951491,
+    "original_language": "en",
+    "original_title": "Saw X",
+    "overview": "Between the events of 'Saw' and 'Saw II', a sick and desperate John Kramer travels to Mexico for a risky and experimental medical procedure in hopes of a miracle cure for his cancer, only to discover the entire operation is a scam to defraud the most vulnerable. Armed with a newfound purpose, the infamous serial killer returns to his work, turning the tables on the con artists in his signature visceral way through devious, deranged, and ingenious traps.",
+    "popularity": 227.476,
+    "poster_path": "/aQPeznSu7XDTrrdCtT5eLiu52Yu.jpg",
+    "release_date": "2023-09-27",
+    "title": "Saw X",
+    "video": false,
+    "vote_average": 7.29,
+    "vote_count": 1671
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/wfdHCilp8cNPK7tK4jLgdUT7703.jpg",
+    "genre_ids": [
+      35
+    ],
+    "id": 1022690,
+    "original_language": "en",
+    "original_title": "Ricky Stanicky",
+    "overview": "When three childhood best friends pull a prank gone wrong, they invent the imaginary Ricky Stanicky to get them out of trouble. Twenty years later, the trio still uses the nonexistent Ricky as a handy alibi for their immature behavior. But when their spouses and partners get suspicious and demand to finally meet the fabled Mr. Stanicky, the guilty trio decide to hire a washed-up actor and raunchy celebrity impersonator to bring him to life.",
+    "popularity": 202.448,
+    "poster_path": "/cEuX73Q1wpMypB1cr4l3MoMGpL4.jpg",
+    "release_date": "2024-02-21",
+    "title": "Ricky Stanicky",
+    "video": false,
+    "vote_average": 6.513,
+    "vote_count": 379
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/o8dPH0ZSIyyViP6rjRX1djwCUwI.jpg",
+    "genre_ids": [
+      9648,
+      53,
+      27
+    ],
+    "id": 419430,
+    "original_language": "en",
+    "original_title": "Get Out",
+    "overview": "Chris and his girlfriend Rose go upstate to visit her parents for the weekend. At first, Chris reads the family's overly accommodating behavior as nervous attempts to deal with their daughter's interracial relationship, but as the weekend progresses, a series of increasingly disturbing discoveries lead him to a truth that he never could have imagined.",
+    "popularity": 253.134,
+    "poster_path": "/mE24wUCfjK8AoBBjaMjho7Rczr7.jpg",
+    "release_date": "2017-02-24",
+    "title": "Get Out",
+    "video": false,
+    "vote_average": 7.623,
+    "vote_count": 16741
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/rMvPXy8PUjj1o8o1pzgQbdNCsvj.jpg",
+    "genre_ids": [
+      28,
+      12,
+      53
+    ],
+    "id": 299054,
+    "original_language": "en",
+    "original_title": "Expend4bles",
+    "overview": "Armed with every weapon they can get their hands on and the skills to use them, The Expendables are the world’s last line of defense and the team that gets called when all other options are off the table. But new team members with new styles and tactics are going to give “new blood” a whole new meaning.",
+    "popularity": 202.813,
+    "poster_path": "/iwsMu0ehRPbtaSxqiaUDQB9qMWT.jpg",
+    "release_date": "2023-09-15",
+    "title": "Expend4bles",
+    "video": false,
+    "vote_average": 6.287,
+    "vote_count": 1303
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/hZkgoQYus5vegHoetLkCJzb17zJ.jpg",
+    "genre_ids": [
+      18
+    ],
+    "id": 550,
+    "original_language": "en",
+    "original_title": "Fight Club",
+    "overview": "A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground \"fight clubs\" forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.",
+    "popularity": 239.457,
+    "poster_path": "/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg",
+    "release_date": "1999-10-15",
+    "title": "Fight Club",
+    "video": false,
+    "vote_average": 8.442,
+    "vote_count": 28437
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/kGWpZewzInbzTuaIHcy0bFgzXuM.jpg",
+    "genre_ids": [
+      16,
+      28,
+      12,
+      878
+    ],
+    "id": 569094,
+    "original_language": "en",
+    "original_title": "Spider-Man: Across the Spider-Verse",
+    "overview": "After reuniting with Gwen Stacy, Brooklyn’s full-time, friendly neighborhood Spider-Man is catapulted across the Multiverse, where he encounters the Spider Society, a team of Spider-People charged with protecting the Multiverse’s very existence. But when the heroes clash on how to handle a new threat, Miles finds himself pitted against the other Spiders and must set out on his own to save those he loves most.",
+    "popularity": 240.73,
+    "poster_path": "/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg",
+    "release_date": "2023-05-31",
+    "title": "Spider-Man: Across the Spider-Verse",
+    "video": false,
+    "vote_average": 8.369,
+    "vote_count": 6200
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/7ViwIWGGrRs8TTwyMH8tz6cXyOw.jpg",
+    "genre_ids": [
+      28,
+      35,
+      18
+    ],
+    "id": 1061990,
+    "original_language": "ja",
+    "original_title": "シティーハンター",
+    "overview": "An exceptional marksman and hopeless playboy, private eye Ryo Saeba reluctantly forms an alliance with his late partner's sister to investigate his death.",
+    "popularity": 298.72,
+    "poster_path": "/cjQzJ9xFdaN9KAwu7HUImIgbc2Y.jpg",
+    "release_date": "2024-04-24",
+    "title": "City Hunter",
+    "video": false,
+    "vote_average": 6.567,
+    "vote_count": 60
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/A49CBR0TUdVrHdSI9YcMjbyV4q9.jpg",
+    "genre_ids": [
+      878,
+      28,
+      53
+    ],
+    "id": 34851,
+    "original_language": "en",
+    "original_title": "Predators",
+    "overview": "A group of cold-blooded killers find themselves trapped on an alien planet to be hunted by extraterrestrial Predators.",
+    "popularity": 216.203,
+    "poster_path": "/54LZIRznS0Zjn7ZDXrsGVe3HXei.jpg",
+    "release_date": "2010-07-03",
+    "title": "Predators",
+    "video": false,
+    "vote_average": 6.2,
+    "vote_count": 3908
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/xDMIl84Qo5Tsu62c9DGWhmPI67A.jpg",
+    "genre_ids": [
+      28,
+      12,
+      878
+    ],
+    "id": 505642,
+    "original_language": "en",
+    "original_title": "Black Panther: Wakanda Forever",
+    "overview": "Queen Ramonda, Shuri, M’Baku, Okoye and the Dora Milaje fight to protect their nation from intervening world powers in the wake of King T’Challa’s death.  As the Wakandans strive to embrace their next chapter, the heroes must band together with the help of War Dog Nakia and Everett Ross and forge a new path for the kingdom of Wakanda.",
+    "popularity": 209.833,
+    "poster_path": "/sv1xJUazXeYqALzczSZ3O6nkH75.jpg",
+    "release_date": "2022-11-09",
+    "title": "Black Panther: Wakanda Forever",
+    "video": false,
+    "vote_average": 7.133,
+    "vote_count": 6102
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/keIxh0wPr2Ymj0Btjh4gW7JJ89e.jpg",
+    "genre_ids": [
+      28,
+      12,
+      878
+    ],
+    "id": 497698,
+    "original_language": "en",
+    "original_title": "Black Widow",
+    "overview": "Natasha Romanoff, also known as Black Widow, confronts the darker parts of her ledger when a dangerous conspiracy with ties to her past arises. Pursued by a force that will stop at nothing to bring her down, Natasha must deal with her history as a spy and the broken relationships left in her wake long before she became an Avenger.",
+    "popularity": 226.03,
+    "poster_path": "/kwB7d51AIcyzPOBOHLCEZJkmPhQ.jpg",
+    "release_date": "2021-07-07",
+    "title": "Black Widow",
+    "video": false,
+    "vote_average": 7.26,
+    "vote_count": 9764
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/ruKNVJFViAyR4jguVboFXTskMOe.jpg",
+    "genre_ids": [
+      53,
+      28,
+      27
+    ],
+    "id": 1028703,
+    "original_language": "en",
+    "original_title": "The OctoGames",
+    "overview": "Eight contestants compete in eight deadly, classic children's games. They seek fame beyond their wildest dreams, competing for the chance to take over the YouTube channel of the famous yet elusive masked content creator known only as \"JaxPro\".",
+    "popularity": 169.021,
+    "poster_path": "/qGz5rffXhegQH5PGUDiObqoOt06.jpg",
+    "release_date": "2022-10-07",
+    "title": "The OctoGames",
+    "video": false,
+    "vote_average": 5.58,
+    "vote_count": 106
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/aRka9neADW1M0Zf9lF8kW2jEgXe.jpg",
+    "genre_ids": [
+      27,
+      53
+    ],
+    "id": 948,
+    "original_language": "en",
+    "original_title": "Halloween",
+    "overview": "Fifteen years after murdering his sister on Halloween Night 1963, Michael Myers escapes from a mental hospital and returns to the small town of Haddonfield, Illinois to kill again.",
+    "popularity": 224.224,
+    "poster_path": "/wijlZ3HaYMvlDTPqJoTCWKFkCPU.jpg",
+    "release_date": "1978-10-24",
+    "title": "Halloween",
+    "video": false,
+    "vote_average": 7.554,
+    "vote_count": 5313
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/5QRRdnMWtAeu8Zgje2Gdwuo7gd6.jpg",
+    "genre_ids": [
+      27,
+      9648
+    ],
+    "id": 4233,
+    "original_language": "en",
+    "original_title": "Scream 2",
+    "overview": "Away at college, Sidney Prescott thought she'd finally put the shocking murders that shattered her life behind her... until a copycat killer begins acting out a real-life sequel.",
+    "popularity": 243.183,
+    "poster_path": "/dORlVasiaDkJXTqt9bdH7nFNs6C.jpg",
+    "release_date": "1997-12-12",
+    "title": "Scream 2",
+    "video": false,
+    "vote_average": 6.487,
+    "vote_count": 3950
+  }
+]

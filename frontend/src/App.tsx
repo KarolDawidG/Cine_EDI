@@ -12,6 +12,7 @@ import Account from "./pages/auth_user/Account";
 import { ResetPassword } from "./auth/Reset/ResetPassword";
 import { PasswordChangeRequest } from "./auth/Reset/PasswordChangeRequest";
 import VHSCatalog from "./components/VHSCatalog";
+import MovieApi from "./components/MovieApi";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path='profile' element={<Profile/>}/>
         <Route path='account' element={<Account/>}/>
         <Route path='vhs' element={<VHSCatalog/>}/>
+        <Route path='page2' element={<MovieApi />}/>
     </Routes>
   )
 }

@@ -1,0 +1,398 @@
+[
+  {
+    "adult": false,
+    "backdrop_path": "/csGprKcRxt7SDpsrKiwxpgLdEsx.jpg",
+    "genre_ids": [
+      878,
+      28,
+      12,
+      53
+    ],
+    "id": 16320,
+    "original_language": "en",
+    "original_title": "Serenity",
+    "overview": "When the renegade crew of Serenity agrees to hide a fugitive on their ship, they find themselves in an action-packed battle between the relentless military might of a totalitarian regime who will destroy anything – or anyone – to get the girl back and the bloodthirsty creatures who roam the uncharted areas of space. But... the greatest danger of all may be on their ship.",
+    "popularity": 354.609,
+    "poster_path": "/ckDo5vnRKehJ2qu8U95c7QcvGUm.jpg",
+    "release_date": "2005-09-25",
+    "title": "Serenity",
+    "video": false,
+    "vote_average": 7.377,
+    "vote_count": 3336
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/hdHIjZxq3SWFqpAz4NFhdbud0iz.jpg",
+    "genre_ids": [
+      27,
+      878
+    ],
+    "id": 348,
+    "original_language": "en",
+    "original_title": "Alien",
+    "overview": "During its return to the earth, commercial spaceship Nostromo intercepts a distress signal from a distant planet. When a three-member team of the crew discovers a chamber containing thousands of eggs on the planet, a creature inside one of the eggs attacks an explorer. The entire crew is unaware of the impending nightmare set to descend upon them when the alien parasite planted inside its unfortunate host is birthed.",
+    "popularity": 364.31,
+    "poster_path": "/vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg",
+    "release_date": "1979-05-25",
+    "title": "Alien",
+    "video": false,
+    "vote_average": 8.2,
+    "vote_count": 13879
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/fOy2Jurz9k6RnJnMUMRDAgBwru2.jpg",
+    "genre_ids": [
+      16,
+      10751,
+      35,
+      14
+    ],
+    "id": 508947,
+    "original_language": "en",
+    "original_title": "Turning Red",
+    "overview": "Thirteen-year-old Mei is experiencing the awkwardness of being a teenager with a twist – when she gets too excited, she transforms into a giant red panda.",
+    "popularity": 380.859,
+    "poster_path": "/qsdjk9oAKSQMWs0Vt5Pyfh6O4GZ.jpg",
+    "release_date": "2022-03-10",
+    "title": "Turning Red",
+    "video": false,
+    "vote_average": 7.391,
+    "vote_count": 4917
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/wUp0bUXaveR40ikBhDgWwNTijuD.jpg",
+    "genre_ids": [
+      28,
+      9648,
+      53
+    ],
+    "id": 1181548,
+    "original_language": "en",
+    "original_title": "Heart of the Hunter",
+    "overview": "A retired assassin is pulled back into action when his friend uncovers a dangerous conspiracy at the heart of the South African government.",
+    "popularity": 316.305,
+    "poster_path": "/n726fdyL1dGwt15bY7Nj3XOXc4Q.jpg",
+    "release_date": "2024-03-28",
+    "title": "Heart of the Hunter",
+    "video": false,
+    "vote_average": 5.899,
+    "vote_count": 79
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/cjRUhKyt2Jo3V1KNzc5tpPNfccG.jpg",
+    "genre_ids": [
+      878,
+      28,
+      12
+    ],
+    "id": 320288,
+    "original_language": "en",
+    "original_title": "Dark Phoenix",
+    "overview": "The X-Men face their most formidable and powerful foe when one of their own, Jean Grey, starts to spiral out of control. During a rescue mission in outer space, Jean is nearly killed when she's hit by a mysterious cosmic force. Once she returns home, this force not only makes her infinitely more powerful, but far more unstable. The X-Men must now band together to save her soul and battle aliens that want to use Grey's new abilities to rule the galaxy.",
+    "popularity": 383.044,
+    "poster_path": "/cCTJPelKGLhALq3r51A9uMonxKj.jpg",
+    "release_date": "2019-06-05",
+    "title": "Dark Phoenix",
+    "video": false,
+    "vote_average": 5.978,
+    "vote_count": 6222
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/bQS43HSLZzMjZkcHJz4fGc7fNdz.jpg",
+    "genre_ids": [
+      878,
+      10749,
+      35
+    ],
+    "id": 792307,
+    "original_language": "en",
+    "original_title": "Poor Things",
+    "overview": "Brought back to life by an unorthodox scientist, a young woman runs off with a debauched lawyer on a whirlwind adventure across the continents. Free from the prejudices of her times, she grows steadfast in her purpose to stand for equality and liberation.",
+    "popularity": 322.807,
+    "poster_path": "/kCGlIMHnOm8JPXq3rXM6c5wMxcT.jpg",
+    "release_date": "2023-12-07",
+    "title": "Poor Things",
+    "video": false,
+    "vote_average": 7.793,
+    "vote_count": 3229
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/8lBViysvNJBPkl6zG1LVAaW3qhj.jpg",
+    "genre_ids": [
+      28,
+      12,
+      53
+    ],
+    "id": 206647,
+    "original_language": "en",
+    "original_title": "Spectre",
+    "overview": "A cryptic message from Bond’s past sends him on a trail to uncover a sinister organization. While M battles political forces to keep the secret service alive, Bond peels back the layers of deceit to reveal the terrible truth behind SPECTRE.",
+    "popularity": 363.694,
+    "poster_path": "/zj8ongFhtWNsVlfjOGo8pSr7PQg.jpg",
+    "release_date": "2015-10-26",
+    "title": "Spectre",
+    "video": false,
+    "vote_average": 6.541,
+    "vote_count": 10202
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/w5IDXtifKntw0ajv2co7jFlTQDM.jpg",
+    "genre_ids": [
+      878,
+      9648,
+      12
+    ],
+    "id": 62,
+    "original_language": "en",
+    "original_title": "2001: A Space Odyssey",
+    "overview": "Humanity finds a mysterious object buried beneath the lunar surface and sets off to find its origins with the help of HAL 9000, the world's most advanced super computer.",
+    "popularity": 341.701,
+    "poster_path": "/ve72VxNqjGM69Uky4WTo2bK6rfq.jpg",
+    "release_date": "1968-04-02",
+    "title": "2001: A Space Odyssey",
+    "video": false,
+    "vote_average": 8.076,
+    "vote_count": 11056
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/e3gVl1gnxEFKLTF6pn6KRqUPi9K.jpg",
+    "genre_ids": [
+      10749,
+      18
+    ],
+    "id": 1127166,
+    "original_language": "it",
+    "original_title": "Fabbricante di lacrime",
+    "overview": "Adopted together after a tough childhood in an orphanage, Nica and Rigel realize that unexpected but irresistible feelings pull them together.",
+    "popularity": 312.808,
+    "poster_path": "/uoBHsxSgfc3PQsSn98RfnbePHOy.jpg",
+    "release_date": "2024-04-03",
+    "title": "The Tearsmith",
+    "video": false,
+    "vote_average": 6.487,
+    "vote_count": 486
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/3P52oz9HPQWxcwHOwxtyrVV1LKi.jpg",
+    "genre_ids": [
+      28,
+      35,
+      12
+    ],
+    "id": 383498,
+    "original_language": "en",
+    "original_title": "Deadpool 2",
+    "overview": "Wisecracking mercenary Deadpool battles the evil and powerful Cable and other bad guys to save a boy's life.",
+    "popularity": 320.786,
+    "poster_path": "/to0spRl1CMDvyUbOnbb4fTk3VAd.jpg",
+    "release_date": "2018-05-10",
+    "title": "Deadpool 2",
+    "video": false,
+    "vote_average": 7.488,
+    "vote_count": 17010
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/oMiKHO3H5RixfLsiU5Vumhlp5sj.jpg",
+    "genre_ids": [
+      80,
+      10749,
+      53
+    ],
+    "id": 948549,
+    "original_language": "en",
+    "original_title": "Love Lies Bleeding",
+    "overview": "Reclusive gym manager Lou falls hard for Jackie, an ambitious bodybuilder headed through town to Las Vegas in pursuit of her dream. But their love ignites violence, pulling them deep into the web of Lou’s criminal family.",
+    "popularity": 477.088,
+    "poster_path": "/p7jyFWiLyHPttqYBFAlLJwtYTYH.jpg",
+    "release_date": "2024-03-08",
+    "title": "Love Lies Bleeding",
+    "video": false,
+    "vote_average": 7.045,
+    "vote_count": 99
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/8ZTVqvKDQ8emSGUEMjsS4yHAwrp.jpg",
+    "genre_ids": [
+      28,
+      878,
+      12
+    ],
+    "id": 27205,
+    "original_language": "en",
+    "original_title": "Inception",
+    "overview": "Cobb, a skilled thief who commits corporate espionage by infiltrating the subconscious of his targets is offered a chance to regain his old life as payment for a task considered to be impossible: \"inception\", the implantation of another person's idea into a target's subconscious.",
+    "popularity": 382.253,
+    "poster_path": "/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg",
+    "release_date": "2010-07-15",
+    "title": "Inception",
+    "video": false,
+    "vote_average": 8.367,
+    "vote_count": 35633
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/kK9v1wclQxug6ZUJucD4DTaHgVF.jpg",
+    "genre_ids": [
+      18
+    ],
+    "id": 1366,
+    "original_language": "en",
+    "original_title": "Rocky",
+    "overview": "An uneducated collector for a Philadelphia loan shark is given a once-in-a-lifetime opportunity to fight against the world heavyweight boxing champion.",
+    "popularity": 322.212,
+    "poster_path": "/cqxg1CihGR5ge0i1wYXr4Rdeppu.jpg",
+    "release_date": "1976-11-21",
+    "title": "Rocky",
+    "video": false,
+    "vote_average": 7.787,
+    "vote_count": 7507
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/2qluV8y79LnBBHaMpwewCjQ1Htk.jpg",
+    "genre_ids": [
+      878,
+      27,
+      9648
+    ],
+    "id": 126889,
+    "original_language": "en",
+    "original_title": "Alien: Covenant",
+    "overview": "The crew of the colony ship Covenant, bound for a remote planet on the far side of the galaxy, discovers what they think is an uncharted paradise but is actually a dark, dangerous world.",
+    "popularity": 358.148,
+    "poster_path": "/zecMELPbU5YMQpC81Z8ImaaXuf9.jpg",
+    "release_date": "2017-05-09",
+    "title": "Alien: Covenant",
+    "video": false,
+    "vote_average": 6.104,
+    "vote_count": 8165
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/gG9fTyDL03fiKnOpf2tr01sncnt.jpg",
+    "genre_ids": [
+      28,
+      878,
+      14
+    ],
+    "id": 526896,
+    "original_language": "en",
+    "original_title": "Morbius",
+    "overview": "Dangerously ill with a rare blood disorder, and determined to save others suffering his same fate, Dr. Michael Morbius attempts a desperate gamble. What at first appears to be a radical success soon reveals itself to be a remedy potentially worse than the disease.",
+    "popularity": 365.345,
+    "poster_path": "/6JjfSchsU6daXk2AKX8EEBjO3Fm.jpg",
+    "release_date": "2022-03-30",
+    "title": "Morbius",
+    "video": false,
+    "vote_average": 6.047,
+    "vote_count": 4055
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/8eLXy49T36e0e1YhYvUQOCXNRhm.jpg",
+    "genre_ids": [
+      14,
+      18,
+      9648
+    ],
+    "id": 141,
+    "original_language": "en",
+    "original_title": "Donnie Darko",
+    "overview": "After narrowly escaping a bizarre accident, a troubled teenager is plagued by visions of a large bunny rabbit that manipulates him to commit a series of crimes.",
+    "popularity": 318.462,
+    "poster_path": "/fhQoQfejY1hUcwyuLgpBrYs6uFt.jpg",
+    "release_date": "2001-01-19",
+    "title": "Donnie Darko",
+    "video": false,
+    "vote_average": 7.779,
+    "vote_count": 11979
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/9pkZesKMnblFfKxEhQx45YQ2kIe.jpg",
+    "genre_ids": [
+      27,
+      53
+    ],
+    "id": 381288,
+    "original_language": "en",
+    "original_title": "Split",
+    "overview": "Though Kevin has evidenced 23 personalities to his trusted psychiatrist, Dr. Fletcher, there remains one still submerged who is set to materialize and dominate all the others. Compelled to abduct three teenage girls led by the willful, observant Casey, Kevin reaches a war for survival among all of those contained within him — as well as everyone around him — as the walls between his compartments shatter apart.",
+    "popularity": 345.629,
+    "poster_path": "/lli31lYTFpvxVBeFHWoe5PMfW5s.jpg",
+    "release_date": "2017-01-19",
+    "title": "Split",
+    "video": false,
+    "vote_average": 7.342,
+    "vote_count": 16838
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/6aoyUbvu0419XLKLIMoH0TkEicH.jpg",
+    "genre_ids": [
+      80,
+      18
+    ],
+    "id": 103,
+    "original_language": "en",
+    "original_title": "Taxi Driver",
+    "overview": "A mentally unstable Vietnam War veteran works as a night-time taxi driver in New York City where the perceived decadence and sleaze feed his urge for violent action.",
+    "popularity": 363.873,
+    "poster_path": "/ekstpH614fwDX8DUln1a2Opz0N8.jpg",
+    "release_date": "1976-02-09",
+    "title": "Taxi Driver",
+    "video": false,
+    "vote_average": 8.152,
+    "vote_count": 11735
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/YL3GPOiDcNraIJOVDCZsoOBoDy.jpg",
+    "genre_ids": [
+      878,
+      28,
+      12,
+      53
+    ],
+    "id": 106,
+    "original_language": "en",
+    "original_title": "Predator",
+    "overview": "A team of elite commandos on a secret mission in a Central American jungle come to find themselves hunted by an extraterrestrial warrior.",
+    "popularity": 327.468,
+    "poster_path": "/k3mW4qfJo6SKqe6laRyNGnbB9n5.jpg",
+    "release_date": "1987-06-12",
+    "title": "Predator",
+    "video": false,
+    "vote_average": 7.523,
+    "vote_count": 7685
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/tZ358Wk4BnOc4FjdGsiexAUvCMH.jpg",
+    "genre_ids": [
+      27,
+      53
+    ],
+    "id": 424139,
+    "original_language": "en",
+    "original_title": "Halloween",
+    "overview": "Laurie Strode comes to her final confrontation with Michael Myers, the masked figure who has haunted her since she narrowly escaped his killing spree on Halloween night four decades ago.",
+    "popularity": 315.142,
+    "poster_path": "/f7JAX5EGk4GgsEnus6OxyzwpFp7.jpg",
+    "release_date": "2018-10-18",
+    "title": "Halloween",
+    "video": false,
+    "vote_average": 6.552,
+    "vote_count": 4515
+  }
+]
