@@ -12,7 +12,7 @@ import Account from "./pages/auth_user/Account";
 import { ResetPassword } from "./auth/Reset/ResetPassword";
 import { PasswordChangeRequest } from "./auth/Reset/PasswordChangeRequest";
 import VHSCatalog from "./components/VHSCatalog";
-import MovieApi from "./components/MovieApi";
+import MovieApi from "./components/API-scrapping/MovieApi";
 
 function App() {
   return (

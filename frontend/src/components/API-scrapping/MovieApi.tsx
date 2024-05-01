@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Grid, Typography, Box, Container, Button, TextField } from "@mui/material";
-import AuthMainBar from "../layout/AuthMainBar";
-import Footer from "../layout/Footer";
+import AuthMainBar from "../../layout/AuthMainBar";
+import Footer from "../../layout/Footer";
 import { saveAs } from 'file-saver';
 import { useState } from "react";
 
