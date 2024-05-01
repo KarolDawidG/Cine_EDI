@@ -1,15 +1,17 @@
 const generateEDIDocument = (orderDetails) => {
     const segments = [];
 
-    // Zakładamy, że wszystkie zamówienia mają tego samego klienta, więc bierzemy dane z pierwszego elementu
-    const account = orderDetails.account;
-    const firstRental = orderDetails.rentals;
-    const rentalDate = formatDateForEDI(orderDetails.rentals[0].rentalDate);
+    const orderDetailsJson = JSON.parse(orderDetails);
+
+    const account = orderDetailsJson[0].account;
+    const rentalLength = orderDetailsJson[0].rentals.length;
+    const rentalDate = formatDateForEDI(orderDetailsJson[0].rentals[0].rentalDate);
+
 
     // UNB Segment - Interchange Header
     segments.push(`UNB+UNOA:3+${account.email}:ZZZ+RECEIVER_ID:ZZZ+${rentalDate}+0000000001'`);
-
-    orderDetails.rentals.forEach((rental, index) => {
+    
+    orderDetailsJson[0].rentals.forEach((rental, index) => {
         // UNH Segment - Message Header for each item
         segments.push(`UNH+${index + 1}+ORDERS:D:96A:UN:EDIFACT'`);
 
@@ -26,7 +28,7 @@ const generateEDIDocument = (orderDetails) => {
         segments.push(`NAD+BY++${account.firstName} ${account.secondName}::160++${account.email}'`);
 
         // Place of delivery and shipping
-        segments.push(`NAD+DP++${account.address.street} ${account.address.houseNumber}::${account.address.city}:${account.address.postalCode}'`); // Place of delivery using actual address from data
+        segments.push(`NAD+DP++${account.street} ${account.houseNumber}::${account.city}:${account.postalCode}'`); // Place of delivery using actual address from data
 
         // LIN Segment - Line Item
         segments.push(`LIN+${index + 1}++${rental.vhs.title}'`);
@@ -39,16 +41,19 @@ const generateEDIDocument = (orderDetails) => {
 
         // DTM Segment for due date (return date)
         segments.push(`DTM+206:${formatDateForEDI(rental.dueDate)}:102'`);
+
+        // UNT Segment - Message Trailer for each item
+        segments.push(`UNT+7+${index + 1}'`);
     });
 
     // UNS Segment - Section Control
     segments.push(`UNS+S'`);
 
     // CNT Segment - Control Total for number of line items
-    segments.push(`CNT+2:${orderDetails.rentals.length}'`);
+    segments.push(`CNT+2:${rentalLength}'`);
 
     // CNT Segment - Total Quantity
-    segments.push(`CNT+7:${orderDetails.rentals.length}'`); // Assuming each rental has quantity 1
+    segments.push(`CNT+7:${rentalLength}'`); // Assuming each rental has quantity 1
 
     // UNT Segment - Message Trailer
     segments.push(`UNT+${segments.length + 1}+1'`);
