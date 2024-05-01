@@ -1,8 +1,10 @@
-import {useEffect} from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, Paper, Grid, Typography } from "@mui/material";
+import { Box, Grid, Container, Typography } from "@mui/material";
 import Footer from "../../layout/Footer";
 import AuthMainBar from "../../layout/AuthMainBar";
+import AddressForm from "../../components/AddressForm";
+import FinalizingOrder from "../../components/FinalizingOrder";
 
 const Dashboard = () => {
     const redirect = useNavigate();
@@ -10,26 +12,34 @@ const Dashboard = () => {
     useEffect(() => {
         const token = localStorage.getItem("token");
 
-        if (!token ) {
+        if (!token) {
             redirect("/be-login");
         }
-    }, []);
+    }, [redirect]);
 
     return (
         <Box>
-            <AuthMainBar/>
-            <Grid container justifyContent="center" alignItems="center" style={{ minHeight: "80vh" }}>
-                <Grid item xs={12} sm={6}>
-                    <Paper elevation={3} sx={{ padding: 2 }}>
-                        <Typography variant="h5" gutterBottom>
-                            Main
-                        </Typography>
+            <AuthMainBar />
+            <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+                <Grid container spacing={3}>
 
-                    </Paper>
+                    <Grid item xs={12} md={6}>
+                        <Typography>
+                            Jakies rzeczy lewa
+                        </Typography>
+                    </Grid>
+
+                    <Grid item xs={12} md={6}>
+                        <Typography>
+                            Jakies rzeczy prawa
+                        </Typography>
+                    </Grid>
+                    
                 </Grid>
-            </Grid>
-            <Footer/>
+            </Container>
+            <Footer />
         </Box>
+
     );
 };
 

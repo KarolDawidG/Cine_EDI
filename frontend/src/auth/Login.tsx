@@ -23,8 +23,13 @@ const Login = () => {
             });
         
             if (response && response.status === 200){
+
                 const token = response.data.token;
                 localStorage.setItem("token", token);
+                
+                const idUser = response.data.idUser;
+                localStorage.setItem("idUser", idUser);
+
                 axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       
                 const decodedToken: any = jwtDecode(token);

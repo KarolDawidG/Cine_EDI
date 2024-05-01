@@ -49,6 +49,11 @@ function AuthMainBar() {
         redirect("/account");
     };
 
+    const handleNavigate = (path:string) => {
+        handleCloseNavMenu();
+        redirect(path);
+    };
+    
     return (
         <AppBar position="static">
             <Container maxWidth="xl">
@@ -64,7 +69,7 @@ function AuthMainBar() {
                         </IconButton>
                         <Menu id="menu-appbar" anchorEl={anchorElNav} anchorOrigin={{vertical: 'bottom', horizontal: 'left',}} keepMounted transformOrigin={{vertical: 'top', horizontal: 'left',}} open={Boolean(anchorElNav)} onClose={handleCloseNavMenu} sx={{display: { xs: 'block', md: 'none' },}}>
                             <MenuItem onClick={handleCloseNavMenu}>
-                                <Typography textAlign="center">strona 1</Typography>
+                                <Typography textAlign="center">Kasety VHS</Typography>
                             </MenuItem>
 
                             <MenuItem onClick={handleCloseNavMenu}>
@@ -76,12 +81,13 @@ function AuthMainBar() {
                     <Typography variant="h5" noWrap component="a" href="dashboard" sx={{mr: 2, display: { xs: 'flex', md: 'none' }, flexGrow: 1, fontFamily: 'monospace', fontWeight: 700, letterSpacing: '.3rem', color: 'inherit', textDecoration: 'none',}}>
                         Cine EDI
                     </Typography>
+
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        <Button onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block' }}>
-                            Strona 1
+                        <Button onClick={() => handleNavigate('/vhs')} sx={{ my: 2, color: 'white', display: 'block' }}>
+                            Kasety VHS
                         </Button>
-                        <Button onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block' }}>
-                            Strona 2
+                        <Button onClick={() => handleNavigate('/basket')} sx={{ my: 2, color: 'white', display: 'block' }}>
+                            Koszyk
                         </Button>
                     </Box>
 

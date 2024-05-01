@@ -1,0 +1,48 @@
+[
+  {
+    "account": {
+      "accountId": "2a819f96-9cf7-4cfc-b206-8c3f13917a9d",
+      "firstName": "123456",
+      "secondName": "Kowalska",
+      "email": "karoldawidg@gmail.com",
+      "imageUrl": "https://utfs.io/f/bca7e335-8a46-4ffa-9186-81d51e65c875-kmjf4x.jpg",
+      "street": "Mickiewicza",
+      "houseNumber": "666",
+      "city": "New York",
+      "state": "Waszyngton",
+      "postalCode": "11-222",
+      "country": "USiA"
+    },
+    "rentals": [
+      {
+        "rentalId": "ac3bd3d6-0780-4d93-b690-5a7d45d7d605",
+        "rentalDate": "2024-05-01T19:00:39.000Z",
+        "dueDate": "2024-05-08T19:00:37.000Z",
+        "returnDate": null,
+        "status": "rented",
+        "vhs": {
+          "vhsId": "aeee9962-07a3-11ef-9808-1002b54ccc69",
+          "title": "Spitfire Over Berlin",
+          "description": "August 1944. With the American Eighth Air Force poised to strike over Nazi Germany, British Intelligence learns that they could be flying into a deadly trap. With only hours to spare, Flight Lieutenant Edward Barnes must fly a life and death mission over Berlin in his unarmed Spitfire to obtain photographic evidence and save the lives of 1200 men.",
+          "imageUrl": "/xtPPOPTad1qopK6uDe3VlYUa22o.jpg",
+          "pricePerDay": 5
+        }
+      },
+      {
+        "rentalId": "4cf97d72-6611-41e6-8131-5d8788afb95f",
+        "rentalDate": "2024-05-01T19:00:39.000Z",
+        "dueDate": "2024-05-08T19:00:37.000Z",
+        "returnDate": null,
+        "status": "rented",
+        "vhs": {
+          "vhsId": "aefa0929-07a3-11ef-9808-1002b54ccc69",
+          "title": "Justice League: Crisis on Infinite Earths Part Two",
+          "description": "An endless army of shadow demons bent on the destruction of all reality swarms over our world and all parallel Earths! The only thing opposing them is the mightiest team of metahumans ever assembled. But not even the combined power of Superman, Batman, Wonder Woman, Green Lantern and all their fellow superheroes can slow down the onslaught of this invincible horde. What mysterious force is driving them? And how do the long-buried secrets of the Monitor and Supergirl threaten to crush our last defense?",
+          "imageUrl": "/g8ak4QAGLZpqMs3CpnFHWWfIzJQ.jpg",
+          "pricePerDay": 5
+        }
+      }
+    ]
+  }
+]
+
