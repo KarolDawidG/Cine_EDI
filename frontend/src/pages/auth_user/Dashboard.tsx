@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, Grid, Container } from "@mui/material";
+import { Box, Grid, Container, Typography } from "@mui/material";
 import Footer from "../../layout/Footer";
 import AuthMainBar from "../../layout/AuthMainBar";
 import AddressForm from "../../components/AddressForm";
@@ -24,11 +24,15 @@ const Dashboard = () => {
                 <Grid container spacing={3}>
 
                     <Grid item xs={12} md={6}>
-                        <AddressForm />
+                        <Typography>
+                            Jakies rzeczy lewa
+                        </Typography>
                     </Grid>
 
                     <Grid item xs={12} md={6}>
-                        <FinalizingOrder />
+                        <Typography>
+                            Jakies rzeczy prawa
+                        </Typography>
                     </Grid>
                     
                 </Grid>

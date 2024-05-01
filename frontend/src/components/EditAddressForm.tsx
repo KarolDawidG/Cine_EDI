@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button, TextField, Box, Paper, Typography, Grid } from "@mui/material";
 import axios from "axios";
 import { notify } from "../notification/Notify";
@@ -14,9 +14,8 @@ type AddressData = {
     [key: string]: string | null;
 };
 
-const AddressForm = () => {
+const EditAddressForm = () => {
     const idUser = localStorage.getItem('idUser');
-    const [orderId, setOrderId] = useState();
     const [addressData, setAddressData] = useState<AddressData>({
         account_id: idUser,
         street: "",
@@ -38,9 +37,8 @@ const AddressForm = () => {
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         try {
-            const response = await axios.post(`http://localhost:3001/address`, addressData);
-            setOrderId(response.data.orderId);
-            localStorage.setItem('orderId', response.data.orderId);
+            await axios.put(`http://localhost:3001/address/${idUser}`, addressData);
+            notify('Adres został pomyślnie zaktualizowany.');            
         } catch (error:any) {
             if (axios.isAxiosError(error) && error.response) {
                 console.log('Error data:', error.response.data);
@@ -55,7 +53,7 @@ const AddressForm = () => {
         <Box>
             <Paper elevation={3} sx={{ p: 2, width: '95%', height: '400px' }}>
                 <Typography variant="h6" sx={{ mb: 2, textAlign: 'center' }}>
-                    Wprowadź swoje dane adresowe
+                    Edytuj swoje dane adresowe
                 </Typography>
                 <form onSubmit={handleSubmit}>
                     <Grid container spacing={2}>
@@ -69,14 +67,14 @@ const AddressForm = () => {
                                     label={field.replace(/_/g, ' ').charAt(0).toUpperCase() + field.slice(1)}
                                     type="text"
                                     id={field}
-                                    value={addressData[field]}
+                                    value={addressData[field] || ''}
                                     onChange={handleChange}
                                 />
                             </Grid>
                         ))}
                         <Grid item xs={12}>
-                            <Button type="submit" fullWidth variant="contained">
-                                Wyślij
+                            <Button type="submit" fullWidth variant="contained" color="primary">
+                                Aktualizuj
                             </Button>
                         </Grid>
                     </Grid>
@@ -86,4 +84,4 @@ const AddressForm = () => {
     );
 };
 
-export default AddressForm;
+export default EditAddressForm;

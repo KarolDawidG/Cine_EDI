@@ -86,8 +86,8 @@ function AuthMainBar() {
                         <Button onClick={() => handleNavigate('/vhs')} sx={{ my: 2, color: 'white', display: 'block' }}>
                             Kasety VHS
                         </Button>
-                        <Button onClick={() => handleNavigate('/page2')} sx={{ my: 2, color: 'white', display: 'block' }}>
-                            Strona 2
+                        <Button onClick={() => handleNavigate('/basket')} sx={{ my: 2, color: 'white', display: 'block' }}>
+                            Koszyk
                         </Button>
                     </Box>
 
