@@ -2,6 +2,7 @@ import { format } from 'date-fns';
 import { Box, Paper, Typography, Button, List, ListItem, ListItemText, ListItemSecondaryAction, Grid, IconButton } from "@mui/material";
 import axios from "axios";
 import { useState, useEffect } from 'react';
+import { notify } from '../notification/Notify';
 
 interface VHS {
     id: string;
@@ -42,10 +43,11 @@ const FinalizingOrder = () => {
         try {
             const response = await axios.post('http://localhost:3001/orders', { items: cartItems });
             setCartItems([]);
-            alert('Zamówienie zostało pomyślnie wysłane!');
-        } catch (error) {
-            console.error('Error:', error);
-            alert('Wystąpił błąd podczas wysyłania zamówienia!');
+            console.log(response.data);
+            notify('Zamówienie zostało pomyślnie wysłane!');
+        } catch (error:any) {
+            console.log(error.response.data.message);
+            notify(error.response.data.message);
         }
     };
     
