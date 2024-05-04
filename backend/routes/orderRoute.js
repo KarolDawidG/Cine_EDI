@@ -17,12 +17,7 @@ router.post('/', async (req, res) => {
         const orderId = await RentalsRecord.insert(formData);
         const orderDetails = await RentalsRecord.findById(orderId);
         const data = JSON.stringify(orderDetails, null, 2)
-        
         const ediDocument = generateEDIDocument(data);
-        
-        //console.log(data);
-
-        //email
         await sendOrderEmail(data);
 
         res.status(201).json({

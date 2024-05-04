@@ -19,6 +19,7 @@ router.use(errorHandler);
 
 router.post("/", async (req, res) => {
   const { email } = req.body;
+
   let usernameReset = "";
   let idReset = "";
   let emailReset = "";
@@ -29,10 +30,11 @@ router.post("/", async (req, res) => {
     if (!emailExists || emailExists.length === 0) {
       return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.EMAIL_SUCCESS);
     }
-    usernameReset = emailExists.username;
-    emailReset = emailExists.email;
-    idReset = emailExists.id;
-    passwordReset = emailExists.password;
+    usernameReset = emailExists[0].first_name;
+    emailReset = emailExists[0].email;
+    idReset = emailExists[0].id;
+    passwordReset = emailExists[0].password;
+    
   } catch (error) {
     logger.error(error.message);
     res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.SERVER_ERROR);
