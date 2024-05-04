@@ -132,7 +132,7 @@ class UsersRecord {
   }
 
   static async selectUrlById(id) {
-    const [results] = await pool.execute(SELECT_URL_BY_ID, [id]);
+    const [results] = await pool.execute(SELECT_URL_BY_ID, id);
     return results;
   }
 

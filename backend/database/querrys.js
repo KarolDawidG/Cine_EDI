@@ -10,7 +10,7 @@ const createAccounts = `
         password varchar(255) NOT NULL,
         email varchar(100) NOT NULL,
         role varchar(20) NOT NULL DEFAULT 'user',
-        img_url varchar(100) NOT NULL DEFAULT 'https://utfs.io/f/bca7e335-8a46-4ffa-9186-81d51e65c875-kmjf4x.jpg',
+        img_url varchar(100) NOT NULL DEFAULT 'https://utfs.io/f/0576a965-e83c-47aa-b5b1-31aeac3c55c0-kmjf4x.jpg',
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         is_active BOOLEAN DEFAULT false,
         refresh_token TEXT,

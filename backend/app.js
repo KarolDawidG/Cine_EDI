@@ -2,12 +2,13 @@ const express = require('express');
 const { createDatabaseIfNotExists } = require('./database/createDatabaseIfNotExists');
 const { initializeDatabase } = require('./database/initializeDatabase');
 const { limiter, errorHandler } = require('./config/config');
-const middleware = require('./config/middleware');
+//const middleware = require('./config/middleware');
 const logRoute = require('./routes/userRoute/loginRoute');
 const adminRoute = require('./routes/adminRoute/adminRoute');
 const regRoute = require('./routes/userRoute/registerRoute');
 const resetRoute = require('./routes/userRoute/resetRoute');
 const forgotRoute = require('./routes/userRoute/forgotPassRoute');
+const urlRoute = require('./routes/userRoute/urlRoute');
 const orderRoute = require('./routes/orderRoute');
 const addressRoute = require('./routes/addressRoute');
 const vhsRoute = require('./routes/vhsRoute');
@@ -23,11 +24,12 @@ app.use("/auth", logRoute);
 app.use("/admin", adminRoute);
 app.use("/reset", resetRoute);
 app.use("/forgot", forgotRoute);
+app.use('/url', urlRoute);
 app.use("/orders", orderRoute);
 app.use("/address", addressRoute);
 app.use('/vhs', vhsRoute);
 
-app.use(middleware);
+//app.use(middleware);
 app.use(limiter);
 app.use(errorHandler);
 

@@ -13,9 +13,11 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import logo from '../../public/logo3.png';
+import axios from 'axios';
 
 function AuthMainBar() {
     const redirect = useNavigate();
+    const [imageUrl, setImageUrl ]: string | any = React.useState();
     const [anchorElNav, setAnchorElNav] = React.useState<any>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<any>(null);
 
@@ -54,6 +56,19 @@ function AuthMainBar() {
         redirect(path);
     };
     
+
+    React.useEffect(() => {
+        (async () => {
+          try {
+            const storedLocale = localStorage.getItem("idUser");
+            const res = await axios.get(`http://localhost:3001/url/${storedLocale}`);
+            setImageUrl(res.data.img_url);
+          } catch (error) {
+            console.error("Błąd pobierania awatar URL:", error);
+          }
+        })();
+      }, [setImageUrl]);
+
     return (
         <AppBar position="static">
             <Container maxWidth="xl">
@@ -94,7 +109,7 @@ function AuthMainBar() {
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                                <Avatar src={imageUrl}  />
                             </IconButton>
                         </Tooltip>
                         <Menu sx={{ mt: '45px' }} id="menu-appbar" anchorEl={anchorElUser} anchorOrigin={{vertical: 'top', horizontal: 'right',}} keepMounted transformOrigin={{vertical: 'top', horizontal: 'right',}} open={Boolean(anchorElUser)} onClose={handleCloseUserMenu}>

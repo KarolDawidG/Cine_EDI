@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Box, Grid, Container, Typography } from "@mui/material";
 import Footer from "../layout/Footer";
 import AuthMainBar from "../layout/AuthMainBar";
-import AddressForm from "../components/AddressForm";
 import FinalizingOrder from "../components/FinalizingOrder";
 
 const Basket = () => {

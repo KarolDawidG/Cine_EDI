@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button, TextField, Box, Paper, Typography, Grid } from "@mui/material";
 import axios from "axios";
-import { notify } from "../notification/Notify";
+import { notify } from "../../notification/Notify";
 
 type AddressData = {
     account_id: string | null;

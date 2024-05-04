@@ -41,7 +41,6 @@ const FinalizingOrder = () => {
     const sendData = async () => {
         try {
             const response = await axios.post('http://localhost:3001/orders', { items: cartItems });
-            console.log('Response:', response.data);
             setCartItems([]);
             alert('Zamówienie zostało pomyślnie wysłane!');
         } catch (error) {
@@ -52,7 +51,7 @@ const FinalizingOrder = () => {
     
     useEffect(() => {
         if (cartItems.length > 0) {
-            const totalPrice = cartItems.reduce((acc, item) => acc + (item.price_per_day * 7), 0);
+            const totalPrice = cartItems.reduce((acc, item) => acc + (item.price_per_day), 0);
             setPrice(totalPrice);
         } else {
             setPrice(0);

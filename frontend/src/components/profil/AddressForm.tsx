@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, TextField, Box, Paper, Typography, Grid } from "@mui/material";
 import axios from "axios";
-import { notify } from "../notification/Notify";
+import { notify } from "../../notification/Notify";
 
 type AddressData = {
     account_id: string | null;
@@ -43,7 +43,6 @@ const AddressForm = () => {
             localStorage.setItem('orderId', response.data.orderId);
         } catch (error:any) {
             if (axios.isAxiosError(error) && error.response) {
-                console.log('Error data:', error.response.data);
                 notify(error.response.data.message);
             } else {
                 console.error('Error:', error.message);

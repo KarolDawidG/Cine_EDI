@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { Box, Grid, Container, Button, Typography } from "@mui/material";
 import Footer from "../../layout/Footer";
 import AuthMainBar from "../../layout/AuthMainBar";
-import AddressForm from "../../components/AddressForm";
-import ShowAddress from "../../components/ShowAddress";
-import EditAddressForm from "../../components/EditAddressForm";
+import AddressForm from "../../components/profil/AddressForm";
+import ShowAddress from "../../components/profil/ShowAddress";
+import EditAddressForm from "../../components/profil/EditAddressForm";
 
 const Account = () => {
     const redirect = useNavigate();
@@ -48,6 +48,7 @@ const Account = () => {
                         </Button>
                         {showEditAddressForm && <EditAddressForm />}
                         <ShowAddress />
+
                     </Grid>
                 </Grid>
             </Container>

@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
     try {
         const vhsData = await VHSRecord.selectAll();
         res.status(200).json({
-            message: "Kasety zostaly pobrane został pomyślnie utworzony.",
+            message: "Wszystko okey.",
             vhsData: vhsData,
         });
     } catch (error) {

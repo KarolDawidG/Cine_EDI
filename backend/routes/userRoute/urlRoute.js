@@ -13,12 +13,12 @@ router.use(middleware);
 router.use(limiter);
 router.use(errorHandler);
 
-router.get("/:id", verifyToken, async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   const id = req.params.id;
 
   try {
-    const userInfo = await UsersRecord.selectUrlById([id]);
-    console.log(`URL Route: GET: : ${userInfo}`);
+    const [userInfo] = await UsersRecord.selectUrlById([id]);
+
 
     return res.status(STATUS_CODES.SUCCESS).json(userInfo);
   } catch (error) {
@@ -29,7 +29,7 @@ router.get("/:id", verifyToken, async (req, res, next) => {
   }
 });
 
-router.put("/:id", verifyToken, async (req, res) => {
+router.put("/:id", async (req, res) => {
   const id = req.params.id;
   const img_url = req.body.img_url;
 
@@ -46,7 +46,7 @@ router.put("/:id", verifyToken, async (req, res) => {
   }
 });
 
-router.delete("/:id", verifyToken, async (req, res, next) => {
+router.delete("/:id", async (req, res, next) => {
   const id = req.params.id;
   try {
     await UsersRecord.deleteUrl(id);

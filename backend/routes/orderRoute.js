@@ -3,6 +3,7 @@ const { errorHandler } = require('../config/config');
 const middleware = require('../config/middleware');
 const { RentalsRecord } = require('../database/Records/Rental/RentalsRecord');
 const { generateEDIDocument } = require('./generateEDIDocument');
+const { sendOrderEmail } = require('../config/emailSender');
 
 const router = express.Router();
 
@@ -16,9 +17,13 @@ router.post('/', async (req, res) => {
         const orderId = await RentalsRecord.insert(formData);
         const orderDetails = await RentalsRecord.findById(orderId);
         const data = JSON.stringify(orderDetails, null, 2)
-
+        
         const ediDocument = generateEDIDocument(data);
-        console.log(ediDocument);
+        
+        //console.log(data);
+
+        //email
+        await sendOrderEmail(data);
 
         res.status(201).json({
             message: "Zamówienie zostało pomyślnie utworzone."

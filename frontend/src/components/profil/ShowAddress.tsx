@@ -7,10 +7,9 @@ const ShowAddress = () => {
     const [address, setAddress] = useState<any>();
 
     const fetchData = async () => {
-        if (id) {  // Upewnij się, że id istnieje przed wykonaniem żądania
+        if (id) {
             try {
                 const response = await axios.get(`http://localhost:3001/address/${id}`);
-                console.log(response.data.address[0]);
                 setAddress(response.data.address[0]);
             } catch (err) {
                 console.error(err);
@@ -19,15 +18,15 @@ const ShowAddress = () => {
     };
 
     useEffect(() => {
-        const idFromStorage:any = localStorage.getItem('idUser');  // Zapisz wartość pobraną z localStorage
+        const idFromStorage:any = localStorage.getItem('idUser');
         if (idFromStorage) {
             setId(idFromStorage);
         }
     }, []);
 
     useEffect(() => {
-        fetchData();  // Wywołuj fetchData tylko, gdy id jest ustawione
-    }, [id]);  // Dodaj id jako zależność do tego useEffect
+        fetchData();
+    }, [id]);
 
     return (
         <Box>
