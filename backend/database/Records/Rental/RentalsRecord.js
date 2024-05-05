@@ -9,16 +9,24 @@ class RentalsRecord {
 
   static async insert(formData) {
     return performTransaction(async (connection) => {
-        let ids = [];
+        const order_id = uuidv4();
+        const account_id = formData.items[0].account_id;
+
         try {
+            await connection.execute(
+                `INSERT INTO orders (order_id, account_id, order_date) VALUES (?, ?, ?)`,
+                [order_id, account_id, new Date(),]
+            );
+
             for (const item of formData.items) {
                 const id = uuidv4();
                 
                 await connection.execute(
-                    `INSERT INTO rentals (id, account_id, vhs_id, rental_date, due_date, return_date, status) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+                    `INSERT INTO rentals (id, account_id, order_id, vhs_id, rental_date, due_date, return_date, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
                     [
                         id,
                         item.account_id,
+                        order_id,
                         item.id,
                         new Date(),
                         item.due_date,
@@ -37,9 +45,8 @@ class RentalsRecord {
                         [item.id]
                     );
                 }
-                ids.push(id);
             }
-            return ids;
+            return order_id;
         } catch (error) {
             console.error('Error during inserting rental records:', error);
             throw error;
@@ -190,6 +197,17 @@ static async findAllByUserId(userId) {
             throw error;
         }
     });
+}
+
+static async selectRentalById(order_id) {
+    try {
+        const [results] = await pool.execute('SELECT id FROM rentals WHERE order_id = ?', [order_id]);
+        const ids = results.map(row => row.id);
+        return ids;
+    } catch (error) {
+        console.error('Error retrieving rental records by order_id:', error);
+        throw error;
+    }
 }
 
   

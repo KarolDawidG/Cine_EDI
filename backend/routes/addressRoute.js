@@ -11,9 +11,10 @@ router.use(errorHandler);
 router.get('/:id', async (req, res) => {
     const id = req.params.id;
     try {
-        const address = await AddressRecord.selectById(id);
+        const address = await AddressRecord.selectById([id]);
+        
         res.status(200).json({
-            message: "Adres został pomyślnie aktualizowany.",
+            message: "Adres został pomyślnie wyswietlony.",
             address: address
         });
     } catch (error) {
@@ -40,6 +41,7 @@ router.put('/:id', async (req, res) => {
     const formData = req.body;
     try {
         const result = await AddressRecord.update(id, formData);
+        
         res.status(200).json(result);
     } catch (error) {
         console.error(error);

@@ -1,6 +1,19 @@
 const insertRoot = `INSERT INTO accounts (id, first_name, second_name, password, email, role, is_active) VALUES (UUID(), 'root', 'root', '$2b$10$8Lbg6tvI4e/mOyku3uvNNONfatfeTGHI/D531boVUqWIe3kTOKK/K', 'root@gmail.com', 'admin', '1');`;
 
 const findRoot = `SELECT id FROM accounts WHERE first_name = 'root'`;
+//TODO add new table
+
+const createOrders = `
+  CREATE TABLE IF NOT EXISTS orders (
+    order_id varchar(36) NOT NULL,
+    account_id varchar(36) NOT NULL,
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status varchar(20) DEFAULT 'pending',
+    PRIMARY KEY (order_id),
+    FOREIGN KEY (account_id) REFERENCES accounts(id) ON DELETE CASCADE
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+`;
+
 
 const createAccounts = `
       CREATE TABLE IF NOT EXISTS accounts (
@@ -55,6 +68,7 @@ const createVhsTapes = `
       CREATE TABLE IF NOT EXISTS rentals (
         id varchar(36) NOT NULL,
         account_id varchar(36) NOT NULL,
+        order_id varchar(36),
         vhs_id varchar(36) NOT NULL,
         rental_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         due_date TIMESTAMP,
@@ -62,6 +76,7 @@ const createVhsTapes = `
         status varchar(20) DEFAULT 'rented',
         FOREIGN KEY (account_id) REFERENCES accounts(id),
         FOREIGN KEY (vhs_id) REFERENCES vhs_tapes(id),
+        FOREIGN KEY (order_id) REFERENCES orders(order_id),
         PRIMARY KEY (id)
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
     `;
@@ -99,4 +114,5 @@ module.exports = {
   createVhsTapes,
   createRentals,
   createClientAddresses,
+  createOrders,
 };

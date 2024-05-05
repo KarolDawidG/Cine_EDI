@@ -7,6 +7,9 @@ const OrdersProfile = ({ ordersData }: any) => {
     const [groupedOrders, setGroupedOrders] = useState<Map<string, string[]>>(new Map());
     const [dateDel, setDateDel] = useState<any>();
 
+
+    //TODO all logic to change becouse we need to add beter orders provider with new method 'selectRentalById'
+
     useEffect(() => {
         const ordersMap = new Map<string, string[]>();
         ordersData.forEach((order: any) => {

@@ -7,15 +7,28 @@ import EditAddressDialog from "./EditAddressDialog";
 const AddressProfile = () => {
     const [addressData, setAddressData] = useState<any>(null);
     const [open, setOpen] = useState(false);
-    const [editData, setEditData] = useState<any>({});
+    const [editData, setEditData] = useState<any>({
+        street: 'xx',
+        house_number: 'xx',
+        city: 'xx',
+        state: 'xx',
+        postal_code: 'xx',
+        country: 'xx'
+    });
+    
 
     useEffect(() => {
         (async () => {
             try {
                 const id = localStorage.getItem("idUser");
                 const response = await axios.get(`http://localhost:3001/address/${id}`);
-                setAddressData(response.data.address[0]);
-                setEditData(response.data.address[0]);
+                console.log(response.data);
+                if (response.data.address[0]) {
+                    setAddressData(response.data.address[0]);
+                    setEditData(response.data.address[0]);
+                } else {
+                    setAddressData(editData);
+                }
             } catch (error:any) {
                 if (error.response && error.response.data.message) {
                     console.log(error.response.data.message);
@@ -35,6 +48,7 @@ const AddressProfile = () => {
         try {
             const id = localStorage.getItem("idUser");
             const response = await axios.put(`http://localhost:3001/address/${id}`, editData);
+            
             setAddressData(editData);
             notify(response.data.message);
             setOpen(false);
@@ -55,8 +69,8 @@ const AddressProfile = () => {
                 </Typography>
                 {addressData ? (
                     <>
-                        <Typography variant="h6">{addressData.street}, {addressData.house_number}</Typography>
-                        <Typography variant="subtitle1">{addressData.city}, {addressData.state}</Typography>
+                        <Typography variant="h6">Street: {addressData.street} {addressData.house_number}</Typography>
+                        <Typography variant="subtitle1">City: {addressData.city}, State: {addressData.state}</Typography>
                         <Typography variant="body2">Postal Code: {addressData.postal_code}</Typography>
                         <Typography variant="body2">Country: {addressData.country}</Typography>
                         <Button onClick={() => setOpen(true)} color="primary">Edit Address</Button>

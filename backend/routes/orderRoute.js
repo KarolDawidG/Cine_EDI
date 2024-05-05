@@ -4,6 +4,7 @@ const middleware = require('../config/middleware');
 const { RentalsRecord } = require('../database/Records/Rental/RentalsRecord');
 const { generateEDIDocument } = require('./generateEDIDocument');
 const { sendOrderEmail } = require('../config/emailSender');
+const { AddressRecord } = require('../database/Records/Adress/AddressRecord');
 
 const router = express.Router();
 
@@ -39,27 +40,36 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
     const formData = req.body;
+    const account_id = formData.items[0].account_id;
     
     try {
-        const orderId = await RentalsRecord.insert(formData);
-        const orderDetails = await RentalsRecord.findById(orderId);
+        const ifAddress = await AddressRecord.selectById([account_id]);
+        
+        // Sprawdzamy, czy otrzymaliśmy jakiekolwiek adresy
+        if (!ifAddress.length) {
+            return res.status(400).json({
+                message: "Najpierw dodaj adres do wysyłki!"
+            });
+        }
 
-        const street = orderDetails[0].account.street;
-        const houseNumber = orderDetails[0].account.houseNumber;
-        const city = orderDetails[0].account.city;
-        const state = orderDetails[0].account.state;
-        const postalCode = orderDetails[0].account.postalCode;
-        const country = orderDetails[0].account.country;
+        // Przypisanie wartości z pierwszego adresu
+        const { street, house_number, city, state, postal_code, country } = ifAddress[0];
 
-        if (!(street && houseNumber && city && state && postalCode && country)) {
+        // Sprawdzamy, czy wszystkie wymagane dane adresowe są dostępne
+        if (!street || !house_number || !city || !state || !postal_code || !country) {
             return res.status(400).json({
                 message: "Najpierw dodaj adres do wysyłki."
             });
         }
 
+        const id = await RentalsRecord.insert(formData);
+        const orderId = await RentalsRecord.selectRentalById(id);
+        const orderDetails = await RentalsRecord.findById(orderId);
+
         const data = JSON.stringify(orderDetails, null, 2)
         const ediDocument = generateEDIDocument(data);
         await sendOrderEmail(data);
+
         console.log(ediDocument);
 
         res.status(201).json({
@@ -70,6 +80,7 @@ router.post('/', async (req, res) => {
         res.status(500).json({ message: "Nie udało się utworzyć zamówienia z powodu błędu serwera." });
     }
 });
+
 
 
 router.delete('/:date/:id', async (req, res) => {

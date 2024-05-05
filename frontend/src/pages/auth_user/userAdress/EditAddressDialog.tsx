@@ -1,11 +1,11 @@
 import { Dialog, DialogActions, DialogContent, DialogTitle, TextField, Button } from "@mui/material";
 
-const EditAddressDialog = ({ open, onClose, onSave, editData, handleChange }:any) => {
+const EditAddressDialog = ({ open, onClose, onSave, editData = {}, handleChange }: any) => {
     return (
         <Dialog open={open} onClose={onClose}>
             <DialogTitle>Edit Address</DialogTitle>
             <DialogContent>
-                <TextField
+            <TextField
                     autoFocus
                     margin="dense"
                     id="street"
@@ -13,7 +13,7 @@ const EditAddressDialog = ({ open, onClose, onSave, editData, handleChange }:any
                     type="text"
                     fullWidth
                     variant="standard"
-                    value={editData.street}
+                    value={editData.street || ''}
                     onChange={handleChange('street')}
                 />
                 <TextField
@@ -23,7 +23,7 @@ const EditAddressDialog = ({ open, onClose, onSave, editData, handleChange }:any
                     type="text"
                     fullWidth
                     variant="standard"
-                    value={editData.house_number}
+                    value={editData.house_number || ''}
                     onChange={handleChange('house_number')}
                 />
                 <TextField
@@ -33,7 +33,7 @@ const EditAddressDialog = ({ open, onClose, onSave, editData, handleChange }:any
                     type="text"
                     fullWidth
                     variant="standard"
-                    value={editData.city}
+                    value={editData.city || ''}
                     onChange={handleChange('city')}
                 />
                 <TextField
@@ -43,7 +43,7 @@ const EditAddressDialog = ({ open, onClose, onSave, editData, handleChange }:any
                     type="text"
                     fullWidth
                     variant="standard"
-                    value={editData.state}
+                    value={editData.state || ''}
                     onChange={handleChange('state')}
                 />
                 <TextField
@@ -53,7 +53,7 @@ const EditAddressDialog = ({ open, onClose, onSave, editData, handleChange }:any
                     type="text"
                     fullWidth
                     variant="standard"
-                    value={editData.postal_code}
+                    value={editData.postal_code || ''}
                     onChange={handleChange('postal_code')}
                 />
                 <TextField
@@ -63,7 +63,7 @@ const EditAddressDialog = ({ open, onClose, onSave, editData, handleChange }:any
                     type="text"
                     fullWidth
                     variant="standard"
-                    value={editData.country}
+                    value={editData.country || ''}
                     onChange={handleChange('country')}
                 />
             </DialogContent>
