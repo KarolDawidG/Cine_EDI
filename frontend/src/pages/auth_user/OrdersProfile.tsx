@@ -1,46 +1,56 @@
 import { useEffect, useState } from "react";
-import { Paper, Typography, List, ListItem, ListItemText, Box } from "@mui/material";
-import axios from "axios";
+import { Paper, Typography, List, ListItem, ListItemText, Box, Button } from "@mui/material";
+import axios from 'axios';
 import { notify } from "../../notification/Notify";
 
-const OrdersProfile = () => {
+const OrdersProfile = ({ ordersData }: any) => {
     const [groupedOrders, setGroupedOrders] = useState<Map<string, string[]>>(new Map());
+    const [dateDel, setDateDel] = useState<any>();
 
     useEffect(() => {
-        const fetchOrders = async () => {
-            try {
-                const id = localStorage.getItem("idUser");
-                const response = await axios.get(`http://localhost:3001/orders/${id}`);
-                const data = response.data.data;
-                console.log(data);
+        const ordersMap = new Map<string, string[]>();
+        ordersData.forEach((order: any) => {
+            const rentalDate = order.rentalDate;
+            setDateDel(order.rentalDate);
+            console.log(order.rentalDate);
+            const existing = ordersMap.get(rentalDate) || [];
+            ordersMap.set(rentalDate, [...existing, order.title]);
+        });
 
-                // Grupowanie zamówień według daty
-                const ordersMap = new Map<string, string[]>();
-                data.forEach((order: any) => {
-                    const rentalDate = new Date(order.rentalDate).toDateString();
-                    const existing = ordersMap.get(rentalDate) || [];
-                    ordersMap.set(rentalDate, [...existing, order.title]);
-                });
+        setGroupedOrders(ordersMap);
+    }, [ordersData]);
 
-                setGroupedOrders(ordersMap);
-            } catch (error) {
-                console.error("Error fetching orders:", error);
-                notify("Failed to load orders.");
-            }
-        };
-
-        fetchOrders();
-    }, []);
+    const handleDeleteOrders = async (date: string) => {
+        try {
+            const id = localStorage.getItem("idUser");
+            
+            console.log(date);
+            await axios.delete(`http://localhost:3001/orders/${date}/${id}`);
+    
+            const newOrdersMap = new Map(groupedOrders);
+            newOrdersMap.delete(date);
+            setGroupedOrders(newOrdersMap);
+            notify("Zamówienia usunięte.");
+        } catch (error) {
+            console.error("Error deleting orders:", error);
+            notify("Nie udało się usunąć zamówień.");
+        }
+    };
+    
 
     return (
         <Paper elevation={3} style={{ padding: 10, margin: "10px" }}>
             <Typography variant="h5" gutterBottom>
-                Historia wszystkich zamowien wygenerowana przez uzytkownika:
+                Historia wszystkich zamówień wygenerowana przez użytkownika:
             </Typography>
-            <Box style={{ maxHeight: '350px', height: '350px' , overflow: 'auto' }}>
+            <Box style={{ maxHeight: '350px', overflow: 'auto' }}>
                 <List>
                     {[...groupedOrders].map(([date, titles], index) => (
-                        <ListItem key={index} alignItems="flex-start">
+                        <ListItem key={index} alignItems="flex-start" secondaryAction={
+                            <Button aria-label="delete" onClick={() => handleDeleteOrders(date)}>
+                                Usun zamowienie!
+                            </Button>
+                        }>
                             <ListItemText
                                 primary={date}
                                 secondary={

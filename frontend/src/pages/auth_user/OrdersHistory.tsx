@@ -1,32 +1,12 @@
-import { useEffect, useState } from "react";
 import { Paper, Typography, List, ListItem, ListItemAvatar, ListItemText, Box } from "@mui/material";
-import axios from "axios";
-import { notify } from "../../notification/Notify";
 
-const OrdersHistory = () => {
-    const [ordersData, setOrdersData] = useState<any>([]);
-
-    useEffect(() => {
-        const fetchOrders = async () => {
-            try {
-                const id = localStorage.getItem("idUser");
-                const response = await axios.get(`http://localhost:3001/orders/${id}`);
-                setOrdersData(response.data.data);
-            } catch (error) {
-                console.error("Error fetching orders:", error);
-                notify("Failed to load orders.");
-            }
-        };
-
-        fetchOrders();
-    }, []);
-
+const OrdersHistory = ({ ordersData }:any) => {
     return (
         <Paper elevation={3} style={{ padding: 10, margin: "10px" }}>
             <Typography variant="h5" gutterBottom>
-                Wszystkie filmy wypozyczone przez uzytkownika!
+                Wszystkie filmy wypożyczone przez użytkownika!
             </Typography>
-            <Box style={{ maxHeight: '350px', height: '350px', overflow: 'auto' }}>
+            <Box style={{ maxHeight: '350px', overflow: 'auto' }}>
                 <List>
                     {ordersData.map((order: any) => (
                         <ListItem key={order.rentalId} alignItems="flex-start">
@@ -38,7 +18,7 @@ const OrdersHistory = () => {
                                 />
                             </ListItemAvatar>
                             <ListItemText
-                                sx={{ display: 'inline' , marginLeft: 5}}
+                                sx={{ display: 'inline', marginLeft: 5 }}
                                 primary={order.title}
                                 secondary={
                                     <>

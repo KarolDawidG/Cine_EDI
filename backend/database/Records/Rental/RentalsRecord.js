@@ -27,7 +27,6 @@ class RentalsRecord {
                     ]
                 );
                 
-                // Sprawdzenie dostępności przed aktualizacją
                 const [rows] = await connection.execute(
                     `SELECT quantity_available FROM vhs_tapes WHERE id = ?`,
                     [item.id]
@@ -43,7 +42,7 @@ class RentalsRecord {
             return ids;
         } catch (error) {
             console.error('Error during inserting rental records:', error);
-            throw error; // Przekazanie błędu dalej, aby można było go obsłużyć poza funkcją
+            throw error;
         }
     });
 }
@@ -172,6 +171,26 @@ static async findAllByUserId(userId) {
     }
   }
   
+  static async deleteByRentalDate(date, userId) {
+    return performTransaction(async (connection) => {
+        try {
+            const [result] = await connection.execute(
+                `DELETE FROM rentals WHERE account_id = ? AND rental_date = ?;`,
+                [userId, date]
+            );
+
+            if (result.affectedRows > 0) {
+                console.log(`Deleted ${result.affectedRows} rentals on exact date ${date} for user ${userId}.`);
+                return result.affectedRows;
+            } else {
+                throw new Error('No rentals found for this exact date and time for this user.');
+            }
+        } catch (error) {
+            console.error('Error during deleting rentals by exact date and time:', error);
+            throw error;
+        }
+    });
+}
 
   
 }
