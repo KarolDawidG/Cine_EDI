@@ -2,7 +2,7 @@ import {Routes, Route} from "react-router-dom";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 import { LookEmail } from "./auth/LookEmail";
-import MainPage from "./pages/MainPage";
+import MainPage from "./pages/main/MainPage";
 import Dashboard from "./pages/auth_user/Dashboard";
 import AdminDashboard from "./pages/auth_user/AdminDashboard";
 import BeLogin from "./layout/BeLogin";
