@@ -3,6 +3,7 @@ const { createDatabaseIfNotExists } = require('./database/createDatabaseIfNotExi
 const { initializeDatabase } = require('./database/initializeDatabase');
 const { limiter, errorHandler } = require('./config/config');
 //const middleware = require('./config/middleware');
+
 const logRoute = require('./routes/userRoute/loginRoute');
 const adminRoute = require('./routes/adminRoute/adminRoute');
 const regRoute = require('./routes/userRoute/registerRoute');
@@ -12,6 +13,7 @@ const urlRoute = require('./routes/userRoute/urlRoute');
 const orderRoute = require('./routes/orderRoute');
 const addressRoute = require('./routes/addressRoute');
 const vhsRoute = require('./routes/vhsRoute');
+const userRoute = require('./routes/adminRoute/usersRoute');
 
 const MESSAGES = require('./config/messages');
 const STATUS_CODES = require('./config/status-codes');
@@ -28,6 +30,7 @@ app.use('/url', urlRoute);
 app.use("/orders", orderRoute);
 app.use("/address", addressRoute);
 app.use('/vhs', vhsRoute);
+app.use('/user', userRoute);
 
 //app.use(middleware);
 app.use(limiter);

@@ -12,6 +12,20 @@ const router = express.Router();
 router.use(middleware);
 router.use(errorHandler);
 
+router.get('/:id', async (req, res) => {
+    const id = req.params.id;
+    try {
+        const data = await RentalsRecord.findAllByUserId(id);
+        res.status(201).json({
+            data: data,
+            message: "Zamówienie zostało pomyślnie wyswietlone."
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Nie udało się pobrac danych." });
+    }
+});
+
 router.post('/', async (req, res) => {
     const formData = req.body;
     
@@ -35,6 +49,7 @@ router.post('/', async (req, res) => {
         const data = JSON.stringify(orderDetails, null, 2)
         const ediDocument = generateEDIDocument(data);
         await sendOrderEmail(data);
+        console.log(ediDocument);
 
         res.status(201).json({
             message: "Zamówienie zostało pomyślnie utworzone."

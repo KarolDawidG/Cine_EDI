@@ -54,12 +54,12 @@ const createVhsTapes = `
     const createRentals = `
       CREATE TABLE IF NOT EXISTS rentals (
         id varchar(36) NOT NULL,
-        account_id varchar(36) NOT NULL,  -- Identyfikator użytkownika
-        vhs_id varchar(36) NOT NULL,  -- Identyfikator kasety VHS
-        rental_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- Data wypożyczenia
-        due_date TIMESTAMP,  -- Planowana data zwrotu
-        return_date TIMESTAMP,  -- Rzeczywista data zwrotu
-        status varchar(20) DEFAULT 'rented',  -- Status wypożyczenia (np. rented, returned)
+        account_id varchar(36) NOT NULL,
+        vhs_id varchar(36) NOT NULL,
+        rental_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        due_date TIMESTAMP,
+        return_date TIMESTAMP,
+        status varchar(20) DEFAULT 'rented',
         FOREIGN KEY (account_id) REFERENCES accounts(id),
         FOREIGN KEY (vhs_id) REFERENCES vhs_tapes(id),
         PRIMARY KEY (id)

@@ -106,7 +106,7 @@ class UsersRecord {
   }
 
   static async selectById(id) {
-    const [results] = await pool.execute(SELECT_BY_ID, id);
+    const [results] = await pool.execute("SELECT * FROM accounts WHERE id = ?", [id]);
     return results;
   }
 

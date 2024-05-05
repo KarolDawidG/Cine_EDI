@@ -14,6 +14,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import logo from '../../public/logo3.png';
 import axios from 'axios';
+import { notify } from '../notification/Notify';
 
 function AuthMainBar() {
     const redirect = useNavigate();
@@ -63,8 +64,9 @@ function AuthMainBar() {
             const storedLocale = localStorage.getItem("idUser");
             const res = await axios.get(`http://localhost:3001/url/${storedLocale}`);
             setImageUrl(res.data.img_url);
-          } catch (error) {
-            console.error("Błąd pobierania awatar URL:", error);
+          } catch (error:any) {
+            console.log(error.response.data.message);
+            notify(error.response.data.message);
           }
         })();
       }, [setImageUrl]);

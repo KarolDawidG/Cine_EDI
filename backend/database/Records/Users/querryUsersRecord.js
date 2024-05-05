@@ -7,7 +7,7 @@ const UPDATE_ROLE = "UPDATE accounts SET role = ? WHERE id = ?";
 const SELECT_ALL = "SELECT * FROM accounts";
 const SELECT_BY_ROLE = "SELECT * FROM `accounts` WHERE `role` = ?";
 const SELECT_BY_EMAIL = "SELECT * FROM accounts WHERE email = ?";
-const SELECT_BY_ID = "SELECT first_name, second_name, email, created_at, password, role FROM accounts WHERE id = ?";
+const SELECT_BY_ID = "SELECT * FROM accounts WHERE id = ?";
 const SELECT_TOKEN_BY_ID = "SELECT refresh_token FROM accounts WHERE id = ?";
 const SELECT_BY_USERNAME = "SELECT id, is_active, role, password FROM accounts WHERE first_name = ?";
 const UPDATE_IMG_URL_BY_ID = "UPDATE accounts SET img_url = ? WHERE id = ?";

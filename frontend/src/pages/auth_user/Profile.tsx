@@ -1,35 +1,46 @@
-import {useEffect} from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, Paper, Grid, Typography } from "@mui/material";
+import { Box, Grid, Container } from "@mui/material";
 import Footer from "../../layout/Footer";
 import AuthMainBar from "../../layout/AuthMainBar";
+import { notify } from "../../notification/Notify";
+import UserData from "./userData/UserData";
+import AddressProfile from "./userAdress/AddressProfile";
 
 const Profile = () => {
     const redirect = useNavigate();
 
     useEffect(() => {
-        const token = localStorage.getItem("token");
+        (async () => {
+            try {
+                const token = localStorage.getItem("token");
+                if (!token) {
+                    redirect("/be-login");
+                    return;
+                }
+            } catch (error) {
+                    console.error(error);
+                    notify("An unknown error occurred");
+            }
+        })();
+    }, [redirect]);
 
-        if (!token ) {
-            redirect("/be-login");
-        }
-    }, []);
-
-    return (
-        <Box>
-            <AuthMainBar/>
-            <Grid container justifyContent="center" alignItems="center" style={{ minHeight: "80vh" }}>
-                <Grid item xs={12} sm={6}>
-                    <Paper elevation={3} sx={{ padding: 2 }}>
-                        <Typography variant="h5" gutterBottom>
-                            Profile component
-                        </Typography>
-
-                    </Paper>
-                </Grid>
+return (
+<Box display="flex" flexDirection="column" sx={{ bgcolor: "background.paper", color: '#f0f8ff', fontFamily: "'Press Start 2P', cursive", margin: 5 }}>
+    <AuthMainBar />
+    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+        <Grid container spacing={3}>
+            <Grid item xs={12} md={6}>
+                <UserData/>
             </Grid>
-            <Footer/>
-        </Box>
+
+            <Grid item xs={12} md={6}>
+                <AddressProfile/>
+            </Grid>
+        </Grid>
+    </Container>
+    <Footer />
+</Box>
     );
 };
 

@@ -136,3 +136,5 @@
 2024-04-28 17:22:20 error: username is not defined
 2024-04-28 17:24:58 error: username is not defined
 2024-04-28 17:26:20 error: Register POST: username is not defined
+2024-05-05 16:50:07 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null
+2024-05-05 16:50:27 error: Bind parameters must not contain undefined. To pass SQL NULL specify JS null

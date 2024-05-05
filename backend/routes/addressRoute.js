@@ -13,7 +13,7 @@ router.get('/:id', async (req, res) => {
     try {
         const address = await AddressRecord.selectById(id);
         res.status(200).json({
-            message: "Adres został pomyślnie wyswietlony.",
+            message: "Adres został pomyślnie aktualizowany.",
             address: address
         });
     } catch (error) {

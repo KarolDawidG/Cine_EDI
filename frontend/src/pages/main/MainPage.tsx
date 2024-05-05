@@ -8,8 +8,7 @@ const MainPage = () => {
   return (
     <Box display="flex" flexDirection="column" sx={{ bgcolor: "background.paper", color: '#f0f8ff', fontFamily: "'Press Start 2P', cursive", margin: 5 }}>
       <MainBar />
-
-      <Container component="main" maxWidth="lg" sx={{ flexGrow: 1, py: 8 }}>
+      <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
         <Grid container spacing={3}>
 
           <Grid item xs={12} md={2}>

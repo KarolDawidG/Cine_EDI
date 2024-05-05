@@ -10,25 +10,26 @@ const router = express.Router();
 
 router.use(middleware, limiter, errorHandler);
 
-router.get("/:role", verifyToken, async (req, res, next) => {
-  const role = req.params.role;
-  try {
-    const usersList = await UsersRecord.listByRole(role);
-    return res.json({ usersList });
-  } catch (error) {
-    logger.error(error.message);
-    return res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.SERVER_ERROR);
-  }
-});
+// router.get("/:role", verifyToken, async (req, res, next) => {
+//   const role = req.params.role;
+//   try {
+//     const usersList = await UsersRecord.listByRole(role);
+//     return res.json({ usersList });
+//   } catch (error) {
+//     logger.error(error.message);
+//     return res.status(STATUS_CODES.SERVER_ERROR).send(MESSAGES.SERVER_ERROR);
+//   }
+// });
 
-router.put("/:id", verifyToken, async (req, res) => {
+router.put("/:id", async (req, res) => {
   const userId = req.params.id;
-  const { username, email } = req.body;
+  const { first_name, second_name , email } = req.body;
+  
   try {
-    await UsersRecord.updateUserData(username, email, userId);
+    await UsersRecord.updateUserData(first_name, second_name , email, userId);
     return res
       .status(STATUS_CODES.SUCCESS)
-      .send("Dane ustawione poprawnie.");
+      .json({message: "Dane zostały pomyślnie aktualizowane."});
   } catch (error) {
     logger.error(error.message);
     return res
@@ -37,10 +38,12 @@ router.put("/:id", verifyToken, async (req, res) => {
   }
 });
 
-router.get("/user/:id", verifyToken, async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   const id = req.params.id;
+  
   try {
     const userInfo = await UsersRecord.selectById(id);
+    
     return res.status(STATUS_CODES.SUCCESS).json(userInfo);
   } catch (error) {
     logger.error(error.message);

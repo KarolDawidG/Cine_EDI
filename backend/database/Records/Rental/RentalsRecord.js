@@ -134,7 +134,44 @@ static async findById(rentalIds) {
   }
 }
 
-
+static async findAllByUserId(userId) {
+    const query = `
+      SELECT 
+        r.id AS rentalId, 
+        r.rental_date, 
+        r.due_date, 
+        r.return_date, 
+        r.status,
+        v.id AS vhsId,
+        v.title,
+        v.description,
+        v.img_url AS vhsImgUrl,
+        v.price_per_day
+      FROM rentals r
+      JOIN vhs_tapes v ON r.vhs_id = v.id
+      WHERE r.account_id = ?
+    `;
+  
+    try {
+      const [results] = await pool.execute(query, [userId]);
+      return results.map(row => ({
+        rentalId: row.rentalId,
+        rentalDate: row.rental_date,
+        dueDate: row.due_date,
+        returnDate: row.return_date,
+        status: row.status,
+        vhsId: row.vhsId,
+        title: row.title,
+        description: row.description,
+        imageUrl: row.vhsImgUrl,
+        pricePerDay: row.price_per_day
+      }));
+    } catch (error) {
+      console.error('Error fetching rentals for user:', error);
+      throw error;
+    }
+  }
+  
 
   
 }
