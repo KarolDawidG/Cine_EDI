@@ -27,8 +27,26 @@ router.use(errorHandler);
 router.get('/:id', async (req, res) => {
     const id = req.params.id;
     try {
-        const data = await RentalsRecord.findAllByUserId(id);
-        res.status(201).json({
+       const data = await RentalsRecord.findAllByUserId(id);
+       //const data = await RentalsRecord.findAllOrdersByUserId(id);
+
+        res.status(200).json({
+            data: data,
+            message: "Zamówienie zostało pomyślnie wyswietlone."
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Nie udało się pobrac danych." });
+    }
+});
+
+router.get('/all/:id', async (req, res) => {
+    const id = req.params.id;
+    try {
+       
+       const data = await RentalsRecord.findAllOrdersByUserId(id);
+
+        res.status(200).json({
             data: data,
             message: "Zamówienie zostało pomyślnie wyswietlone."
         });
@@ -44,23 +62,18 @@ router.post('/', async (req, res) => {
     
     try {
         const ifAddress = await AddressRecord.selectById([account_id]);
-        
-        // Sprawdzamy, czy otrzymaliśmy jakiekolwiek adresy
-        if (!ifAddress.length) {
-            return res.status(400).json({
-                message: "Najpierw dodaj adres do wysyłki!"
-            });
-        }
+            if (!ifAddress.length) {
+                return res.status(400).json({
+                    message: "Najpierw dodaj adres do wysyłki!"
+                });
+            }
 
-        // Przypisanie wartości z pierwszego adresu
         const { street, house_number, city, state, postal_code, country } = ifAddress[0];
-
-        // Sprawdzamy, czy wszystkie wymagane dane adresowe są dostępne
-        if (!street || !house_number || !city || !state || !postal_code || !country) {
-            return res.status(400).json({
-                message: "Najpierw dodaj adres do wysyłki."
-            });
-        }
+            if (!street || !house_number || !city || !state || !postal_code || !country) {
+                return res.status(400).json({
+                    message: "Adres do wysyłki jest niekompletny."
+                });
+            }
 
         const id = await RentalsRecord.insert(formData);
         const orderId = await RentalsRecord.selectRentalById(id);
@@ -83,19 +96,12 @@ router.post('/', async (req, res) => {
 
 
 
-router.delete('/:date/:id', async (req, res) => {
+router.delete('/all/:id', async (req, res) => {
     const id = req.params.id;
-    const date = req.params.date;
-
-    const newDate = convertISOToStandardDate(date);
-
-    console.log("Dada na backendzie: ")
-    console.log(date);
-    console.log(newDate);
 
     try {
-        await RentalsRecord.deleteByRentalDate(newDate, id);
-        res.status(201).json({
+        await RentalsRecord.deleteByOrderId( id);
+        res.status(200).json({
             message: "Zamówienie zostało pomyślnie usuniete."
         });
     } catch (error) {
@@ -103,5 +109,7 @@ router.delete('/:date/:id', async (req, res) => {
         res.status(500).json({ message: "Nie udało się usunac zamowienia." });
     }
 });
+
+
 
 module.exports = router;

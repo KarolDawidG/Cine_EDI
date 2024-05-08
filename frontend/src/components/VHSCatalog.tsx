@@ -69,21 +69,41 @@ const VHSCatalog = () => {
     <Box>
       <AuthMainBar />
       <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={2}>
-            <Box sx={{ width: 240, flexShrink: 0 }}>
-              <List>
-                {genres.map((genre) => (
-                  <ListItem key={genre} onClick={() => setSelectedGenre(genre)}>
-                    <ListItemText primary={genre} />
-                  </ListItem>
-                ))}
-              </List>
-            </Box>
-          </Grid>
+        <Grid container spacing={3} >
+
+        <Grid item xs={12} md={2} >
+        
+        <Typography variant="h5" sx={{ mb: 1}}>
+          Genres
+        </Typography>
+        
+          <Box sx={{overflowY: 'auto', maxWidth: '100%', maxHeight: '70vh', width: '80%', marginRight: 1 ,flexShrink: 0, boxShadow: 3, p: 1, borderRadius: 2, bgcolor: 'background.paper' }}>
+            <List component="nav">
+              {genres.map((genre) => (
+                <ListItem 
+                  key={genre}
+                  onClick={() => setSelectedGenre(genre)}
+                  sx={{
+                    bgcolor: selectedGenre === genre ? 'primary.main' : 'inherit',
+                    color: selectedGenre === genre ? 'common.white' : 'text.primary',
+                    '&:hover': {
+                      bgcolor: 'primary.light',
+                      color: 'common.white',
+                      transition: 'background-color 0.3s ease'
+                    },
+                    mb: 0.5,
+                    borderRadius: 1
+                  }}
+                >
+                  <ListItemText primary={genre} />
+                </ListItem>
+              ))}
+            </List>
+          </Box>
+        </Grid>
 
           <Grid item xs={12} md={10}>
-            <Grid container spacing={2}>
+            <Grid container spacing={2} sx={{overflowY: 'auto', maxHeight: '90vh' }}>
               {filteredVhsList.map((vhs) => (
                 <Grid item xs={12} sm={6} md={4} key={vhs.id}>
                   <Card>
