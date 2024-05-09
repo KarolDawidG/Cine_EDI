@@ -4,7 +4,7 @@ import Register from "./auth/Register";
 import { LookEmail } from "./auth/LookEmail";
 import MainPage from "./pages/main/MainPage";
 import Dashboard from "./pages/auth_user/Dashboard";
-import AdminDashboard from "./pages/auth_user/AdminDashboard";
+import AdminDashboard from "./pages/auth_user/adminComponents/AdminDashboard";
 import BeLogin from "./layout/BeLogin";
 import Logout from "./layout/Logout";
 import Profile from "./pages/auth_user/Profile";

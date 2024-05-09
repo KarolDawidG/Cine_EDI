@@ -20,22 +20,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.put("/:id/:role", verifyToken, async (req, res) => {
-  const id = req.params.id;
-  const role = req.params.role;
-
-  try {
-    await UsersRecord.updateRole(role, id);
-    return res.status(200).send("The operation has been successful.");
-  } catch (error) {
-    console.error(error);
-    return res
-      .status(500)
-      .send("Unknown server error. Please contact your administrator.");
-  }
-});
-
-router.delete("/:id", verifyToken, async (req, res, next) => {
+router.delete("/:id", async (req, res, next) => {
   const id = req.params.id;
 
   try {
