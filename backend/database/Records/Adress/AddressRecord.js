@@ -15,9 +15,10 @@ class AddressRecord {
   }
 
   static async selectById(id) {
-    const [results] = await pool.execute('select * from client_addresses where account_id = ?', [id]);
-    return results.map(obj => new AddressRecord(obj));
-  }
+    const [results] = await pool.execute('SELECT * FROM client_addresses WHERE account_id = ?', id);
+    return results;
+}
+
 
   static async addressExists(account_id) {
     const [results] = await pool.execute('SELECT id FROM client_addresses WHERE account_id = ?', [account_id]);
@@ -41,19 +42,30 @@ static async insert(data) {
   });
 }
 
-
   static async update(id, data) {
     const { street, house_number, city, state, postal_code, country } = data;
     try {
-        await pool.execute(
-            "UPDATE client_addresses SET street = ?, house_number = ?, city = ?, state = ?, postal_code = ?, country = ? WHERE account_id = ?",
-            [street, house_number, city, state, postal_code, country, id]
-        );
+      const [result] = await pool.execute(
+        "UPDATE client_addresses SET street = ?, house_number = ?, city = ?, state = ?, postal_code = ?, country = ? WHERE account_id = ?",
+        [street, house_number, city, state, postal_code, country, id]
+      );
+
+      if (result.affectedRows > 0) {
         return { message: "Adres został pomyślnie zaktualizowany." };
+      } else {
+        // Tworzenie nowego ID adresu za pomocą uuidv4
+        const newId = generateRandomId(24);
+        await pool.execute(
+          "INSERT INTO client_addresses (id, account_id, street, house_number, city, state, postal_code, country) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+          [newId, id, street, house_number, city, state, postal_code, country]
+        );
+        return { message: "Nowy adres został pomyślnie utworzony.", id: newId };
+      }
     } catch (error) {
-        throw error;
+      console.error('Error during updating or inserting address:', error);
+      throw error;
     }
-}
+  }
 
 
 }

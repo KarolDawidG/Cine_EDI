@@ -2,6 +2,18 @@ const insertRoot = `INSERT INTO accounts (id, first_name, second_name, password,
 
 const findRoot = `SELECT id FROM accounts WHERE first_name = 'root'`;
 
+const createOrders = `
+  CREATE TABLE IF NOT EXISTS orders (
+    order_id varchar(36) NOT NULL,
+    account_id varchar(36) NOT NULL,
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status varchar(20) DEFAULT 'pending',
+    PRIMARY KEY (order_id),
+    FOREIGN KEY (account_id) REFERENCES accounts(id) ON DELETE CASCADE
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+`;
+
+
 const createAccounts = `
       CREATE TABLE IF NOT EXISTS accounts (
         id varchar(36) NOT NULL,
@@ -55,6 +67,7 @@ const createVhsTapes = `
       CREATE TABLE IF NOT EXISTS rentals (
         id varchar(36) NOT NULL,
         account_id varchar(36) NOT NULL,
+        order_id varchar(36),
         vhs_id varchar(36) NOT NULL,
         rental_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         due_date TIMESTAMP,
@@ -62,6 +75,7 @@ const createVhsTapes = `
         status varchar(20) DEFAULT 'rented',
         FOREIGN KEY (account_id) REFERENCES accounts(id),
         FOREIGN KEY (vhs_id) REFERENCES vhs_tapes(id),
+        FOREIGN KEY (order_id) REFERENCES orders(order_id),
         PRIMARY KEY (id)
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
     `;
@@ -80,16 +94,6 @@ const deleteNotActiveAccount = `
 const event_schedulerON = `SET GLOBAL event_scheduler = ON;
 `;
 
-//insert vhs_tapes 
-// INSERT INTO vhs_tapes (id, title, description, img_url, price_per_day, quantity_available, genre)
-// VALUES
-// (UUID(), 'Indiana Jones and the Raiders of the Lost Ark', 'In 1936, archaeologist and adventurer Indiana Jones is hired by the U.S. government to find the Ark of the Covenant before Adolf Hitler\'s Nazis can obtain its awesome powers.', 'https://example.com/img/raiders-of-the-lost-ark.jpg', 5.00, 5, 'Adventure'),
-// (UUID(), 'The Lord of the Rings: The Fellowship of the Ring', 'A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.', 'https://example.com/img/lotr-fellowship.jpg', 5.00, 3, 'Adventure'),
-// (UUID(), 'Pirates of the Caribbean: The Curse of the Black Pearl', 'Blacksmith Will Turner teams up with eccentric pirate Captain Jack Sparrow to save his love, the governor\'s daughter, from Jack\'s former pirate allies, who are now undead.', 'https://example.com/img/pirates-of-the-caribbean.jpg', 5.00, 4, 'Adventure'),
-// (UUID(), 'Avatar', 'A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.', 'https://example.com/img/avatar.jpg', 5.00, 3, 'Adventure'),
-// (UUID(), 'The Hobbit: An Unexpected Journey', 'A reluctant Hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home, and the gold within it, from the dragon Smaug.', 'https://example.com/img/the-hobbit.jpg', 5.00, 5, 'Adventure');
-
-
 module.exports = {
   insertRoot,
   findRoot,
@@ -99,4 +103,5 @@ module.exports = {
   createVhsTapes,
   createRentals,
   createClientAddresses,
+  createOrders,
 };

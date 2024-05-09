@@ -17,7 +17,6 @@ const Account = () => {
             try {
                 const id = localStorage.getItem("idUser");
                 const response = await axios.get(`http://localhost:3001/orders/${id}`);
-                console.log(response.data.data);
                 setOrdersData(response.data.data);
             } catch (error) {
                 console.error("Error fetching orders:", error);
@@ -40,7 +39,7 @@ const Account = () => {
                         <OrdersHistory ordersData={ordersData}/>
                     </Grid>
                     <Grid item xs={12} md={6}>
-                        <OrdersProfile ordersData={ordersData}/>
+                        <OrdersProfile/>
                     </Grid>
                 </Grid>
             </Container>

@@ -8,6 +8,7 @@ const {
   createVhsTapesTable,
   createRentalsTable,
   createRoot,
+  createOrdersTable,
   deleteAccount,
   createClientAddressesTable,
   eventSchedulerON,
@@ -24,6 +25,7 @@ const initializeDatabase = async () => {
       deleteAccount,
       createClientAddressesTable,
       eventSchedulerON,
+      createOrdersTable,
     ];
     for await (const table of tables) {
       await table(pool);

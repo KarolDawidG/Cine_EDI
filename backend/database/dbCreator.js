@@ -8,6 +8,7 @@ const {
   createVhsTapes,
   createRentals,
   createClientAddresses,
+  createOrders,
 } = require("./querrys");
 
 const createAccountsTable = async () => {
@@ -17,6 +18,15 @@ const createAccountsTable = async () => {
     console.error(err);
   }
 };
+
+const createOrdersTable = async () => {
+  try {
+    await pool.query(createOrders);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 
 const createClientAddressesTable = async () => {
   try {
@@ -72,4 +82,4 @@ const createRoot = async () => {
   }
 };
 
-module.exports = { createAccountsTable, createVhsTapesTable, createRentalsTable, createRoot, createClientAddressesTable, deleteAccount, eventSchedulerON };
+module.exports = { createAccountsTable, createVhsTapesTable, createRentalsTable, createRoot, createClientAddressesTable, createOrdersTable, deleteAccount, eventSchedulerON };

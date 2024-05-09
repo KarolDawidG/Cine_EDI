@@ -9,16 +9,24 @@ class RentalsRecord {
 
   static async insert(formData) {
     return performTransaction(async (connection) => {
-        let ids = [];
+        const order_id = uuidv4();
+        const account_id = formData.items[0].account_id;
+
         try {
+            await connection.execute(
+                `INSERT INTO orders (order_id, account_id, order_date) VALUES (?, ?, ?)`,
+                [order_id, account_id, new Date(),]
+            );
+
             for (const item of formData.items) {
                 const id = uuidv4();
                 
                 await connection.execute(
-                    `INSERT INTO rentals (id, account_id, vhs_id, rental_date, due_date, return_date, status) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+                    `INSERT INTO rentals (id, account_id, order_id, vhs_id, rental_date, due_date, return_date, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
                     [
                         id,
                         item.account_id,
+                        order_id,
                         item.id,
                         new Date(),
                         item.due_date,
@@ -37,9 +45,8 @@ class RentalsRecord {
                         [item.id]
                     );
                 }
-                ids.push(id);
             }
-            return ids;
+            return order_id;
         } catch (error) {
             console.error('Error during inserting rental records:', error);
             throw error;
@@ -192,7 +199,103 @@ static async findAllByUserId(userId) {
     });
 }
 
-  
+static async findAllOrdersByUserId(userId) {
+    const query = `
+      SELECT 
+        o.order_id AS orderId,
+        o.order_date,
+        o.status AS orderStatus,
+        r.id AS rentalId,
+        r.rental_date,
+        r.due_date,
+        r.return_date,
+        r.status AS rentalStatus,
+        v.id AS vhsId,
+        v.title,
+        v.description,
+        v.img_url AS vhsImgUrl,
+        v.price_per_day
+      FROM orders o
+      JOIN rentals r ON o.order_id = r.order_id
+      JOIN vhs_tapes v ON r.vhs_id = v.id
+      WHERE o.account_id = ?
+    `;
+
+    try {
+      const [results] = await pool.execute(query, [userId]);
+      const orders = {};
+      results.forEach(row => {
+        if (!orders[row.orderId]) {
+          orders[row.orderId] = {
+            orderId: row.orderId,
+            orderDate: row.order_date,
+            orderStatus: row.orderStatus,
+            rentals: []
+          };
+        }
+        orders[row.orderId].rentals.push({
+          rentalId: row.rentalId,
+          rentalDate: row.rental_date,
+          dueDate: row.due_date,
+          returnDate: row.return_date,
+          rentalStatus: row.rentalStatus,
+          vhsId: row.vhsId,
+          title: row.title,
+          description: row.description,
+          imageUrl: row.vhsImgUrl,
+          pricePerDay: row.price_per_day
+        });
+      });
+
+      return Object.values(orders);
+    } catch (error) {
+      console.error('Error fetching grouped orders for user:', error);
+      throw error;
+    }
+  }
+
+static async selectRentalById(order_id) {
+    try {
+        const [results] = await pool.execute('SELECT id FROM rentals WHERE order_id = ?', [order_id]);
+        const ids = results.map(row => row.id);
+        return ids;
+    } catch (error) {
+        console.error('Error retrieving rental records by order_id:', error);
+        throw error;
+    }
+}
+
+static async deleteByOrderId(orderId) {
+    return performTransaction(async (connection) => {
+        try {
+            const [orderStatusResult] = await connection.execute(
+                `SELECT status FROM orders WHERE order_id = ?;`,
+                [orderId]
+            );
+            const status = orderStatusResult[0].status;
+                if (status === "paid") {
+                    throw new Error('Cannot delete order because it is already paid.');
+                }
+            await connection.execute(
+                `DELETE FROM rentals WHERE order_id = ?;`,
+                [orderId]
+            );
+            const [result] = await connection.execute(
+                `DELETE FROM orders WHERE order_id = ?;`,
+                [orderId]
+            );
+                if (result.affectedRows > 0) {
+                    return result.affectedRows;
+                } else {
+                    throw new Error('No order found with the specified ID or it could not be deleted.');
+                }
+        } catch (error) {
+            console.error('Error during deleting order:', error);
+            throw error;
+        }
+    });
+}
+
 }
 
 module.exports = { RentalsRecord };
