@@ -4,25 +4,11 @@ import usePaginationLogic from './tableUtils/PaginationControl';
 import SearchBar from './tableUtils/Search';
 import SetPageComponent from './tableUtils/SetPageComponent';
 import axios from 'axios';
+import { formatOnlyDate } from './tableUtils/dateUtils';
+import useSearchLogic from './tableUtils/SearchControl';
 
-const CustomTable = () => {
+const UsersTable = () => {
     const [data, setData] = useState<any[]>([]);
-    const [searchTerm, setSearchTerm] = useState<any>('');
-    
-    const formatOnlyDate = (dateString: string): string => {
-        const options: Intl.DateTimeFormatOptions = {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        };
-        return new Date(dateString).toLocaleDateString(undefined, options);
-      };
-
-    const filteredData = data.filter((user) =>
-      Object.values(user).some((value:any) =>
-        value.toString().toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    );
     
     useEffect(() => {
       const fetchData = async () => {
@@ -47,6 +33,7 @@ const CustomTable = () => {
       }
     };
 
+  const { searchTerm, setSearchTerm, filteredData } = useSearchLogic({ data: data });
 
   const {
     page,
@@ -124,4 +111,4 @@ const CustomTable = () => {
   );
 };
 
-export default CustomTable;
+export default UsersTable;

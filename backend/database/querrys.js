@@ -13,7 +13,6 @@ const createOrders = `
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 `;
 
-
 const createAccounts = `
       CREATE TABLE IF NOT EXISTS accounts (
         id varchar(36) NOT NULL,

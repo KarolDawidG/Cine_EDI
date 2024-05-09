@@ -54,7 +54,6 @@ class RentalsRecord {
     });
 }
 
-
 static async findById(rentalIds) {
   if (!Array.isArray(rentalIds) || rentalIds.length === 0) {
       return [];
@@ -295,6 +294,25 @@ static async deleteByOrderId(orderId) {
         }
     });
 }
+
+static async listAllOrders() {
+    try {
+        const [results] = await pool.execute(`
+            SELECT 
+                o.order_id AS OrderID, 
+                CONCAT(a.first_name, ' ', a.second_name) AS FullName, 
+                o.order_date AS OrderDate, 
+                o.status AS OrderStatus 
+            FROM orders o 
+            JOIN accounts a ON o.account_id = a.id
+        `);
+        return results;
+    } catch (error) {
+        console.error('Error fetching orders:', error);
+        throw error;
+    }
+}
+
 
 }
 

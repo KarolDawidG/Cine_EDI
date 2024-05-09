@@ -35,9 +35,6 @@ class UsersRecord {
     if (!validateEmail(email)) {
       throw new Error("Invalid email address.");
     }
-    // if (!validateUserName(first_name)) {
-    //   throw new Error("Invalid username.");
-    // }
     const id = uuidv4();
 
     return performTransaction(async (connection) => {
@@ -78,12 +75,12 @@ class UsersRecord {
   }
 
 
-  static async updateRole(role, id) {
-    return performTransaction(async (connection) => {
-      const results = await connection.execute(UPDATE_ROLE, [role, id]);
-      return results;
-    });
-  }
+  // static async updateRole(role, id) {
+  //   return performTransaction(async (connection) => {
+  //     const results = await connection.execute(UPDATE_ROLE, [role, id]);
+  //     return results;
+  //   });
+  // }
 
   static async listAll() {
     const [results] = await pool.execute(SELECT_ALL);

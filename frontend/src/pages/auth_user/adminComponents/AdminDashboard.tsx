@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, Paper, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import Footer from "../../../layout/Footer";
 import AdminBar from "../../../layout/AdminBar";
-import CustomTable from "./userTable";
+import UsersTable from "./userTable";
+import OrdersTable from "./orderTable";
 
 const AdminDashboard = () => {
     const redirect = useNavigate();
@@ -23,11 +24,12 @@ const AdminDashboard = () => {
 
                     <Grid sx={{ marginBottom: 2, marginTop:2 }}>
                         <Typography variant="h5">Tabela uzytkownikow</Typography>
-                        <CustomTable/>
+                        <UsersTable/>
                     </Grid>
 
                     <Grid sx={{ marginBottom: 2, marginTop:2 }}>
-                        Second
+                        <Typography variant="h5">Tabela zamowien</Typography>
+                        <OrdersTable />
                     </Grid>
 
                     <Grid sx={{ marginBottom: 2, marginTop:2 }}>

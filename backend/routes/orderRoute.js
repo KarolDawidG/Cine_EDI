@@ -24,12 +24,22 @@ const convertISOToStandardDate = (isoDate) => {
 router.use(middleware);
 router.use(errorHandler);
 
+router.get('/', async (req, res) => {
+    try {
+       const data = await RentalsRecord.listAllOrders();
+
+        res.status(200).json({data});
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Nie udało się pobrac danych." });
+    }
+});
+
 router.get('/:id', async (req, res) => {
     const id = req.params.id;
     try {
        const data = await RentalsRecord.findAllByUserId(id);
-       //const data = await RentalsRecord.findAllOrdersByUserId(id);
-
+       
         res.status(200).json({
             data: data,
             message: "Zamówienie zostało pomyślnie wyswietlone."
