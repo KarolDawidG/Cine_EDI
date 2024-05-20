@@ -15,6 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import logo from '../../public/logo3.png';
 import axios from 'axios';
 import { notify } from '../notification/Notify';
+import { BACKEND } from '../utils/linkt';
 
 function AuthMainBar() {
     const redirect = useNavigate();
@@ -62,7 +63,7 @@ function AuthMainBar() {
         (async () => {
           try {
             const storedLocale = localStorage.getItem("idUser");
-            const res = await axios.get(`http://localhost:3001/url/${storedLocale}`);
+            const res = await axios.get(`${BACKEND}/url/${storedLocale}`);
             setImageUrl(res.data.img_url);
           } catch (error:any) {
             console.log(error.response.data.message);

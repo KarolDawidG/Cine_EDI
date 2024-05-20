@@ -33,11 +33,11 @@ const AdminDashboard = () => {
                     </Grid>
 
                     <Grid sx={{ marginBottom: 2, marginTop:2 }}>
-                        Third
+                        Wykres sprzedazy
                     </Grid>
 
                     <Grid sx={{ marginBottom: 2, marginTop:2 }}>
-                        Fourth 
+                        Wykres sprzedazy poszczegolnych uzytkownikow 
                     </Grid>
 
                 </Grid>

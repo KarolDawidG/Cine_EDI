@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Grid, Container, Typography } from "@mui/material";
-import Footer from "../layout/Footer";
-import AuthMainBar from "../layout/AuthMainBar";
-import FinalizingOrder from "../components/FinalizingOrder";
+import Footer from "../../layout/Footer";
+import AuthMainBar from "../../layout/AuthMainBar";
+import FinalizingOrder from "./FinalizingOrder";
+import RecommendedProducts from "./RecommendedProducts";
 
 const Basket = () => {
     const redirect = useNavigate();
@@ -23,7 +24,7 @@ const Basket = () => {
                 <Grid container spacing={3}>
 
                     <Grid item xs={12} md={6}>
-                        <Typography>Koszyk</Typography>
+                        <RecommendedProducts/>
                     </Grid>
 
                     <Grid item xs={12} md={6}>

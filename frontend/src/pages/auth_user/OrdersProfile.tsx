@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Paper, Typography, List, ListItem, ListItemText, Box, Button } from "@mui/material";
 import axios from 'axios';
 import { notify } from "../../notification/Notify";
+import { BACKEND } from "../../utils/linkt";
 
 const OrdersProfile = () => {
     const [ordersData, setOrdersData] = useState<any>([]);
@@ -10,7 +11,7 @@ const OrdersProfile = () => {
         const fetchOrders = async () => {
             try {
                 const id = localStorage.getItem("idUser");
-                const response = await axios.get(`http://localhost:3001/orders/all/${id}`);
+                const response = await axios.get(`${BACKEND}/orders/all/${id}`);
                 console.log(response.data.data);
                 setOrdersData(response.data.data);
             } catch (error:any) {
@@ -24,7 +25,7 @@ const OrdersProfile = () => {
     const handleDeleteOrders = async (id:string) => {
         try {          
 
-            const response = await axios.delete(`http://localhost:3001/orders/all/${id}`);
+            const response = await axios.delete(`${BACKEND}/orders/all/${id}`);
             console.log(response.data.message);
 
             notify("Zamówienia usunięte.");

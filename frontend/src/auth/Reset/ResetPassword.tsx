@@ -6,6 +6,7 @@ import { PasswordForm } from "./PasswordForm";
 import { PasswordStatus } from "./PasswordStatus";
 import MainBar from "../../layout/MainBar";
 import Footer from "../../layout/Footer";
+import { BACKEND } from "../../utils/linkt";
 
 export const ResetPassword = () => {
   const [password, setPassword1] = useState("");
@@ -18,7 +19,7 @@ export const ResetPassword = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`http://localhost:3001/reset/${id}/${token}`, {
+      const response = await axios.post(`${BACKEND}/reset/${id}/${token}`, {
         password,
         password2,
       });
@@ -34,7 +35,7 @@ export const ResetPassword = () => {
   useEffect(() => {
     const handleResetLink = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/reset/${id}/${token}`);
+        const response = await axios.get(`${BACKEND}/reset/${id}/${token}`);
         if (response.status !== 200) {
           console.log(response.data.message);
         }

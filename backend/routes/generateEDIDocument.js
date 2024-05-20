@@ -28,7 +28,7 @@ const generateEDIDocument = (orderDetails) => {
         segments.push(`NAD+BY++${account.firstName} ${account.secondName}::160++${account.email}'`);
 
         // Place of delivery and shipping
-        segments.push(`NAD+DP++${account.street} ${account.houseNumber}::${account.city}:${account.postalCode}'`); // Place of delivery using actual address from data
+        segments.push(`NAD+DP+++${account.street} ${account.houseNumber}::${account.city}:${account.postalCode}'`); // Poprawka: dodanie brakującego plusa
 
         // LIN Segment - Line Item
         segments.push(`LIN+${index + 1}++${rental.vhs.title}'`);
@@ -43,7 +43,7 @@ const generateEDIDocument = (orderDetails) => {
         segments.push(`DTM+206:${formatDateForEDI(rental.dueDate)}:102'`);
 
         // UNT Segment - Message Trailer for each item
-        segments.push(`UNT+7+${index + 1}'`);
+        segments.push(`UNT+11+${index + 1}'`); // Poprawka: zaktualizowana liczba segmentów
     });
 
     // UNS Segment - Section Control
@@ -56,7 +56,7 @@ const generateEDIDocument = (orderDetails) => {
     segments.push(`CNT+7:${rentalLength}'`); // Assuming each rental has quantity 1
 
     // UNT Segment - Message Trailer
-    segments.push(`UNT+${segments.length + 1}+1'`);
+    segments.push(`UNT+${segments.length + 2}+1'`); // Poprawka: zaktualizowana liczba segmentów w finalnym UNT
 
     // UNZ Segment - Interchange Trailer
     segments.push(`UNZ+1+0000000001'`);

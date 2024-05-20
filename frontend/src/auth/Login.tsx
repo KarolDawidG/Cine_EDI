@@ -5,6 +5,7 @@ import { TextField, Button, Box, Paper, Grid, Typography, CircularProgress } fro
 import axios from "axios";
 import MainBar from "../layout/MainBar";
 import Footer from "../layout/Footer";
+import { BACKEND } from "../utils/linkt";
 
 const Login = () => {
     const [username, setUsername] = useState("");
@@ -17,7 +18,7 @@ const Login = () => {
         event.preventDefault();
         setLoading(true);
         try {
-            const response = await axios.post(`http://localhost:3001/auth`, {
+            const response = await axios.post(`${BACKEND}/auth`, {
                 username,
                 password,
             });

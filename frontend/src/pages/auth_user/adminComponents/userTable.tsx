@@ -6,6 +6,7 @@ import SetPageComponent from './tableUtils/SetPageComponent';
 import axios from 'axios';
 import { formatOnlyDate } from './tableUtils/dateUtils';
 import useSearchLogic from './tableUtils/SearchControl';
+import { BACKEND } from '../../../utils/linkt';
 
 const UsersTable = () => {
     const [data, setData] = useState<any[]>([]);
@@ -13,7 +14,7 @@ const UsersTable = () => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await axios.get<any>('http://localhost:3001/admin');
+          const response = await axios.get<any>(`${BACKEND}/admin`);
           setData(response.data.usersList);
         } catch (error) {
           console.error('Error fetching data:', error);
@@ -26,7 +27,7 @@ const UsersTable = () => {
   
     const handleDeleteUser = async (id:string) => {
       try {
-        await axios.delete(`http://localhost:3001/admin/${id}`);
+        await axios.delete(`${BACKEND}/admin/${id}`);
         setData(data.filter((user) => user.id !== id)); 
       } catch (error: any) {
         console.error(error);

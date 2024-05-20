@@ -20,6 +20,7 @@ const STATUS_CODES = require('./config/status-codes');
 
 const app = express();
 const PORT = 3001;
+const HOST = 'localhost'; // Dodany adres IP
 
 app.use("/register", regRoute);
 app.use("/auth", logRoute);
@@ -44,8 +45,8 @@ app.get("/", (req, res) => {
   try {
     await createDatabaseIfNotExists();
     await initializeDatabase();
-    app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
+    app.listen(PORT, HOST, () => {
+      console.log(`Server is running on http://${HOST}:${PORT}`);
     });
   } catch (err) {
     console.error("Initialization failed:", err);

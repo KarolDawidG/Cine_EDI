@@ -6,6 +6,7 @@ import SetPageComponent from './tableUtils/SetPageComponent';
 import axios from 'axios';
 import { formatOnlyDate } from './tableUtils/dateUtils';
 import useSearchLogic from './tableUtils/SearchControl';
+import { BACKEND } from '../../../utils/linkt';
 
 const OrdersTable = () => {
     const [data, setData] = useState<any[]>([]);
@@ -13,7 +14,7 @@ const OrdersTable = () => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await axios.get('http://localhost:3001/orders');
+          const response = await axios.get(`${BACKEND}/orders`);
           setData(response.data.data);
           console.log(response.data.data);
         } catch (error: any) { 

@@ -4,6 +4,7 @@ import axios from "axios";
 import { Box, Paper, Grid, Typography, Button, TextField } from "@mui/material";
 import Footer from "../../layout/Footer";
 import MainBar from "../../layout/MainBar";
+import { BACKEND } from "../../utils/linkt";
 
 interface FormState {
   email: string;
@@ -21,7 +22,7 @@ export const PasswordChangeRequest: React.FC = () => {
   ) => {
     const { name, value } = e.target;
     setFormState((prevState) => ({ ...prevState, [name]: value }));
-    setLink('http://localhost:3001/reset');
+    setLink(`${BACKEND}/reset`);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -29,7 +30,7 @@ export const PasswordChangeRequest: React.FC = () => {
 
     try {
       const dataToSend = { ...formState, link };
-      const response = await axios.post('http://localhost:3001/forgot', dataToSend);
+      const response = await axios.post(`${BACKEND}/forgot`, dataToSend);
 
       if (response.status === 200) {
         setFormState({ email: "" });

@@ -3,6 +3,7 @@ import { Paper, Typography, Avatar, Button } from "@mui/material";
 import axios from "axios";
 import { notify } from "../../../notification/Notify";
 import EditUserDialog from './EditUserDialog';
+import { BACKEND } from "../../../utils/linkt";
 
 const UserData = () => {
     const [userData, setUserData] = useState<any>(null);
@@ -13,7 +14,7 @@ const UserData = () => {
         (async () => {
             try {
                 const id = localStorage.getItem("idUser");
-                const response = await axios.get(`http://localhost:3001/user/${id}`);
+                const response = await axios.get(`${BACKEND}/user/${id}`);
                 setUserData(response.data[0]);
                 setEditData(response.data[0]);
             } catch (error:any) {
@@ -34,7 +35,7 @@ const UserData = () => {
     const handleSave = async () => {
         try {
             const id = localStorage.getItem("idUser");
-            const response = await axios.put(`http://localhost:3001/user/${id}`, editData);
+            const response = await axios.put(`${BACKEND}/user/${id}`, editData);
             setUserData(editData);
             notify(response.data.message);
             setOpen(false);

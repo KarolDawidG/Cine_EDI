@@ -4,6 +4,7 @@ import { Button, TextField, Box, Paper, Grid, Typography, CircularProgress } fro
 import axios from "axios";
 import MainBar from "../layout/MainBar";
 import Footer from "../layout/Footer";
+import { BACKEND } from "../utils/linkt";
 
 const Register = () => {
     const redirect = useNavigate();
@@ -28,7 +29,7 @@ const Register = () => {
         event.preventDefault();
         setLoading(true);
         try {
-            const response = await axios.post(`http://localhost:3001/register`, userData);
+            const response = await axios.post(`${BACKEND}/register`, userData);
             if (response.status === 200) {
                 setTimeout(() => redirect(`/click-link`), 500);
             }

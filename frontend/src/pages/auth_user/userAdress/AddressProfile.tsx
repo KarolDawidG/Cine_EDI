@@ -3,6 +3,7 @@ import { Paper, Typography, Button } from "@mui/material";
 import axios from "axios";
 import { notify } from "../../../notification/Notify";
 import EditAddressDialog from "./EditAddressDialog";
+import { BACKEND } from "../../../utils/linkt";
 
 const AddressProfile = () => {
     const [addressData, setAddressData] = useState<any>(null);
@@ -21,7 +22,7 @@ const AddressProfile = () => {
         (async () => {
             try {
                 const id = localStorage.getItem("idUser");
-                const response = await axios.get(`http://localhost:3001/address/${id}`);
+                const response = await axios.get(`${BACKEND}/address/${id}`);
                 console.log(response.data);
                 if (response.data.address[0]) {
                     setAddressData(response.data.address[0]);
@@ -47,7 +48,7 @@ const AddressProfile = () => {
     const handleSave = async () => {
         try {
             const id = localStorage.getItem("idUser");
-            const response = await axios.put(`http://localhost:3001/address/${id}`, editData);
+            const response = await axios.put(`${BACKEND}/address/${id}`, editData);
             
             setAddressData(editData);
             notify(response.data.message);

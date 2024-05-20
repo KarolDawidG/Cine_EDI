@@ -6,6 +6,7 @@ import Footer from "../../layout/Footer";
 import AuthMainBar from "../../layout/AuthMainBar";
 import OrdersHistory from "./OrdersHistory";
 import OrdersProfile from "./OrdersProfile";
+import { BACKEND } from "../../utils/linkt";
 
 const Account = () => {
     const redirect = useNavigate();
@@ -16,7 +17,7 @@ const Account = () => {
         const fetchOrders = async () => {
             try {
                 const id = localStorage.getItem("idUser");
-                const response = await axios.get(`http://localhost:3001/orders/${id}`);
+                const response = await axios.get(`${BACKEND}/orders/${id}`);
                 setOrdersData(response.data.data);
             } catch (error) {
                 console.error("Error fetching orders:", error);
