@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import {useEffect} from "react";
 import { Box, Paper, Grid, Typography } from "@mui/material";
 import Footer from "./Footer";
 import MainBar from "./MainBar";

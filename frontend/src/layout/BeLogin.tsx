@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, Paper, Grid, Typography } from "@mui/material";
 import Footer from "./Footer";
 import MainBar from "./MainBar";

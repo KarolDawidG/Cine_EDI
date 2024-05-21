@@ -12,7 +12,6 @@ import Account from "./pages/auth_user/Account";
 import { ResetPassword } from "./auth/Reset/ResetPassword";
 import { PasswordChangeRequest } from "./auth/Reset/PasswordChangeRequest";
 import VHSCatalog from "./components/Vhs/VHSCatalog";
-import FinalizingOrder from "./components/Basket/FinalizingOrder";
 import Basket from "./components/Basket/Basket";
 
 function App() {

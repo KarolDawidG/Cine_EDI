@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, Grid, Container, Typography } from "@mui/material";
+import { Box, Grid, Container } from "@mui/material";
 import Footer from "../../layout/Footer";
 import AuthMainBar from "../../layout/AuthMainBar";
 import FinalizingOrder from "./FinalizingOrder";

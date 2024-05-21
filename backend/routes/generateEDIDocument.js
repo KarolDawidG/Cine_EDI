@@ -7,7 +7,6 @@ const generateEDIDocument = (orderDetails) => {
     const rentalLength = orderDetailsJson[0].rentals.length;
     const rentalDate = formatDateForEDI(orderDetailsJson[0].rentals[0].rentalDate);
 
-
     // UNB Segment - Interchange Header
     segments.push(`UNB+UNOA:3+${account.email}:ZZZ+RECEIVER_ID:ZZZ+${rentalDate}+0000000001'`);
     
@@ -56,7 +55,7 @@ const generateEDIDocument = (orderDetails) => {
     segments.push(`CNT+7:${rentalLength}'`); // Assuming each rental has quantity 1
 
     // UNT Segment - Message Trailer
-    segments.push(`UNT+${segments.length + 2}+1'`); // Poprawka: zaktualizowana liczba segmentów w finalnym UNT
+    segments.push(`UNT+${segments.length + 2}+1'`); //liczba segmentów w finalnym UNT
 
     // UNZ Segment - Interchange Trailer
     segments.push(`UNZ+1+0000000001'`);

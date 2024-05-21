@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Box, Typography, Card, CardContent, CardMedia, Button } from "@mui/material";
-import { VHS } from "../Vhs/interfaces/VhsInterface";
 
 const RecommendedProducts: React.FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string>("");
-
+    
     const exampleRecommendations: any[] = [
         {
             id: "1",
@@ -87,7 +85,6 @@ const RecommendedProducts: React.FC = () => {
     }, []);
 
     if (isLoading) return <Typography>Loading...</Typography>;
-    if (error) return <Typography color="error">{error}</Typography>;
 
     return (
         <Box>
