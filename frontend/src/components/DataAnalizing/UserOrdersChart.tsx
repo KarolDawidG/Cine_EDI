@@ -1,41 +1,56 @@
 import React, { useEffect, useState } from 'react';
-import { Line } from 'react-chartjs-2';
+import axios from 'axios';
 import { Chart, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
-import { useSalesData } from './contex/SalesDataContext';
+import { BACKEND } from '../../utils/linkt';
+import { Box, Typography, MenuItem, FormControl, Select } from '@mui/material';
+import UserChart from './UserChart';
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 const UserOrdersChart: React.FC = () => {
-  const { salesData } = useSalesData();
-  const [chartData, setChartData] = useState<any>(null);
+  const [userData, setUserData] = useState<{ id: string, first_name: string }[]>([]);
+  const [userId, setUserId] = useState('');
 
   useEffect(() => {
-    if (salesData.length > 0) {
-      const labels = salesData.map(data => data.month);
-      const data = salesData.map(data => data.orders_count);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${BACKEND}/analizing/users`);
+        setUserData(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error('Error fetching sales data', error);
+      }
+    };
 
-      setChartData({
-        labels,
-        datasets: [
-          {
-            label: 'Number of Orders',
-            data,
-            fill: false,
-            borderColor: 'rgb(75, 192, 192)',
-            tension: 0.1,
-          },
-        ],
-      });
-    }
-  }, [salesData]);
+    fetchData();
+  }, []);
+
+  const handleChange = (event: any) => {
+    setUserId(event.target.value as string);
+  };
 
   return (
-    <div style={{ width: '50%', margin: '0 auto' }}>
-      <h2>Wykres sprzedazy poszczegolnych uzytkownikow</h2>
-      {chartData && (
-        <Line data={chartData} />
-      )}
-    </div>
+    <Box>
+      <Typography>Wykres sprzedaży poszczególnych użytkowników</Typography>
+        <FormControl >
+          <Select
+            autoWidth
+            value={userId}
+            onChange={handleChange}
+            displayEmpty
+            inputProps={{ 'aria-label': 'Without label' }}
+          >
+            <MenuItem value="">
+              <em>Select user</em>
+            </MenuItem>
+              {userData.map((user) => (
+                <MenuItem key={user.id} value={user.id}>{user.first_name}</MenuItem>
+              ))}
+          </Select>
+        </FormControl>
+
+        <UserChart userId={userId}/>
+    </Box>
   );
 };
 

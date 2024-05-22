@@ -333,6 +333,38 @@ static async dataAnalysis() {
     }
 }
 
+static async dataAnalysisById(id) {
+    return performTransaction(async (connection) => {
+        try {
+                const [results] = await connection.execute(`
+                SELECT 
+                    DATE_FORMAT(order_date, '%Y-%m') AS month, 
+                    COUNT(order_id) AS orders_count 
+                FROM 
+                    orders
+                WHERE account_id = ?     
+                GROUP BY 
+                    month 
+                ORDER BY 
+                month;
+            `,[id]);
+            return results;
+        } catch (error) {
+            console.error('Error during searching order:', error);
+            throw error;
+        }
+    });
+}
+
+static async dataUsers() {
+    try {
+        const [results] = await pool.execute(`SELECT id, first_name FROM accounts WHERE role = 'user';`);
+        return results; 
+    } catch (error) {
+        console.error('Error fetching orders:', error);
+        throw error;
+    }
+  }
 }
 
 module.exports = { RentalsRecord };
