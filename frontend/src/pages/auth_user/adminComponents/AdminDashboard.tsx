@@ -5,6 +5,8 @@ import Footer from "../../../layout/Footer";
 import AdminBar from "../../../layout/AdminBar";
 import UsersTable from "./userTable";
 import OrdersTable from "./orderTable";
+import SalesChart from "../../../components/DataAnalizing/SalesChart";
+import UserOrdersChart from "../../../components/DataAnalizing/UserOrdersChart";
 
 const AdminDashboard = () => {
     const redirect = useNavigate();
@@ -33,11 +35,11 @@ const AdminDashboard = () => {
                     </Grid>
 
                     <Grid sx={{ marginBottom: 2, marginTop:2 }}>
-                        Wykres sprzedazy
+                        <SalesChart />
                     </Grid>
 
                     <Grid sx={{ marginBottom: 2, marginTop:2 }}>
-                        Wykres sprzedazy poszczegolnych uzytkownikow 
+                        <UserOrdersChart/> 
                     </Grid>
 
                 </Grid>

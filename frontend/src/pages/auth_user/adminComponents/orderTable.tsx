@@ -16,7 +16,6 @@ const OrdersTable = () => {
         try {
           const response = await axios.get(`${BACKEND}/orders`);
           setData(response.data.data);
-          console.log(response.data.data);
         } catch (error: any) { 
           console.error('Error fetching data:', error);
         }

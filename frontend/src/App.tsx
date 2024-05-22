@@ -13,6 +13,7 @@ import { ResetPassword } from "./auth/Reset/ResetPassword";
 import { PasswordChangeRequest } from "./auth/Reset/PasswordChangeRequest";
 import VHSCatalog from "./components/Vhs/VHSCatalog";
 import Basket from "./components/Basket/Basket";
+import { SalesDataProvider } from "./components/DataAnalizing/contex/SalesDataContext";
 
 function App() {
   return (
@@ -31,13 +32,18 @@ function App() {
 
       {/* pages */}
         <Route path='dashboard' element={< Dashboard />}/>
-        <Route path='admin-dashboard' element={< AdminDashboard />}/>
         <Route path='be-login' element={<BeLogin/>} />
         <Route path='logout' element={<Logout/>}/>
         <Route path='profile' element={<Profile/>}/>
         <Route path='account' element={<Account/>}/>
         <Route path='vhs' element={<VHSCatalog/>}/>
         <Route path='basket' element={<Basket/>}/>
+        <Route path='admin-dashboard' element={
+          <SalesDataProvider>
+            <AdminDashboard />
+          </SalesDataProvider>
+      } />
+      
     </Routes>
   )
 }
