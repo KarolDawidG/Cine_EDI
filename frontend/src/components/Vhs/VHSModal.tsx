@@ -2,6 +2,7 @@ import { Box, Typography, Button, Modal, Grid, CardMedia, IconButton } from "@mu
 import CloseIcon from '@mui/icons-material/Close';
 import { VHSModalProps } from "./interfaces/ModalInterfaces";
 import { addFavorite } from "./utils/favorites";
+import { getYear, parseISO } from 'date-fns';
 
 const VHSModal = ({ open, handleClose, vhs, addToCart }: VHSModalProps) => {
   if (!vhs) return null;
@@ -37,14 +38,20 @@ const VHSModal = ({ open, handleClose, vhs, addToCart }: VHSModalProps) => {
             <Typography variant="h6" component="h2">
               {vhs.title}
             </Typography>
-            <Typography sx={{ mt: 2 }}>
+            <Typography variant="body1">
+            Release: {getYear(parseISO(vhs.release_date))}
+          </Typography>
+            <Typography sx={{ mt: 1 }}>
               {vhs.description}
             </Typography>
             <Typography variant="body1" sx={{ mt: 1 }}>
-              Cena za dobę: ${vhs.price_per_day}
+              Price per day: ${vhs.price_per_day}
             </Typography>
             <Typography variant="body1">
-              Dostępne ilości: {vhs.quantity_available}
+              Available quantities: {vhs.quantity_available}
+            </Typography>
+            <Typography variant="body1">
+              Vote Average: {vhs.vote_average}
             </Typography>
             <Button variant="contained" color="primary" sx={{ mt: 2 }} onClick={handleRent}>
               Wypożycz

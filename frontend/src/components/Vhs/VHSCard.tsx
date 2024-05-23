@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, CardMedia, CardContent, Typography, Box, Button } from "@mui/material";
 import { VHSCardProps } from "./interfaces/CardInterfaces";
+import { getYear, parseISO } from 'date-fns';
 
 const VHSCard: React.FC<VHSCardProps> = ({ vhs, addToCart, handleOpen, handleAddFavorite }) => {
   return (
@@ -16,6 +17,9 @@ const VHSCard: React.FC<VHSCardProps> = ({ vhs, addToCart, handleOpen, handleAdd
         <Box>
           <Typography gutterBottom variant="h6" component="div">
             {vhs.title}
+          </Typography>
+          <Typography variant="body1">
+            Release: {getYear(parseISO(vhs.release_date))}
           </Typography>
           <Typography
             variant="body2"
@@ -38,6 +42,9 @@ const VHSCard: React.FC<VHSCardProps> = ({ vhs, addToCart, handleOpen, handleAdd
           </Typography>
           <Typography variant="body1">
             Dostępne ilości: {vhs.quantity_available}
+          </Typography>
+          <Typography variant="body1">
+            Ocena: {vhs.vote_average}
           </Typography>
           <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
             {addToCart && (

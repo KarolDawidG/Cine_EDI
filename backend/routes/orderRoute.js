@@ -57,6 +57,7 @@ router.get('/all/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
     const formData = req.body;
+    console.log(formData);
     const account_id = formData.items[0].account_id;
     
     try {
@@ -79,9 +80,7 @@ router.post('/', async (req, res) => {
         const orderDetails = await RentalsRecord.findById(orderId);
 
         const data = JSON.stringify(orderDetails, null, 2);
-        console.log("=================================================");
-        console.log(data);
-        console.log("=================================================");
+
         const ediDocument = generateEDIDocument(data);
         await sendOrderEmail(data);
 

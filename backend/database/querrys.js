@@ -47,20 +47,35 @@ const createClientAddresses = `
           FOREIGN KEY (account_id) REFERENCES accounts(id) ON DELETE CASCADE
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
   `;
-  
-const createVhsTapes = `
-      CREATE TABLE IF NOT EXISTS vhs_tapes (
-        id varchar(36) NOT NULL,
-        title varchar(255) NOT NULL,
-        description text,
-        img_url varchar(255),
-        genre varchar(255),
-        price_per_day decimal(10, 2) NOT NULL DEFAULT 5.00,  -- Cena za dobę wypożyczenia
-        quantity_available int NOT NULL DEFAULT 1,  -- Ilość dostępnych kaset
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        PRIMARY KEY (id)
-      ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-    `;
+  const createVhsTapes = `
+  CREATE TABLE IF NOT EXISTS vhs_tapes (
+    id varchar(36) NOT NULL,
+    title varchar(255) NOT NULL,
+    description text,
+    img_url varchar(255),
+    genre varchar(255),
+    price_per_day decimal(10, 2) NOT NULL DEFAULT 5.00,
+    quantity_available int NOT NULL DEFAULT 1,
+    release_date DATE,
+    vote_average decimal(3, 1),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+`;
+
+// const createVhsTapes = `
+//       CREATE TABLE IF NOT EXISTS vhs_tapes (
+//         id varchar(36) NOT NULL,
+//         title varchar(255) NOT NULL,
+//         description text,
+//         img_url varchar(255),
+//         genre varchar(255),
+//         price_per_day decimal(10, 2) NOT NULL DEFAULT 5.00,
+//         quantity_available int NOT NULL DEFAULT 1,
+//         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+//         PRIMARY KEY (id)
+//       ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+//     `;
 
     const createRentals = `
       CREATE TABLE IF NOT EXISTS rentals (

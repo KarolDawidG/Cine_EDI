@@ -15,12 +15,15 @@ class RentalsRecord {
         try {
             await connection.execute(
                 `INSERT INTO orders (order_id, account_id, order_date) VALUES (?, ?, ?)`,
-                [order_id, account_id, new Date(),]
+                [order_id, account_id, new Date()]
             );
 
             for (const item of formData.items) {
                 const id = uuidv4();
                 
+                // Logowanie vhs_id
+                console.log(`Inserting rental with vhs_id: ${item.id}`);
+
                 await connection.execute(
                     `INSERT INTO rentals (id, account_id, order_id, vhs_id, rental_date, due_date, return_date, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
                     [
@@ -52,7 +55,55 @@ class RentalsRecord {
             throw error;
         }
     });
-}
+  }
+
+
+//   static async insert(formData) {
+//     return performTransaction(async (connection) => {
+//         const order_id = uuidv4();
+//         const account_id = formData.items[0].account_id;
+
+//         try {
+//             await connection.execute(
+//                 `INSERT INTO orders (order_id, account_id, order_date) VALUES (?, ?, ?)`,
+//                 [order_id, account_id, new Date(),]
+//             );
+
+//             for (const item of formData.items) {
+//                 const id = uuidv4();
+                
+//                 await connection.execute(
+//                     `INSERT INTO rentals (id, account_id, order_id, vhs_id, rental_date, due_date, return_date, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+//                     [
+//                         id,
+//                         item.account_id,
+//                         order_id,
+//                         item.id,
+//                         new Date(),
+//                         item.due_date,
+//                         null,
+//                         item.status
+//                     ]
+//                 );
+                
+//                 const [rows] = await connection.execute(
+//                     `SELECT quantity_available FROM vhs_tapes WHERE id = ?`,
+//                     [item.id]
+//                 );
+//                 if (rows[0].quantity_available > 0) {
+//                     await connection.execute(
+//                         `UPDATE vhs_tapes SET quantity_available = quantity_available - 1 WHERE id = ?`,
+//                         [item.id]
+//                     );
+//                 }
+//             }
+//             return order_id;
+//         } catch (error) {
+//             console.error('Error during inserting rental records:', error);
+//             throw error;
+//         }
+//     });
+// }
 
 static async findById(rentalIds) {
   if (!Array.isArray(rentalIds) || rentalIds.length === 0) {
