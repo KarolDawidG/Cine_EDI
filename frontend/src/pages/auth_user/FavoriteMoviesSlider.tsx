@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { NextArrow } from "../main/utils/NextArrow";
 import { PrevArrow } from "../main/utils/PrevArrow";
-import { useCart } from "../../components/Vhs/hooks/useCart";
+import { useCartContext } from "../../components/Basket/context/CartContext"; // Użyj nowego kontekstu
 
 const settings = {
   dots: true,
@@ -20,7 +20,7 @@ const settings = {
 
 const FavoriteMoviesSlider = () => {
   const { favorites, handleRemoveFavorite } = useFavorites();
-  const { addToCart } = useCart();
+  const { addToCart } = useCartContext(); // Zamiast useCart
   
   return (
     <Box sx={{ flexGrow: 1, padding: 1 }}>
