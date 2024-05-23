@@ -111,6 +111,31 @@ router.delete('/all/:id', async (req, res) => {
     }
 });
 
+router.put('/:id/:status', async (req, res) => {
+    const id = req.params.id;
+    const status = req.params.status;
+    
+    try {
+
+        await RentalsRecord.updateOrder(id, status);
+
+        if (status === 'returned') {
+            // todo: dziekujemy za zwrocenie towaru
+            console.log('returned has been added');
+        } else if (status === 'paid') {
+            // todo: kasety zostaly oplacone, wysylamy towar
+            console.log('paid has been added');
+        }
+
+        res.status(200).json({
+            message: "Zamówienie zostało pomyślnie aktualizowane."
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Nie udało się aktualizowac zamowienia." });
+    }
+});
+
 
 
 module.exports = router;

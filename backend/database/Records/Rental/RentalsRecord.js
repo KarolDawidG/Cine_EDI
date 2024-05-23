@@ -416,6 +416,22 @@ static async dataUsers() {
         throw error;
     }
   }
+
+  static async updateOrder(id, status) {
+    return performTransaction(async (connection) => {
+        try {
+            await connection.execute(
+                `UPDATE orders SET status = ? WHERE order_id = ?;`,
+                [status, id]
+            );
+        } catch (error) {
+            console.error('Error during updating order status:', error);
+            throw error;
+        }
+    });
+}
+
+
 }
 
 module.exports = { RentalsRecord };
