@@ -1,6 +1,7 @@
 import { Box, Typography, Button, Modal, Grid, CardMedia, IconButton } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 import { VHSModalProps } from "./interfaces/ModalInterfaces";
+import { addFavorite } from "./utils/favorites";
 
 const VHSModal = ({ open, handleClose, vhs, addToCart }: VHSModalProps) => {
   if (!vhs) return null;
@@ -47,6 +48,9 @@ const VHSModal = ({ open, handleClose, vhs, addToCart }: VHSModalProps) => {
             </Typography>
             <Button variant="contained" color="primary" sx={{ mt: 2 }} onClick={handleRent}>
               Wypożycz
+            </Button>
+            <Button variant="contained" color="success" sx={{ mt: 2 }} onClick={(e) => { e.stopPropagation(); addFavorite(vhs); }}>
+              Ulubione
             </Button>
           </Grid>
         </Grid>

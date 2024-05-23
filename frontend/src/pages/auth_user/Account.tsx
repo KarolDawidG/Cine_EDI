@@ -7,6 +7,7 @@ import AuthMainBar from "../../layout/AuthMainBar";
 import OrdersHistory from "./OrdersHistory";
 import OrdersProfile from "./OrdersProfile";
 import { BACKEND } from "../../utils/linkt";
+import FavoriteMoviesSlider from "./FavoriteMoviesSlider";
 
 const Account = () => {
     const redirect = useNavigate();
@@ -41,6 +42,9 @@ const Account = () => {
                     </Grid>
                     <Grid item xs={12} md={6}>
                         <OrdersProfile/>
+                    </Grid>
+                    <Grid item xs={12} md={12}>
+                        <FavoriteMoviesSlider/>
                     </Grid>
                 </Grid>
             </Container>

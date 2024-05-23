@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardMedia, CardContent, Typography, Box, Button } from "@mui/material";
 import { VHSCardProps } from "./interfaces/CardInterfaces";
 
-const VHSCard: React.FC<VHSCardProps> = ({ vhs, addToCart, handleOpen }) => {
+const VHSCard: React.FC<VHSCardProps> = ({ vhs, addToCart, handleOpen, handleAddFavorite }) => {
   return (
     <Card sx={{ width: 300, height: 700, display: 'flex', flexDirection: 'column' }}>
       <CardMedia
@@ -40,12 +40,21 @@ const VHSCard: React.FC<VHSCardProps> = ({ vhs, addToCart, handleOpen }) => {
             Dostępne ilości: {vhs.quantity_available}
           </Typography>
           <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Button variant="contained" color="primary" sx={{ mt: 1, width: '100px' }} onClick={(e) => { e.stopPropagation(); addToCart(vhs); }}>
-              Wypożycz
-            </Button>
-            <Button variant="contained" color="secondary" sx={{ mt: 1, width: '100px' }} onClick={(e) => { e.stopPropagation(); handleOpen(vhs); }}>
-              Info
-            </Button>
+            {addToCart && (
+              <Button variant="contained" color="primary" sx={{ mt: 1, width: '100px' }} onClick={(e) => { e.stopPropagation(); addToCart(vhs); }}>
+                Wypożycz
+              </Button>
+            )}
+            {handleOpen && (
+              <Button variant="contained" color="secondary" sx={{ mt: 1, width: '100px' }} onClick={(e) => { e.stopPropagation(); handleOpen(vhs); }}>
+                Info
+              </Button>
+            )}
+            {handleAddFavorite && (
+              <Button variant="contained" color="success" sx={{ mt: 1, width: '100px' }} onClick={(e) => { e.stopPropagation(); handleAddFavorite(vhs); }}>
+                Ulubione
+              </Button>
+            )}
           </Box>
         </Box>
       </CardContent>
