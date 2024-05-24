@@ -12,7 +12,7 @@ const OrdersProfile = () => {
             try {
                 const id = localStorage.getItem("idUser");
                 const response = await axios.get(`${BACKEND}/orders/all/${id}`);
-                console.log(response.data.data);
+            
                 setOrdersData(response.data.data);
             } catch (error:any) {
                 console.error("Error fetching orders:", error);
@@ -25,8 +25,7 @@ const OrdersProfile = () => {
     const handleDeleteOrders = async (id:string) => {
         try {          
 
-            const response = await axios.delete(`${BACKEND}/orders/all/${id}`);
-            console.log(response.data.message);
+            await axios.delete(`${BACKEND}/orders/all/${id}`);
 
             notify("Zamówienia usunięte.");
         } catch (error) {

@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, CardMedia, CardContent, Typography, Box, Button } from "@mui/material";
 import { VHS } from "./interfaces/VhsInterface";
+import { notify } from "../../notification/Notify";
 
 interface FavoriteMovieTileProps {
   vhs: VHS;
@@ -9,6 +10,14 @@ interface FavoriteMovieTileProps {
 }
 
 const FavoriteMovieTile: React.FC<FavoriteMovieTileProps> = ({ vhs, handleRemoveFavorite, addToCart }) => {
+  const handleAddToCart = (vhs: VHS) => {
+    if (vhs.quantity_available > 0) {
+      addToCart(vhs);
+    } else {
+      notify('Nie można wypożyczyć filmu');
+    }
+  };
+  
   return (
     <Card sx={{ width: 300, display: 'flex', flexDirection: 'column', height: 550 }}>
       <CardMedia
@@ -42,7 +51,13 @@ const FavoriteMovieTile: React.FC<FavoriteMovieTileProps> = ({ vhs, handleRemove
           <Button variant="contained" sx={{ mt: 1, width: '100%' }} onClick={() => handleRemoveFavorite(vhs.id)}>
             Usuń z ulubionych
           </Button>
-          <Button variant="contained" color="primary" sx={{ mt: 1, width: '100%' }} onClick={() => addToCart(vhs)}>
+          <Button 
+            variant="contained" 
+            color="primary" 
+            sx={{ mt: 1, width: '100%' }} 
+            onClick={() => handleAddToCart(vhs)}
+            disabled={vhs.quantity_available === 0}
+          >
             Wypożycz
           </Button>
         </Box>

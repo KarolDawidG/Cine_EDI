@@ -3,16 +3,28 @@ import CloseIcon from '@mui/icons-material/Close';
 import { VHSModalProps } from "./interfaces/ModalInterfaces";
 import { addFavorite } from "./utils/favorites";
 import { getYear, parseISO } from 'date-fns';
+import { notify } from "../../notification/Notify";
 
 const VHSModal = ({ open, handleClose, vhs, addToCart }: VHSModalProps) => {
   if (!vhs) return null;
 
+
+
+      
+
+
   const handleRent = () => {
-    addToCart(vhs, () => {
-      setTimeout(() => {
-        handleClose();
-      }, 500);
-    });
+    if (vhs.quantity_available === 0) {
+      notify('Nie można wypożyczyć filmu. Chwilowo niedostepny.');
+      return null;
+    } else {
+      addToCart(vhs, () => {
+
+        setTimeout(() => {
+          handleClose();
+        }, 500);
+      });
+    }
   };
 
   return (

@@ -19,7 +19,6 @@ export const useVHSData = () => {
         const response = await axios.get(`${BACKEND}/vhs`);
         const fetchedVhsList = response.data.vhsData;
         setMovies(fetchedVhsList);
-        console.log(fetchedVhsList);
         const uniqueGenres: string[] = Array.from(
           new Set(fetchedVhsList.map((vhs: VHS) => vhs.genre))
         );
