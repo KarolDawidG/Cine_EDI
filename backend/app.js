@@ -3,6 +3,10 @@ const { createDatabaseIfNotExists } = require('./database/createDatabaseIfNotExi
 const { initializeDatabase } = require('./database/initializeDatabase');
 const { limiter, errorHandler } = require('./config/config');
 //const middleware = require('./config/middleware');
+const cron = require('node-cron');
+const { sendReminders } = require('./scripts/sendReminders');
+const { sendRecommendations } = require('./scripts/sendRecommendations');
+
 
 const logRoute = require('./routes/userRoute/loginRoute');
 const adminRoute = require('./routes/adminRoute/adminRoute');
@@ -38,6 +42,17 @@ app.use('/analizing', dataAnalysisRoute);
 //app.use(middleware);
 app.use(limiter);
 app.use(errorHandler);
+
+// skrypt odpala sie codziennie o godzinie 9:00 np,
+cron.schedule('20 22 * * *', () => {
+  console.log('Running sendReminders job at 22:20');
+  sendReminders();
+});
+
+cron.schedule('20 22 * * *', () => {
+  console.log('Running sendRecommendations job at 22:20');
+  sendRecommendations();
+});
 
 app.get("/", (req, res) => {
   return res.status(STATUS_CODES.SUCCESS).send(MESSAGES.SUCCESSFUL_OPERATION);

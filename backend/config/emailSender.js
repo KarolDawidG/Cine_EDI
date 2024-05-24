@@ -1,5 +1,6 @@
   const nodemailer = require("nodemailer");
   const dotenv = require("dotenv");
+  const { format } = require('date-fns');
   dotenv.config();
 
   // utils
@@ -244,10 +245,12 @@
               `).join('')}
             </ul>
   
-            <p style="color: #444; font-size: 16px;">We have just sent your parcel!</p>
+            <p style="color: #444; font-size: 16px;">We have just received your parcel!</p>
+            <p style="color: #444; font-size: 14px;">Thanks for using our rental!</p>
+
             <img src="https://utfs.io/f/c9935a8e-97e5-4e0f-8f65-e7362cbd516b-3pdkna.jpg" alt="Returning" style="display: block; margin: 0 auto; width: 400px; height: auto; border-radius: 10px;">
     
-            <p style="color: #444; font-size: 16px;"><strong>Order Status:</strong> Return</p>
+            <p style="color: #444; font-size: 16px;"><strong>Order Status:</strong>Return</p>
             <p style="color: #777; font-size: 14px;">We will process your order shortly. If you have any questions, feel free to contact us.</p>
             <p style="color: #3b5998; font-size: 16px;">Follow us on <a href="https://twitter.com/cine_edi" style="color: #3b5998; text-decoration: none;">Twitter</a> and <a href="https://www.facebook.com/cine_edi" style="color: #3b5998; text-decoration: none;">Facebook</a> for the latest updates and promotions.</p>
             <p style="color: #3b5998; font-size: 18px;">Best regards,</p>
@@ -261,6 +264,83 @@
       throw error;
     }
   };
+
+  const sendReminderEmail = async (rentalDetails) => {
+    try {
+      const { firstName, secondName, email, vhsTitle, due_date } = rentalDetails;
+  
+      console.log(`Due Date before formatting: ${due_date}`);
+  
+      const formattedDueDate = format(new Date(due_date), 'yyyy-MM-dd');
+  
+      console.log(`Formatted Due Date: ${formattedDueDate}`);
+  
+      const transporter = createTransporter();
+      const mailOptions = {
+        from: process.env.user,
+        to: email,
+        subject: `Reminder: Return Your VHS Tape - ${vhsTitle}`,
+        html: `
+          <div style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; max-width: 600px; margin: 0 auto; background-color: #f8f9fa; padding: 20px; border-radius: 10px; border: 1px solid #ddd;">
+            <h2 style="color: #3b5998; font-size: 24px;">Hello ${firstName} ${secondName}!</h2>
+            <p style="color: #444; font-size: 16px;">This is a reminder to return the VHS tape you rented:</p>
+            <h3 style="color: #3b5998; font-size: 20px;">Movie Title: ${vhsTitle}</h3>
+            <p style="color: #444; font-size: 16px;">Due Date: ${formattedDueDate}</p>
+            <p style="color: #444; font-size: 16px;">Please make sure to return it by the due date to avoid any late fees.</p>
+            <p style="color: #777; font-size: 14px;">If you have any questions, feel free to contact us.</p>
+            <p style="color: #3b5998; font-size: 16px;">Best regards,</p>
+            <p style="color: #3b5998; font-size: 18px;">The Team at Cine EDI</p>
+          </div>
+        `,
+      };
+      await transporter.sendMail(mailOptions);
+    } catch (error) {
+      console.error('Error in sendReminderEmail:', error);
+      throw error;
+    }
+  };
   
 
-  module.exports = {sendOrderReturnEmail, sendingPackage, sendResetPasswordEmail, sendRegisterEmail, sendContactEmail, sendOrderEmail };
+  const sendRecommendationEmail = async (recommendationDetails) => {
+    try {
+      const { firstName, secondName, email, recommendations } = recommendationDetails;
+    
+      const transporter = createTransporter();
+      const mailOptions = {
+        from: process.env.user,
+        to: email,
+        subject: `Movie Recommendations for You, ${firstName} ${secondName}`,
+        html: `
+          <div style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; max-width: 600px; margin: 0 auto; background-color: #f8f9fa; padding: 20px; border-radius: 10px; border: 1px solid #ddd;">
+            <h2 style="color: #3b5998; font-size: 24px;">Hello ${firstName} ${secondName}!</h2>
+            <p style="color: #444; font-size: 16px;">Based on the latest publishing hits, we thought you might enjoy these movies:</p>
+            <h3 style="color: #3b5998; font-size: 20px;">Recommended Movies:</h3>
+            <ul style="list-style-type: none; padding: 0;">
+              ${recommendations.map(movie => `
+                <li style="margin-bottom: 15px;">
+                  <strong style="color: #333; font-size: 18px;">Title:</strong> ${movie.title}<br>
+                  <strong style="color: #333;">Description:</strong> ${movie.description}<br>
+                  
+                  <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.img_url}" alt="${movie.title}" style="width: 100px; height: auto; margin-top: 10px; border-radius: 5px;">
+                </li>
+              `).join('')}
+            </ul>
+            <p style="color: #444; font-size: 16px;">We hope you enjoy these recommendations!</p>
+            <p style="color: #777; font-size: 14px;">If you have any questions, feel free to contact us.</p>
+            <p style="color: #3b5998; font-size: 16px;">Best regards,</p>
+            <p style="color: #3b5998; font-size: 18px;">The Team at Cine EDI</p>
+          </div>
+        `,
+      };
+  
+      await transporter.sendMail(mailOptions);
+      console.log(`Email with recomendation sent to ${email} successfully`);
+    } catch (error) {
+      console.error('Error in sendRecommendationEmail:', error);
+      throw error;
+    }
+  };
+  
+  
+
+  module.exports = {sendRecommendationEmail, sendReminderEmail, sendOrderReturnEmail, sendingPackage, sendResetPasswordEmail, sendRegisterEmail, sendContactEmail, sendOrderEmail };
