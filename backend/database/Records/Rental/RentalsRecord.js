@@ -57,54 +57,6 @@ class RentalsRecord {
     });
   }
 
-
-//   static async insert(formData) {
-//     return performTransaction(async (connection) => {
-//         const order_id = uuidv4();
-//         const account_id = formData.items[0].account_id;
-
-//         try {
-//             await connection.execute(
-//                 `INSERT INTO orders (order_id, account_id, order_date) VALUES (?, ?, ?)`,
-//                 [order_id, account_id, new Date(),]
-//             );
-
-//             for (const item of formData.items) {
-//                 const id = uuidv4();
-                
-//                 await connection.execute(
-//                     `INSERT INTO rentals (id, account_id, order_id, vhs_id, rental_date, due_date, return_date, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-//                     [
-//                         id,
-//                         item.account_id,
-//                         order_id,
-//                         item.id,
-//                         new Date(),
-//                         item.due_date,
-//                         null,
-//                         item.status
-//                     ]
-//                 );
-                
-//                 const [rows] = await connection.execute(
-//                     `SELECT quantity_available FROM vhs_tapes WHERE id = ?`,
-//                     [item.id]
-//                 );
-//                 if (rows[0].quantity_available > 0) {
-//                     await connection.execute(
-//                         `UPDATE vhs_tapes SET quantity_available = quantity_available - 1 WHERE id = ?`,
-//                         [item.id]
-//                     );
-//                 }
-//             }
-//             return order_id;
-//         } catch (error) {
-//             console.error('Error during inserting rental records:', error);
-//             throw error;
-//         }
-//     });
-// }
-
 static async findById(rentalIds) {
   if (!Array.isArray(rentalIds) || rentalIds.length === 0) {
       return [];
@@ -430,6 +382,105 @@ static async dataUsers() {
         }
     });
 }
+
+static async findDetailsByOrderId(orderId) {
+    const query = `
+      SELECT 
+        o.order_id AS orderId,
+        o.order_date,
+        o.status AS orderStatus,
+        a.first_name AS firstName, 
+        a.second_name AS secondName, 
+        a.email, 
+        ca.street, 
+        ca.house_number AS houseNumber, 
+        ca.city, 
+        ca.state, 
+        ca.postal_code AS postalCode, 
+        ca.country,
+        v.title AS vhsTitle, 
+        v.price_per_day AS pricePerDay
+      FROM orders o
+      JOIN rentals r ON o.order_id = r.order_id
+      JOIN vhs_tapes v ON r.vhs_id = v.id
+      JOIN accounts a ON o.account_id = a.id
+      LEFT JOIN client_addresses ca ON a.id = ca.account_id
+      WHERE o.order_id = ?
+    `;
+
+    try {
+      const [results] = await pool.execute(query, [orderId]);
+      console.log('Query results:', results);
+
+      if (results.length === 0) {
+        return null;
+      }
+
+      const orderDetails = {
+        orderId: results[0].orderId,
+        orderDate: results[0].order_date,
+        orderStatus: results[0].orderStatus,
+        account: {
+          firstName: results[0].firstName,
+          secondName: results[0].secondName,
+          email: results[0].email,
+          address: {
+            street: results[0].street,
+            houseNumber: results[0].houseNumber,
+            city: results[0].city,
+            state: results[0].state,
+            postalCode: results[0].postalCode,
+            country: results[0].country
+          }
+        },
+        rentals: results.map(row => ({
+          title: row.vhsTitle,
+          pricePerDay: row.pricePerDay
+        }))
+      };
+
+      return orderDetails;
+    } catch (error) {
+      console.error('Error fetching order details by orderId:', error);
+      throw error;
+    }
+}
+
+static async findSimpleDetailsByOrderId(orderId) {
+    const query = `
+      SELECT 
+        a.first_name AS firstName,
+        a.second_name AS secondName,
+        a.email,
+        v.title AS vhsTitle
+      FROM orders o
+      JOIN rentals r ON o.order_id = r.order_id
+      JOIN vhs_tapes v ON r.vhs_id = v.id
+      JOIN accounts a ON o.account_id = a.id
+      WHERE o.order_id = ?
+    `;
+
+    try {
+      const [results] = await pool.execute(query, [orderId]);
+      
+      if (results.length === 0) {
+        return null;
+      }
+
+      const simpleDetails = {
+        firstName: results[0].firstName,
+        secondName: results[0].secondName,
+        email: results[0].email,
+        titles: results.map(row => row.vhsTitle)
+      };
+
+      return simpleDetails;
+    } catch (error) {
+      console.error('Error fetching simple details by orderId:', error);
+      throw error;
+    }
+}
+
 
 
 }

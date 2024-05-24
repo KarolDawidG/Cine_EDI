@@ -3,7 +3,7 @@ const { errorHandler } = require('../config/config');
 const middleware = require('../config/middleware');
 const { RentalsRecord } = require('../database/Records/Rental/RentalsRecord');
 const { generateEDIDocument } = require('./generateEDIDocument');
-const { sendOrderEmail } = require('../config/emailSender');
+const { sendOrderEmail, sendingPackage, sendOrderReturnEmail } = require('../config/emailSender');
 const { AddressRecord } = require('../database/Records/Adress/AddressRecord');
 
 const router = express.Router();
@@ -57,7 +57,7 @@ router.get('/all/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
     const formData = req.body;
-    console.log(formData);
+    // console.log(formData);
     const account_id = formData.items[0].account_id;
     
     try {
@@ -80,7 +80,7 @@ router.post('/', async (req, res) => {
         const orderDetails = await RentalsRecord.findById(orderId);
 
         const data = JSON.stringify(orderDetails, null, 2);
-
+        // console.log(data);
         const ediDocument = generateEDIDocument(data);
         await sendOrderEmail(data);
 
@@ -111,31 +111,41 @@ router.delete('/all/:id', async (req, res) => {
     }
 });
 
+
 router.put('/:id/:status', async (req, res) => {
     const id = req.params.id;
     const status = req.params.status;
     
-    try {
-
-        await RentalsRecord.updateOrder(id, status);
-
-        if (status === 'returned') {
-            // todo: dziekujemy za zwrocenie towaru
-            console.log('returned has been added');
-        } else if (status === 'paid') {
-            // todo: kasety zostaly oplacone, wysylamy towar
-            console.log('paid has been added');
+        if (!id || !['returned', 'paid'].includes(status)) {
+            return res.status(400).json({ message: 'Invalid parameters' });
         }
+        
+    try {
+      await RentalsRecord.updateOrder(id, status);
+  
+      if (status === 'returned') {
+        const simlpyDetail = await RentalsRecord.findSimpleDetailsByOrderId(id);
+        await sendOrderReturnEmail(simlpyDetail);
 
-        res.status(200).json({
-            message: "Zamówienie zostało pomyślnie aktualizowane."
-        });
+      } else if (status === 'paid') {
+        const orderDetails = await RentalsRecord.findDetailsByOrderId(id);
+            if (!orderDetails) {
+            throw new Error('Order details not found.');
+            }
+        const data = JSON.stringify(orderDetails, null, 2);
+        await sendingPackage(data);
+      }
+  
+      res.status(200).json({
+        message: "Zamówienie zostało pomyślnie aktualizowane."
+      });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: "Nie udało się aktualizowac zamowienia." });
+      console.error(error);
+      res.status(500).json({ message: "Nie udało się aktualizowac zamowienia." });
     }
-});
-
-
+  });
+  
+  module.exports = router;
+  
 
 module.exports = router;
