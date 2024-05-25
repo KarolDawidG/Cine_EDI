@@ -21,30 +21,25 @@ const AdminDashboard = () => {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AdminBar />
-            <Grid item xs={12}>
-                <Grid sx={{ marginBottom: 2, padding: 2, marginTop:2 }}>
+            <Grid container spacing={2} sx={{ padding: 2 }}>
+                <Grid item xs={12}>
+                    <Typography variant="h5" sx={{ marginBottom: 2 }}>User table</Typography>
+                    <UsersTable />
+                </Grid>
 
-                    <Grid sx={{ marginBottom: 2, marginTop:2 }}>
-                        <Typography variant="h5">Tabela uzytkownikow</Typography>
-                        <UsersTable/>
-                    </Grid>
+                <Grid item xs={12}>
+                    <Typography variant="h5" sx={{ marginBottom: 2 }}>Orders table</Typography>
+                    <OrdersTable />
+                </Grid>
 
-                    <Grid sx={{ marginBottom: 2, marginTop:2 }}>
-                        <Typography variant="h5">Tabela zamowien</Typography>
-                        <OrdersTable />
-                    </Grid>
+                <Grid item xs={12}>
+                    <SalesChart />
+                </Grid>
 
-                    <Grid sx={{ marginBottom: 2, marginTop:2 }}>
-                        <SalesChart />
-                    </Grid>
-
-                    <Grid sx={{ marginBottom: 2, marginTop:2 }}>
-                        <UserOrdersChart/> 
-                    </Grid>
-
+                <Grid item xs={12}>
+                    <UserOrdersChart />
                 </Grid>
             </Grid>
-
             <Footer />
         </Box>
     );

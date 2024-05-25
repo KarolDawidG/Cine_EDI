@@ -41,7 +41,7 @@ class RentalsRecord {
                 item.status
               ]
             );
-  
+            // aktualizacja liczby dostepnych kaset
             await connection.execute(
               `UPDATE vhs_tapes SET quantity_available = quantity_available - 1 WHERE id = ?`,
               [item.id]
@@ -270,35 +270,59 @@ static async selectRentalById(order_id) {
 }
 
 static async deleteByOrderId(orderId) {
-    return performTransaction(async (connection) => {
-        try {
-            const [orderStatusResult] = await connection.execute(
-                `SELECT status FROM orders WHERE order_id = ?;`,
-                [orderId]
-            );
-            const status = orderStatusResult[0].status;
-                if (status === "paid") {
-                    throw new Error('Cannot delete order because it is already paid.');
-                }
-            await connection.execute(
-                `DELETE FROM rentals WHERE order_id = ?;`,
-                [orderId]
-            );
-            const [result] = await connection.execute(
-                `DELETE FROM orders WHERE order_id = ?;`,
-                [orderId]
-            );
-                if (result.affectedRows > 0) {
-                    return result.affectedRows;
-                } else {
-                    throw new Error('No order found with the specified ID or it could not be deleted.');
-                }
-        } catch (error) {
-            console.error('Error during deleting order:', error);
-            throw error;
-        }
-    });
+  return performTransaction(async (connection) => {
+      try {
+          // Sprawdzenie statusu zamówienia
+          const [orderStatusResult] = await connection.execute(
+              `SELECT status FROM orders WHERE order_id = ?;`,
+              [orderId]
+          );
+          const status = orderStatusResult[0].status;
+          if (status === "paid") {
+              throw new Error('Cannot delete order because it is already paid.');
+          }
+          if (status === "returned") {
+              throw new Error('Cannot delete order because it is already returned.');
+          }
+
+          // Pobranie wszystkich wypożyczeń powiązanych z tym zamówieniem
+          const [rentals] = await connection.execute(
+              `SELECT vhs_id FROM rentals WHERE order_id = ?;`,
+              [orderId]
+          );
+
+          // Usunięcie wypożyczeń
+          await connection.execute(
+              `DELETE FROM rentals WHERE order_id = ?;`,
+              [orderId]
+          );
+
+          // Usunięcie zamówienia
+          const [result] = await connection.execute(
+              `DELETE FROM orders WHERE order_id = ?;`,
+              [orderId]
+          );
+
+          // Przywrócenie ilości dostępnych kopii dla każdego usuniętego wypożyczenia
+          for (const rental of rentals) {
+              await connection.execute(
+                  `UPDATE vhs_tapes SET quantity_available = quantity_available + 1 WHERE id = ?`,
+                  [rental.vhs_id]
+              );
+          }
+
+          if (result.affectedRows > 0) {
+              return result.affectedRows;
+          } else {
+              throw new Error('No order found with the specified ID or it could not be deleted.');
+          }
+      } catch (error) {
+          console.error('Error during deleting order:', error);
+          throw error;
+      }
+  });
 }
+
 
 static async listAllOrders() {
     try {
@@ -551,7 +575,6 @@ static async findRentalsDueSoon(daysBeforeDue) {
   }
   
   
-
   static async updateRentalStatusByOrderId(orderId, status) {
     return performTransaction(async (connection) => {
       try {

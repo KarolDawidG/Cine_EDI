@@ -13,12 +13,12 @@ router.get('/', async (req, res) => {
     try {
         const vhsData = await VHSRecord.selectAll();
         res.status(200).json({
-            message: "Wszystko okey.",
+            message: "Data transfer to VHS completed successfully.",
             vhsData: vhsData,
         });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "Nie udało się pobrac kaset z powodu błędu serwera." });
+        res.status(500).json({ message: "The cartridges failed to download due to a server error." });
     }
 });
 

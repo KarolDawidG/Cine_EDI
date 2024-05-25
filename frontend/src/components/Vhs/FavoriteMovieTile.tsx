@@ -14,20 +14,29 @@ const FavoriteMovieTile: React.FC<FavoriteMovieTileProps> = ({ vhs, handleRemove
     if (vhs.quantity_available > 0) {
       addToCart(vhs);
     } else {
-      notify('Nie można wypożyczyć filmu');
+      notify('The video is temporarily unavailable');
     }
   };
-  
+
   return (
-    <Card sx={{ width: 300, display: 'flex', flexDirection: 'column', height: 550 }}>
+    <Card 
+      sx={{ 
+        width: '100%', 
+        maxWidth: 300, 
+        display: 'flex', 
+        flexDirection: 'column', 
+        height: 550, 
+        margin: '0 auto' 
+      }}
+    >
       <CardMedia
         component="img"
-        sx={{ height: 225, width: 150 }}
+        sx={{ height: 225, width: '100%', objectFit: 'cover' }}
         image={`https://image.tmdb.org/t/p/w600_and_h900_bestv2${vhs.img_url}`}
         alt={vhs.title}
         loading="lazy"
       />
-      <CardContent sx={{ flexDirection: 'column', justifyContent: 'space-between' }}>
+      <CardContent sx={{ flexDirection: 'column', justifyContent: 'space-between', flex: '1' }}>
         <Box>
           <Typography gutterBottom variant="h6" component="div" sx={{ fontSize: '1rem' }}>
             {vhs.title}
@@ -36,7 +45,7 @@ const FavoriteMovieTile: React.FC<FavoriteMovieTileProps> = ({ vhs, handleRemove
             variant="body2"
             color="text.secondary"
             sx={{
-              display: '-webkit-box',
+              display: { xs: 'none', sm: '-webkit-box' },
               WebkitBoxOrient: 'vertical',
               WebkitLineClamp: 5,
               overflow: 'hidden',
@@ -49,7 +58,7 @@ const FavoriteMovieTile: React.FC<FavoriteMovieTileProps> = ({ vhs, handleRemove
         </Box>
         <Box>
           <Button variant="contained" sx={{ mt: 1, width: '100%' }} onClick={() => handleRemoveFavorite(vhs.id)}>
-            Usuń z ulubionych
+            Remove from favorites
           </Button>
           <Button 
             variant="contained" 
@@ -58,7 +67,7 @@ const FavoriteMovieTile: React.FC<FavoriteMovieTileProps> = ({ vhs, handleRemove
             onClick={() => handleAddToCart(vhs)}
             disabled={vhs.quantity_available === 0}
           >
-            Wypożycz
+            Rent
           </Button>
         </Box>
       </CardContent>

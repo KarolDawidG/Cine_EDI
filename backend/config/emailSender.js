@@ -1,9 +1,10 @@
   const nodemailer = require("nodemailer");
   const dotenv = require("dotenv");
   const { format } = require('date-fns');
+  const { generateInvoicePDF } = require('../utils/generatePDF'); 
+  const path = require('path');
   dotenv.config();
 
-  // utils
   const formatDate = (dateString) => {
     const options = {
       year: "numeric",
@@ -156,23 +157,18 @@
     await transporter.sendMail(mailOrderOptions);
   };
   
-  const sendingPackage = async (jsonData) => {
+  const sendingPackage = async (orderDetails, id) => {
     try {
-      const packageDetailsJson = JSON.parse(jsonData);
-      
-      const { firstName, secondName, email, address } = packageDetailsJson.account;
-      const { rentals } = packageDetailsJson;
+      const { customerName, customerEmail, address, items, total, orderId } = orderDetails;
+      const [firstName, ...restName] = customerName.split(' ');
+      const secondName = restName.join(' ');
   
-      if (!rentals || !Array.isArray(rentals) || rentals.length === 0) {
-        throw new Error('Invalid rentals data');
-      }
-  
-      const totalPrice = rentals.reduce((total, movie) => total + movie.pricePerDay, 0);
+      const pdfData = await generateInvoicePDF(orderDetails, id);
   
       const transporter = createTransporter();
       const mailPackageOptions = {
         from: process.env.user,
-        to: email,
+        to: customerEmail,
         subject: `The order has been sent - ${firstName} ${secondName}`,
         html: `
           <div style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; max-width: 600px; margin: 0 auto; background-color: #f8f9fa; padding: 20px; border-radius: 10px; border: 1px solid #ddd;">
@@ -181,21 +177,21 @@
             <p style="color: #444; font-size: 16px;">We are currently sending your package! Below are the details of the shipping address:</p>
             <h3 style="color: #3b5998; font-size: 20px;">Customer Details:</h3>
             <ul style="list-style-type: none; padding: 0;">
-              <li><strong style="color: #333;">Name:</strong> ${firstName} ${secondName}</li>
-              <li><strong style="color: #333;">Email:</strong> ${email}</li>
-              <li><strong style="color: #333;">Address:</strong> ${address.street} ${address.houseNumber}, ${address.city} ${address.postalCode}, ${address.country}</li>
+              <li><strong style="color: #333;">Name:</strong> ${customerName}</li>
+              <li><strong style="color: #333;">Email:</strong> ${customerEmail}</li>
+              <li><strong style="color: #333;">Address:</strong> ${address}</li>
             </ul>
             
             <h3 style="color: #3b5998; font-size: 20px;">Ordered Movies:</h3>
             <ul style="list-style-type: none; padding: 0;">
-              ${rentals.map(movie => `
+              ${items.map(movie => `
                 <li>
-                  <strong style="color: #333;">Title:</strong> ${movie.title}
+                  <strong style="color: #333;">Title:</strong> ${movie.name}
                 </li>
               `).join('')}
             </ul>
   
-            <p style="color: #444; font-size: 16px;"><strong>Total Price:</strong> $${totalPrice}</p>
+            <p style="color: #444; font-size: 16px;"><strong>Total Price:</strong> $${total}</p>
             
             <p style="color: #444; font-size: 16px;">We have just sent your parcel!</p>
             <img src="https://utfs.io/f/b10d4091-80ad-4d45-bfd8-8f9746322d02-j1gosv.jpg" alt="Packing" style="display: block; margin: 0 auto; width: 400px; height: auto; border-radius: 10px;">
@@ -207,15 +203,21 @@
             <p style="color: #3b5998; font-size: 18px;">The Team at Cine EDI</p>
           </div>
         `,
+        attachments: [
+          {
+            filename: `invoice_${id}.pdf`,
+            content: pdfData,
+            contentType: 'application/pdf'
+          }
+        ]
       };
       await transporter.sendMail(mailPackageOptions);
     } catch (error) {
       console.error('Error in sendingPackage:', error);
       throw error;
     }
-
   };
-  
+
   const sendOrderReturnEmail = async (orderDetails) => {
     try {
       const { firstName, secondName, email, titles } = orderDetails;
@@ -299,7 +301,6 @@
       throw error;
     }
   };
-  
 
   const sendRecommendationEmail = async (recommendationDetails) => {
     try {
@@ -341,6 +342,4 @@
     }
   };
   
-  
-
   module.exports = {sendRecommendationEmail, sendReminderEmail, sendOrderReturnEmail, sendingPackage, sendResetPasswordEmail, sendRegisterEmail, sendContactEmail, sendOrderEmail };

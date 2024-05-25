@@ -12,9 +12,9 @@ export const addFavorite = (vhs:any) => {
   if (!favorites.find((fav:any) => fav.id === vhs.id)) {
     favorites.push(vhs);
     localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
-    notify('Dodano do ulubionych!');
+    notify('Added to favorites!');
   } else (
-    notify('Film juz jest w ulubionych!')
+    notify('The movie is already in my favorites!')
   )
 };
 

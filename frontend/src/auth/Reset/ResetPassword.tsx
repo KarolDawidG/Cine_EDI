@@ -7,6 +7,7 @@ import { PasswordStatus } from "./PasswordStatus";
 import MainBar from "../../layout/MainBar";
 import Footer from "../../layout/Footer";
 import { BACKEND } from "../../utils/linkt";
+import { notify } from "../../notification/Notify";
 
 export const ResetPassword = () => {
   const [password, setPassword1] = useState("");
@@ -37,10 +38,11 @@ export const ResetPassword = () => {
       try {
         const response = await axios.get(`${BACKEND}/reset/${id}/${token}`);
         if (response.status !== 200) {
-          console.log(response.data.message);
+          notify(response.data.message);
+        
         }
       } catch (error: any) {
-        console.log(error);
+        console.error(error);
       }
     };
     handleResetLink();

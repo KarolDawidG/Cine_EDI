@@ -16,7 +16,6 @@ const UserOrdersChart: React.FC = () => {
       try {
         const response = await axios.get(`${BACKEND}/analizing/users`);
         setUserData(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error('Error fetching sales data', error);
       }
@@ -30,26 +29,26 @@ const UserOrdersChart: React.FC = () => {
   };
 
   return (
-    <Box>
-      <Typography>Wykres sprzedaży poszczególnych użytkowników</Typography>
-        <FormControl >
-          <Select
-            autoWidth
-            value={userId}
-            onChange={handleChange}
-            displayEmpty
-            inputProps={{ 'aria-label': 'Without label' }}
-          >
-            <MenuItem value="">
-              <em>Select user</em>
-            </MenuItem>
-              {userData.map((user) => (
-                <MenuItem key={user.id} value={user.id}>{user.first_name}</MenuItem>
-              ))}
-          </Select>
-        </FormControl>
-
-        <UserChart userId={userId}/>
+    <Box sx={{ padding: 2 }}>
+      <Typography variant="h6" gutterBottom>Sales Chart of Individual Users</Typography>
+      <FormControl sx={{ marginBottom: 2 }}>
+        <Select
+          value={userId}
+          onChange={handleChange}
+          displayEmpty
+          inputProps={{ 'aria-label': 'Without label' }}
+        >
+          <MenuItem value="">
+            <em>Select User</em>
+          </MenuItem>
+          {userData.map((user) => (
+            <MenuItem key={user.id} value={user.id}>{user.first_name}</MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', width: '100%', height: '100%' }}>
+        <UserChart userId={userId} />
+      </Box>
     </Box>
   );
 };

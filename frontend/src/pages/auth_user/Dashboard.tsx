@@ -38,7 +38,7 @@ const Dashboard = () => {
                     
                 <Grid item xs={12} md={3}>
                     <Typography variant="body1" sx={{ fontSize: '1.0rem', color: 'black' }}>
-                        Przegladaj i wybieraj filmy w starym stylu lat 90'
+                        Browse and select old style 90's movies
                     </Typography>
                 </Grid>
 

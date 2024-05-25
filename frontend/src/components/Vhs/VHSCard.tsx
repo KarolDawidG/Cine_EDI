@@ -10,7 +10,7 @@ const VHSCard: React.FC<VHSCardProps> = ({ vhs, addToCart, handleOpen, handleAdd
     if (vhs.quantity_available > 0) {
       addToCart(vhs);
     } else {
-      notify('Nie można wypożyczyć filmu');
+      notify('The video is temporarily unavailable');
     }
   };
 
@@ -48,18 +48,18 @@ const VHSCard: React.FC<VHSCardProps> = ({ vhs, addToCart, handleOpen, handleAdd
         </Box>
         <Box>
           <Typography variant="body1">
-            Cena za dobę: ${vhs.price_per_day}
+            Price per rental: {vhs.price_per_day}$
           </Typography>
           <Typography variant="body1">
-            Dostępne ilości: {vhs.quantity_available}
+            Quantities available: {vhs.quantity_available}
           </Typography>
           <Typography variant="body1">
-            Ocena: {vhs.vote_average}
+            Rating: {vhs.vote_average}
           </Typography>
           <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
            
             <Button variant="contained" color="primary" sx={{ mt: 1, width: '100px' }} onClick={(e) => { e.stopPropagation(); handleAddToCart(vhs); }}>
-              Wypożycz
+              Rent
             </Button>
             
             {handleOpen && (
@@ -69,7 +69,7 @@ const VHSCard: React.FC<VHSCardProps> = ({ vhs, addToCart, handleOpen, handleAdd
             )}
             {handleAddFavorite && (
               <Button variant="contained" color="success" sx={{ mt: 1, width: '100px' }} onClick={(e) => { e.stopPropagation(); handleAddFavorite(vhs); }}>
-                Ulubione
+                Favorite
               </Button>
             )}
           </Box>

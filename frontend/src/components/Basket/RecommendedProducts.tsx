@@ -53,7 +53,7 @@ const RecommendedProducts: React.FC = () => {
   return (
     <Box>
       <Typography variant="h5" gutterBottom>
-        Rekomendacje dla ciebie
+      Recommendations for you
       </Typography>
 
       <Box sx={{ display: 'flex', overflowX: 'scroll', gap: 2 }}>
@@ -75,14 +75,14 @@ const RecommendedProducts: React.FC = () => {
                   color="primary" 
                   onClick={() => handleOpen(recommended)}
                 >
-                  Szczegóły
+                  Details
                 </Button>
               </CardContent>
             </Card>
           ))
         ) : (
           <Typography variant="body1">
-            Brak rekomendacji. Dodaj filmy do ulubionych.
+            No recommendations. Add videos to favorites.
           </Typography>
         )}
       </Box>

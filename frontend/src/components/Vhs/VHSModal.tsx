@@ -8,18 +8,12 @@ import { notify } from "../../notification/Notify";
 const VHSModal = ({ open, handleClose, vhs, addToCart }: VHSModalProps) => {
   if (!vhs) return null;
 
-
-
-      
-
-
   const handleRent = () => {
     if (vhs.quantity_available === 0) {
-      notify('Nie można wypożyczyć filmu. Chwilowo niedostepny.');
+      notify('The video is temporarily unavailable.');
       return null;
     } else {
       addToCart(vhs, () => {
-
         setTimeout(() => {
           handleClose();
         }, 500);
@@ -29,7 +23,23 @@ const VHSModal = ({ open, handleClose, vhs, addToCart }: VHSModalProps) => {
 
   return (
     <Modal open={open} onClose={handleClose}>
-      <Box sx={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 800, maxHeight: '90vh', bgcolor: 'background.paper', boxShadow: 24, p: 4, borderRadius: 2, overflowY: 'auto', position: 'relative' }}>
+      <Box 
+        sx={{ 
+          top: '50%', 
+          left: '50%', 
+          transform: 'translate(-50%, -50%)', 
+          width: { xs: '90%', md: '800px' }, 
+          maxHeight: '90vh', 
+          bgcolor: 'background.paper', 
+          boxShadow: 24, 
+          p: 4, 
+          borderRadius: 2, 
+          overflowY: 'auto', 
+          position: 'relative',
+          display: 'flex',
+          flexDirection: 'column'
+        }}
+      >
         <IconButton
           onClick={handleClose}
           sx={{ position: 'absolute', top: 8, right: 8 }}
@@ -51,13 +61,13 @@ const VHSModal = ({ open, handleClose, vhs, addToCart }: VHSModalProps) => {
               {vhs.title}
             </Typography>
             <Typography variant="body1">
-            Release: {getYear(parseISO(vhs.release_date))}
-          </Typography>
+              Release: {getYear(parseISO(vhs.release_date))}
+            </Typography>
             <Typography sx={{ mt: 1 }}>
               {vhs.description}
             </Typography>
             <Typography variant="body1" sx={{ mt: 1 }}>
-              Price per day: ${vhs.price_per_day}
+              Price per rental: {vhs.price_per_day}$
             </Typography>
             <Typography variant="body1">
               Available quantities: {vhs.quantity_available}
@@ -65,11 +75,11 @@ const VHSModal = ({ open, handleClose, vhs, addToCart }: VHSModalProps) => {
             <Typography variant="body1">
               Vote Average: {vhs.vote_average}
             </Typography>
-            <Button variant="contained" color="primary" sx={{ mt: 2 }} onClick={handleRent}>
-              Wypożycz
+            <Button variant="contained" color="primary" sx={{ mt: 2, width: '100%' }} onClick={handleRent}>
+              Rent
             </Button>
-            <Button variant="contained" color="success" sx={{ mt: 2 }} onClick={(e) => { e.stopPropagation(); addFavorite(vhs); }}>
-              Ulubione
+            <Button variant="contained" color="success" sx={{ mt: 2, width: '100%' }} onClick={(e) => { e.stopPropagation(); addFavorite(vhs); }}>
+              Favorite
             </Button>
           </Grid>
         </Grid>

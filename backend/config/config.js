@@ -53,6 +53,10 @@ if (!fs.existsSync("./klucze")) {
   fs.mkdirSync("./klucze");
 }
 
+if (!fs.existsSync("./ediDocuments")) {
+  fs.mkdirSync("./ediDocuments");
+}
+
 fs.writeFileSync("./klucze/privateKey.pem", privateKey);
 fs.writeFileSync("./klucze/publicKey.pem", publicKey);
 

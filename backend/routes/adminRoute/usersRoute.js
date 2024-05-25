@@ -29,7 +29,7 @@ router.put("/:id", async (req, res) => {
     await UsersRecord.updateUserData(first_name, second_name , email, userId);
     return res
       .status(STATUS_CODES.SUCCESS)
-      .json({message: "Dane zostały pomyślnie aktualizowane."});
+      .json({message: "The data has been successfully updated."});
   } catch (error) {
     logger.error(error.message);
     return res

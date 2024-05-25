@@ -35,7 +35,7 @@ const AddressProfile = () => {
                 
                     notify(error.response.data.message);
                 } else {
-                    console.log("An unknown error occurred");
+                    notify("An unknown error occurred");
                 }
             }
         })();

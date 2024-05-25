@@ -1,4 +1,5 @@
 const express = require('express');
+const multer = require('multer');
 const { createDatabaseIfNotExists } = require('./database/createDatabaseIfNotExists');
 const { initializeDatabase } = require('./database/initializeDatabase');
 const { limiter, errorHandler } = require('./config/config');
@@ -6,7 +7,6 @@ const { limiter, errorHandler } = require('./config/config');
 const cron = require('node-cron');
 const { sendReminders } = require('./scripts/sendReminders');
 const { sendRecommendations } = require('./scripts/sendRecommendations');
-
 
 const logRoute = require('./routes/userRoute/loginRoute');
 const adminRoute = require('./routes/adminRoute/adminRoute');
@@ -23,6 +23,17 @@ const dataAnalysisRoute = require('./routes/dataAnalysisRoute');
 const MESSAGES = require('./config/messages');
 const STATUS_CODES = require('./config/status-codes');
 
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/')
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname)
+  }
+});
+
+const upload = multer({ storage: storage });
+
 const app = express();
 const PORT = 3001;
 const HOST = 'localhost'; // Dodany adres IP
@@ -38,6 +49,11 @@ app.use("/address", addressRoute);
 app.use('/vhs', vhsRoute);
 app.use('/user', userRoute);
 app.use('/analizing', dataAnalysisRoute);
+
+// data storage
+app.post('/upload', upload.single('file'), (req, res) => {
+  res.send('File uploaded successfully.');
+});
 
 //app.use(middleware);
 app.use(limiter);

@@ -55,13 +55,13 @@ const UsersTable = () => {
         <Table size="small" aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Nr.</TableCell>
-              <TableCell>Data zatrudnienia</TableCell>
-              <TableCell>Imie</TableCell>
-              <TableCell>Nazwisko</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>Rola</TableCell>
-              <TableCell>Usun</TableCell>
+              <TableCell>No.</TableCell>
+              <TableCell>Date of registration</TableCell>
+              <TableCell>First name</TableCell>
+              <TableCell>Second name</TableCell>
+              <TableCell>E-mail</TableCell>
+              <TableCell>Role</TableCell>
+              <TableCell>Delete</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -82,7 +82,7 @@ const UsersTable = () => {
 
                 <TableCell>
                   <Button onClick={() => handleDeleteUser(user.id)}>
-                    Usun
+                    X
                   </Button>
                 </TableCell>
 
