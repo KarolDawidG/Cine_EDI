@@ -14,12 +14,12 @@ router.get('/:id', async (req, res) => {
         const address = await AddressRecord.selectById([id]);
         
         res.status(200).json({
-            message: "Adres został pomyślnie wyswietlony.",
+            message: "The address has been successfully displayed.",
             address: address
         });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "Nie udało się wyswietlic adresu z powodu błędu serwera." });
+        res.status(500).json({ message: "The address could not be displayed due to a server error." });
     }
 });
 
@@ -28,7 +28,7 @@ router.post('/', async (req, res) => {
     try {
         const orderId = await AddressRecord.insert(formData);
         res.status(200).json({
-            message: "Adres został pomyślnie utworzony.",
+            message: "The address has been successfully created.",
             orderId: orderId,
         });
     } catch (error) {
@@ -45,7 +45,7 @@ router.put('/:id', async (req, res) => {
         res.status(200).json(result);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "Nie udało się zaktualizować adresu z powodu błędu serwera." });
+        res.status(500).json({ message: "The address could not be updated due to a server error." });
     }
 });
 

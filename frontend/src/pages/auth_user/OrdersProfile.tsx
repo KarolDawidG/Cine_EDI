@@ -12,7 +12,7 @@ const OrdersProfile = () => {
             try {
                 const id = localStorage.getItem("idUser");
                 const response = await axios.get(`${BACKEND}/orders/all/${id}`);
-                console.log(response.data.data);
+            
                 setOrdersData(response.data.data);
             } catch (error:any) {
                 console.error("Error fetching orders:", error);
@@ -26,26 +26,25 @@ const OrdersProfile = () => {
         try {          
 
             const response = await axios.delete(`${BACKEND}/orders/all/${id}`);
-            console.log(response.data.message);
 
-            notify("Zamówienia usunięte.");
-        } catch (error) {
+            notify(response.data.message);
+        } catch (error:any) {
             console.error("Error deleting orders:", error);
-            notify("Nie udało się usunąć zamówień.");
+            notify(error.response.data.message);
         }
     };
 
     return (
         <Paper elevation={3} style={{ padding: 10, margin: "10px" }}>
             <Typography variant="h5" gutterBottom>
-                Historia wszystkich zamówień wygenerowana przez użytkownika:
+                User-generated history of all orders:
             </Typography>
             <Box style={{ maxHeight: '350px', overflow: 'auto' }}>
                 <List>
                     {ordersData.map((order:any, index:number) => (
                         <ListItem key={index} alignItems="flex-start" secondaryAction={
                             <Button aria-label="delete" onClick={() => handleDeleteOrders(order.orderId)}>
-                                Usun zamowienie!
+                                Delete order!
                             </Button>
                         }>
                         <ListItemText
@@ -60,7 +59,7 @@ const OrdersProfile = () => {
                                 <>
                                 {order.rentals.map((rental: any, idx: any) => (
                                     <Typography key={idx} component="span" variant="body2" display="block">
-                                    * {rental.title} - Status: {rental.status}
+                                    * {rental.title}
                                     </Typography>
                                 ))}
                                 </>

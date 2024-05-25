@@ -1,8 +1,19 @@
 import React from "react";
 import { Card, CardMedia, CardContent, Typography, Box, Button } from "@mui/material";
 import { VHSCardProps } from "./interfaces/CardInterfaces";
+import { getYear, parseISO } from 'date-fns';
+import { notify } from "../../notification/Notify";
 
 const VHSCard: React.FC<VHSCardProps> = ({ vhs, addToCart, handleOpen, handleAddFavorite }) => {
+  
+  const handleAddToCart = (vhs:any) => {
+    if (vhs.quantity_available > 0) {
+      addToCart(vhs);
+    } else {
+      notify('The video is temporarily unavailable');
+    }
+  };
+
   return (
     <Card sx={{ width: 300, height: 700, display: 'flex', flexDirection: 'column' }}>
       <CardMedia
@@ -16,6 +27,9 @@ const VHSCard: React.FC<VHSCardProps> = ({ vhs, addToCart, handleOpen, handleAdd
         <Box>
           <Typography gutterBottom variant="h6" component="div">
             {vhs.title}
+          </Typography>
+          <Typography variant="body1">
+            Release: {getYear(parseISO(vhs.release_date))}
           </Typography>
           <Typography
             variant="body2"
@@ -34,17 +48,20 @@ const VHSCard: React.FC<VHSCardProps> = ({ vhs, addToCart, handleOpen, handleAdd
         </Box>
         <Box>
           <Typography variant="body1">
-            Cena za dobę: ${vhs.price_per_day}
+            Price per rental: {vhs.price_per_day}$
           </Typography>
           <Typography variant="body1">
-            Dostępne ilości: {vhs.quantity_available}
+            Quantities available: {vhs.quantity_available}
+          </Typography>
+          <Typography variant="body1">
+            Rating: {vhs.vote_average}
           </Typography>
           <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-            {addToCart && (
-              <Button variant="contained" color="primary" sx={{ mt: 1, width: '100px' }} onClick={(e) => { e.stopPropagation(); addToCart(vhs); }}>
-                Wypożycz
-              </Button>
-            )}
+           
+            <Button variant="contained" color="primary" sx={{ mt: 1, width: '100px' }} onClick={(e) => { e.stopPropagation(); handleAddToCart(vhs); }}>
+              Rent
+            </Button>
+            
             {handleOpen && (
               <Button variant="contained" color="secondary" sx={{ mt: 1, width: '100px' }} onClick={(e) => { e.stopPropagation(); handleOpen(vhs); }}>
                 Info
@@ -52,7 +69,7 @@ const VHSCard: React.FC<VHSCardProps> = ({ vhs, addToCart, handleOpen, handleAdd
             )}
             {handleAddFavorite && (
               <Button variant="contained" color="success" sx={{ mt: 1, width: '100px' }} onClick={(e) => { e.stopPropagation(); handleAddFavorite(vhs); }}>
-                Ulubione
+                Favorite
               </Button>
             )}
           </Box>

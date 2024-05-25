@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
         res.json(analizing); 
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "Nie udało się pobrac danych z powodu błędu serwera." });
+        res.status(500).json({ message: "Failed to download data due to server error." });
     }
 });
 
@@ -25,7 +25,7 @@ router.get('/user/:id', async (req, res) => {
           res.json(userData); 
       } catch (error) {
           console.error(error);
-          res.status(500).json({ message: "Nie udało się pobrac danych z powodu błędu serwera." });
+          res.status(500).json({ message: "Failed to download data due to server error." });
       }
 });
 
@@ -35,7 +35,7 @@ router.get('/users', async (req, res) => {
         res.json(usersList); 
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "Nie udało się pobrac danych z powodu błędu serwera." });
+        res.status(500).json({ message: "Failed to download data due to server error." });
     }
 });
 

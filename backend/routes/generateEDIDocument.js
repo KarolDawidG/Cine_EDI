@@ -2,6 +2,9 @@ const generateEDIDocument = (orderDetails) => {
     const segments = [];
 
     const orderDetailsJson = JSON.parse(orderDetails);
+    console.log('================================');
+    console.log(orderDetails);
+    console.log('================================');
 
     const account = orderDetailsJson[0].account;
     const rentalLength = orderDetailsJson[0].rentals.length;

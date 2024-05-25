@@ -4,7 +4,7 @@ const OrdersHistory = ({ ordersData }:any) => {
     return (
         <Paper elevation={3} style={{ padding: 10, margin: "10px" }}>
             <Typography variant="h5" gutterBottom>
-                Wszystkie filmy wypożyczone przez użytkownika!
+                All movies rented by the user!
             </Typography>
             <Box style={{ maxHeight: '350px', overflow: 'auto' }}>
                 <List>

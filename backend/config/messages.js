@@ -40,7 +40,7 @@ const MESSAGES = {
 
   // Authorization
   JWT_ERROR:
-    "Autoryzacja nie powiodła się z powodu nieprawidłowego podpisu JsonWebToken.",
+    "Autoryzacja nie powiodła się.",
   NO_REFRESH_TOKEN: "Brak tokenu odświeżania.",
   INVALID_REFRESH_TOKEN: "Token odświeżania jest nieprawidłowy.",
   AUTHORIZATION_LVL: "Poziom autoryzacji: ",

@@ -25,7 +25,7 @@ const FavoriteMoviesSlider = () => {
   return (
     <Box sx={{ flexGrow: 1, padding: 1 }}>
       <Typography variant="h4" gutterBottom>
-        Ulubione Filmy
+        Favorite Movies
       </Typography>
       {favorites.length > 0 ? (
         <Slider {...settings}>
@@ -36,7 +36,7 @@ const FavoriteMoviesSlider = () => {
           ))}
         </Slider>
       ) : (
-        <Typography variant="body1">Brak ulubionych filmów</Typography>
+        <Typography variant="body1">No favorite movies</Typography>
       )}
     </Box>
   );

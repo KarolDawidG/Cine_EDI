@@ -23,7 +23,7 @@ const AddressProfile = () => {
             try {
                 const id = localStorage.getItem("idUser");
                 const response = await axios.get(`${BACKEND}/address/${id}`);
-                console.log(response.data);
+
                 if (response.data.address[0]) {
                     setAddressData(response.data.address[0]);
                     setEditData(response.data.address[0]);
@@ -32,10 +32,10 @@ const AddressProfile = () => {
                 }
             } catch (error:any) {
                 if (error.response && error.response.data.message) {
-                    console.log(error.response.data.message);
+                
                     notify(error.response.data.message);
                 } else {
-                    console.log("An unknown error occurred");
+                    notify("An unknown error occurred");
                 }
             }
         })();

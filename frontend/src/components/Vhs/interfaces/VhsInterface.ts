@@ -1,4 +1,6 @@
 export interface VHS {
+    release_date: string;
+    vote_average: number;
     due_date: any;
     id: string;
     title: string;

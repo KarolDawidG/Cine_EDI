@@ -9,50 +9,55 @@ class RentalsRecord {
 
   static async insert(formData) {
     return performTransaction(async (connection) => {
-        const order_id = uuidv4();
-        const account_id = formData.items[0].account_id;
-
-        try {
+      const order_id = uuidv4();
+      const account_id = formData.items[0].account_id;
+  
+      try {
+        // Wstawienie zamówienia do tabeli orders
+        await connection.execute(
+          `INSERT INTO orders (order_id, account_id, order_date) VALUES (?, ?, ?)`,
+          [order_id, account_id, new Date()]
+        );
+  
+        // Wstawienie każdego wypożyczenia związanego z zamówieniem
+        for (const item of formData.items) {
+          const [rows] = await connection.execute(
+            `SELECT quantity_available FROM vhs_tapes WHERE id = ?`,
+            [item.id]
+          );
+  
+          if (rows[0].quantity_available > 0) {
+            const id = uuidv4();
             await connection.execute(
-                `INSERT INTO orders (order_id, account_id, order_date) VALUES (?, ?, ?)`,
-                [order_id, account_id, new Date(),]
+              `INSERT INTO rentals (id, account_id, order_id, vhs_id, rental_date, due_date, return_date, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+              [
+                id,
+                item.account_id,
+                order_id,
+                item.id,
+                new Date(),
+                item.due_date,
+                null,
+                item.status
+              ]
             );
-
-            for (const item of formData.items) {
-                const id = uuidv4();
-                
-                await connection.execute(
-                    `INSERT INTO rentals (id, account_id, order_id, vhs_id, rental_date, due_date, return_date, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-                    [
-                        id,
-                        item.account_id,
-                        order_id,
-                        item.id,
-                        new Date(),
-                        item.due_date,
-                        null,
-                        item.status
-                    ]
-                );
-                
-                const [rows] = await connection.execute(
-                    `SELECT quantity_available FROM vhs_tapes WHERE id = ?`,
-                    [item.id]
-                );
-                if (rows[0].quantity_available > 0) {
-                    await connection.execute(
-                        `UPDATE vhs_tapes SET quantity_available = quantity_available - 1 WHERE id = ?`,
-                        [item.id]
-                    );
-                }
-            }
-            return order_id;
-        } catch (error) {
-            console.error('Error during inserting rental records:', error);
-            throw error;
+            // aktualizacja liczby dostepnych kaset
+            await connection.execute(
+              `UPDATE vhs_tapes SET quantity_available = quantity_available - 1 WHERE id = ?`,
+              [item.id]
+            );
+          } else {
+            console.log(`VHS tape with id ${item.id} is not available for rental.`);
+          }
         }
+        return order_id;
+      } catch (error) {
+        console.error('Error during inserting rental records:', error);
+        throw error;
+      }
     });
-}
+  }
+  
 
 static async findById(rentalIds) {
   if (!Array.isArray(rentalIds) || rentalIds.length === 0) {
@@ -265,35 +270,59 @@ static async selectRentalById(order_id) {
 }
 
 static async deleteByOrderId(orderId) {
-    return performTransaction(async (connection) => {
-        try {
-            const [orderStatusResult] = await connection.execute(
-                `SELECT status FROM orders WHERE order_id = ?;`,
-                [orderId]
-            );
-            const status = orderStatusResult[0].status;
-                if (status === "paid") {
-                    throw new Error('Cannot delete order because it is already paid.');
-                }
-            await connection.execute(
-                `DELETE FROM rentals WHERE order_id = ?;`,
-                [orderId]
-            );
-            const [result] = await connection.execute(
-                `DELETE FROM orders WHERE order_id = ?;`,
-                [orderId]
-            );
-                if (result.affectedRows > 0) {
-                    return result.affectedRows;
-                } else {
-                    throw new Error('No order found with the specified ID or it could not be deleted.');
-                }
-        } catch (error) {
-            console.error('Error during deleting order:', error);
-            throw error;
-        }
-    });
+  return performTransaction(async (connection) => {
+      try {
+          // Sprawdzenie statusu zamówienia
+          const [orderStatusResult] = await connection.execute(
+              `SELECT status FROM orders WHERE order_id = ?;`,
+              [orderId]
+          );
+          const status = orderStatusResult[0].status;
+          if (status === "paid") {
+              throw new Error('Cannot delete order because it is already paid.');
+          }
+          if (status === "returned") {
+              throw new Error('Cannot delete order because it is already returned.');
+          }
+
+          // Pobranie wszystkich wypożyczeń powiązanych z tym zamówieniem
+          const [rentals] = await connection.execute(
+              `SELECT vhs_id FROM rentals WHERE order_id = ?;`,
+              [orderId]
+          );
+
+          // Usunięcie wypożyczeń
+          await connection.execute(
+              `DELETE FROM rentals WHERE order_id = ?;`,
+              [orderId]
+          );
+
+          // Usunięcie zamówienia
+          const [result] = await connection.execute(
+              `DELETE FROM orders WHERE order_id = ?;`,
+              [orderId]
+          );
+
+          // Przywrócenie ilości dostępnych kopii dla każdego usuniętego wypożyczenia
+          for (const rental of rentals) {
+              await connection.execute(
+                  `UPDATE vhs_tapes SET quantity_available = quantity_available + 1 WHERE id = ?`,
+                  [rental.vhs_id]
+              );
+          }
+
+          if (result.affectedRows > 0) {
+              return result.affectedRows;
+          } else {
+              throw new Error('No order found with the specified ID or it could not be deleted.');
+          }
+      } catch (error) {
+          console.error('Error during deleting order:', error);
+          throw error;
+      }
+  });
 }
+
 
 static async listAllOrders() {
     try {
@@ -365,6 +394,217 @@ static async dataUsers() {
         throw error;
     }
   }
+
+  static async updateOrder(id, status) {
+    return performTransaction(async (connection) => {
+        try {
+            await connection.execute(
+                `UPDATE orders SET status = ? WHERE order_id = ?;`,
+                [status, id]
+            );
+        } catch (error) {
+            console.error('Error during updating order status:', error);
+            throw error;
+        }
+    });
+}
+
+static async findDetailsByOrderId(orderId) {
+    const query = `
+      SELECT 
+        o.order_id AS orderId,
+        o.order_date,
+        o.status AS orderStatus,
+        a.first_name AS firstName, 
+        a.second_name AS secondName, 
+        a.email, 
+        ca.street, 
+        ca.house_number AS houseNumber, 
+        ca.city, 
+        ca.state, 
+        ca.postal_code AS postalCode, 
+        ca.country,
+        v.title AS vhsTitle, 
+        v.price_per_day AS pricePerDay
+      FROM orders o
+      JOIN rentals r ON o.order_id = r.order_id
+      JOIN vhs_tapes v ON r.vhs_id = v.id
+      JOIN accounts a ON o.account_id = a.id
+      LEFT JOIN client_addresses ca ON a.id = ca.account_id
+      WHERE o.order_id = ?
+    `;
+
+    try {
+      const [results] = await pool.execute(query, [orderId]);
+      console.log('Query results:', results);
+
+      if (results.length === 0) {
+        return null;
+      }
+
+      const orderDetails = {
+        orderId: results[0].orderId,
+        orderDate: results[0].order_date,
+        orderStatus: results[0].orderStatus,
+        account: {
+          firstName: results[0].firstName,
+          secondName: results[0].secondName,
+          email: results[0].email,
+          address: {
+            street: results[0].street,
+            houseNumber: results[0].houseNumber,
+            city: results[0].city,
+            state: results[0].state,
+            postalCode: results[0].postalCode,
+            country: results[0].country
+          }
+        },
+        rentals: results.map(row => ({
+          title: row.vhsTitle,
+          pricePerDay: row.pricePerDay
+        }))
+      };
+
+      return orderDetails;
+    } catch (error) {
+      console.error('Error fetching order details by orderId:', error);
+      throw error;
+    }
+}
+
+static async findSimpleDetailsByOrderId(orderId) {
+    const query = `
+      SELECT 
+        a.first_name AS firstName,
+        a.second_name AS secondName,
+        a.email,
+        v.title AS vhsTitle
+      FROM orders o
+      JOIN rentals r ON o.order_id = r.order_id
+      JOIN vhs_tapes v ON r.vhs_id = v.id
+      JOIN accounts a ON o.account_id = a.id
+      WHERE o.order_id = ?
+    `;
+
+    try {
+      const [results] = await pool.execute(query, [orderId]);
+      
+      if (results.length === 0) {
+        return null;
+      }
+
+      const simpleDetails = {
+        firstName: results[0].firstName,
+        secondName: results[0].secondName,
+        email: results[0].email,
+        titles: results.map(row => row.vhsTitle)
+      };
+
+      return simpleDetails;
+    } catch (error) {
+      console.error('Error fetching simple details by orderId:', error);
+      throw error;
+    }
+}
+
+static async findRentalsDueSoon(daysBeforeDue) {
+    const query = `
+      SELECT 
+        r.id AS rentalId,
+        r.due_date,
+        a.first_name AS firstName,
+        a.second_name AS secondName,
+        a.email,
+        v.title AS vhsTitle
+      FROM rentals r
+      JOIN accounts a ON r.account_id = a.id
+      JOIN vhs_tapes v ON r.vhs_id = v.id
+      WHERE r.due_date BETWEEN NOW() AND DATE_ADD(NOW(), INTERVAL ? DAY)
+      AND r.status = 'rented'
+    `;
+  
+    try {
+      const [results] = await pool.execute(query, [daysBeforeDue]);
+      return results;
+    } catch (error) {
+      console.error('Error fetching rentals due soon:', error);
+      throw error;
+    }
+  }
+
+  static async findUsersWithRentals() {
+    const query = `
+      SELECT 
+        a.id AS accountId,
+        a.first_name AS firstName,
+        a.second_name AS secondName,
+        a.email,
+        v.title AS vhsTitle,
+        r.rental_date AS rentalDate
+      FROM rentals r
+      JOIN accounts a ON r.account_id = a.id
+      JOIN vhs_tapes v ON r.vhs_id = v.id
+      WHERE r.status = 'returned'
+    `;
+  
+    try {
+      const [results] = await pool.execute(query);
+      return results;
+    } catch (error) {
+      console.error('Error fetching users with rentals:', error);
+      throw error;
+    }
+  }
+  
+  static async findLatestMovies() {
+    const query = `
+      SELECT id, title, description, img_url 
+      FROM vhs_tapes
+      WHERE YEAR(release_date) = 2024
+      ORDER BY release_date DESC
+      LIMIT 3
+    `;
+  
+    try {
+      const [results] = await pool.execute(query);
+      return results;
+    } catch (error) {
+      console.error('Error fetching latest movies:', error);
+      throw error;
+    }
+  }
+  
+  
+  static async updateRentalStatusByOrderId(orderId, status) {
+    return performTransaction(async (connection) => {
+      try {
+        // Aktualizacja statusu wypożyczenia na 'returned'
+        await connection.execute(
+          `UPDATE rentals SET status = ? WHERE order_id = ?`,
+          [status, orderId]
+        );
+  
+        // Pobranie wszystkich wypożyczeń powiązanych z tym zamówieniem
+        const [rentals] = await connection.execute(
+          `SELECT vhs_id FROM rentals WHERE order_id = ?`,
+          [orderId]
+        );
+  
+        // Zwiększenie ilości dostępnych kopii dla każdego zwracanego filmu
+        for (const rental of rentals) {
+          await connection.execute(
+            `UPDATE vhs_tapes SET quantity_available = quantity_available + 1 WHERE id = ?`,
+            [rental.vhs_id]
+          );
+        }
+      } catch (error) {
+        console.error('Error updating rental status:', error);
+        throw error;
+      }
+    });
+  }
+  
+  
 }
 
 module.exports = { RentalsRecord };

@@ -30,7 +30,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     const isAlreadyInCart = cartItems.some(item => item.id === vhs.id);
 
     if (isAlreadyInCart) {
-      notify('Ten film jest już w koszyku');
+      notify('This video is already in your cart');
       return;
     }
 
@@ -42,7 +42,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     };
 
     setCartItems((prevItems) => [...prevItems, updatedVhs]);
-    notify('Film został dodany do koszyka');
+    notify('The video has been added to the cart!');
     
     if (callback) callback();
   };

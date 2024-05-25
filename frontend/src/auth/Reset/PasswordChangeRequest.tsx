@@ -36,9 +36,7 @@ export const PasswordChangeRequest: React.FC = () => {
         setFormState({ email: "" });
         setLink("");
         setTimeout(() => redirect(`/`), 1000);
-      } else {
-        console.log(response.data.message);
-      }
+      } 
     } catch (error: any) {
       console.log(error);
     }

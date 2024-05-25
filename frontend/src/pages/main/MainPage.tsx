@@ -23,7 +23,7 @@ const MainPage = () => {
               
           <Grid item xs={12} md={3}>
             <Typography variant="body1" sx={{ fontSize: '1.0rem', color: 'black' }}>
-              Odkryj na nowo magię kina z epoki VHS. Od klasyków po rzadko spotykane perełki, po najnowsze hity!! Nasz katalog oferuje unikalne doświadczenie filmowe, które przeniesie Cię w czasie.
+              Rediscover the magic of cinema from the VHS era. From classics to rare gems to the latest hits!! Our catalog offers a unique film experience that will take you back in time.
             </Typography>
           </Grid>
 

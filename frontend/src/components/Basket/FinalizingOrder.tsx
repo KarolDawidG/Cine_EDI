@@ -44,7 +44,7 @@ const FinalizingOrder = () => {
     try {
       const response = await axios.post(`${BACKEND}/orders`, { items: orderItems });
       clearCart();
-      notify('Zamówienie zostało pomyślnie wysłane!');
+      notify('The order has been successfully shipped!');
     } catch (error: any) {
       notify(error.response.data.message);
     }
@@ -54,7 +54,7 @@ const FinalizingOrder = () => {
     <Box>
       {cartItems.length > 0 ? (
         <Paper elevation={3} sx={{ p: 2, width: '95%', height: '400px' }}>
-          <Typography variant="h6" gutterBottom>Twoje zamówienia</Typography>
+          <Typography variant="h6" gutterBottom>Your order</Typography>
           <List
             sx={{
               height: '300px',
@@ -69,28 +69,28 @@ const FinalizingOrder = () => {
           >
             {cartItems.map((item: VHS, index: number) => (
               <ListItem key={index}>
-                <ListItemText primary={`${item.title}`} secondary={`Termin zwrotu: ${item.due_date}`} />
+                <ListItemText primary={`${item.title}`} secondary={`Return date: ${item.due_date}`} />
                 <ListItemSecondaryAction>
-                  <Button onClick={() => removeFromCart(index)}>Usuń</Button>
+                  <Button onClick={() => removeFromCart(index)}>Delete</Button>
                 </ListItemSecondaryAction>
               </ListItem>
             ))}
           </List>
           <Typography sx={{ textAlign: 'right' }}>
-            Wartość zamówienia to: {price} PLN
+          The order value is: {price} $
           </Typography>
-          <Button variant="contained" color="primary" onClick={sendData} fullWidth>Finalizuj zamówienie</Button>
+          <Button variant="contained" color="primary" onClick={sendData} fullWidth>Finalize your order</Button>
         </Paper>
       ) : (
         <Grid container spacing={2} direction="column" alignItems="center" justifyContent="center" sx={{ mt: 2 }}>
           <Grid item>
             <Typography variant="h6" component="div" sx={{ textAlign: 'center' }}>
-              Twój koszyk jest pusty
+            Your shopping cart is empty
             </Typography>
           </Grid>
           <Grid item>
             <Typography variant="body1" sx={{ textAlign: 'center' }}>
-              Wygląda na to, że nie dodałeś jeszcze żadnego produktu do koszyka.
+            It looks like you haven't added any products to your cart yet.
             </Typography>
           </Grid>
         </Grid>

@@ -19,10 +19,9 @@ const UserData = () => {
                 setEditData(response.data[0]);
             } catch (error:any) {
                 if (error.response && error.response.data.message) {
-                    console.log(error.response.data.message);
                     notify(error.response.data.message);
                 } else {
-                    console.log("An unknown error occurred");
+                    notify("An unknown error occurred");
                 }
             }
         })();
