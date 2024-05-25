@@ -5,6 +5,7 @@ import Footer from "../../layout/Footer";
 import AuthMainBar from "../../layout/AuthMainBar";
 import MovieTiles from "../main/MovieTiles";
 import logo from "../../../public/logo2.png";
+import { RentalProcess } from "../main/RentalProcess";
 
 const Dashboard = () => {
     const redirect = useNavigate();
@@ -40,6 +41,10 @@ const Dashboard = () => {
                     <Typography variant="body1" sx={{ fontSize: '1.0rem', color: 'black' }}>
                         Browse and select old style 90's movies
                     </Typography>
+                </Grid>
+
+                <Grid item xs={12}>
+                    <RentalProcess/>
                 </Grid>
 
                 </Grid>

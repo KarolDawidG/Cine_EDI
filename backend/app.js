@@ -19,6 +19,7 @@ const addressRoute = require('./routes/addressRoute');
 const vhsRoute = require('./routes/vhsRoute');
 const userRoute = require('./routes/adminRoute/usersRoute');
 const dataAnalysisRoute = require('./routes/dataAnalysisRoute');
+const contactRoutes = require("./routes/userRoute/contactFormRoute");
 
 const MESSAGES = require('./config/messages');
 const STATUS_CODES = require('./config/status-codes');
@@ -49,6 +50,7 @@ app.use("/address", addressRoute);
 app.use('/vhs', vhsRoute);
 app.use('/user', userRoute);
 app.use('/analizing', dataAnalysisRoute);
+app.use("/contact-form", contactRoutes);
 
 // data storage
 app.post('/upload', upload.single('file'), (req, res) => {

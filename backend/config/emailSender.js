@@ -80,7 +80,8 @@
       subject: `Message from ${email}: ${subject}`,
       html: `
         <div style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; max-width: 600px; margin: 0 auto; background-color: #f8f9fa; padding: 20px; border-radius: 10px; border: 1px solid #ddd;">
-          <h2 style="color: #3b5998; font-size: 24px; margin-bottom: 20px;">Message from ${name}</h2>
+        <img src="https://utfs.io/f/a2ed3f40-e72b-418e-ab13-9ff222e65cd3-1peup4.png" alt="Logo" style="display: block; margin: 0 auto; width: 200px; height: auto; border-radius: 10px;">  
+        <h2 style="color: #3b5998; font-size: 24px; margin-bottom: 20px;">Message from ${name}</h2>
           <p style="color: #444; font-size: 16px;"><strong>Email sender:</strong> ${email}</p>
           <p style="color: #444; font-size: 16px;"><strong>Name of sender:</strong> ${name}</p>
           <p style="color: #444; font-size: 16px;"><strong>Subject:</strong> ${subject}</p>
